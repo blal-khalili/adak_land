@@ -1,0 +1,75 @@
+nav {
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 0 30px #000000;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: 70px;
+}
+
+
+.navbar-brand img {
+    width: 7rem;
+    filter: drop-shadow(0 2px 3px #ffffff);
+}
+
+
+.nav-item1 a {
+    font-size: 19px;
+    color: #000;
+    transition: 0.3s;
+}
+
+.nav-item1 a:hover {
+    color: #EFB80B;
+    transform: translateY(-2px);
+}
+
+
+.nav-item1 i {
+    font-size: 33px;
+}
+
+.nav-item2 button {
+    width: 144px;
+    height: 40px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.nav-item2 button:hover {
+    background: #EFB80B;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+.nav-item2 a button i {
+    font-size: 18px;
+}
+
+.nav-item3 a i {
+    font-size: 25px;
+    color: #000;
+    transition: .3s;
+}
+
+.nav-item3 a i:hover {
+    color: #EFB80B;
+    transform: scale(1.2);
+}
+
+
+form input {
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px;
+}
+
+#Dropdown {
+    font-size: 21px;
+}

@@ -1,0 +1,42 @@
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #00000073;
+
+    padding: 20px;
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 0 10px #000000b3,
+        0 0 10px #ffffff4d inset;
+    transition: all 0.3s ease;
+}
+
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #00000099;
+    box-shadow:
+        0 0 16px #ffffff66,
+        0 0 12px #ffffff99 inset;
+    transform: scale(1.15);
+}
+
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
