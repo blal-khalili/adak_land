@@ -3,37 +3,52 @@ import logo from "../../assets/image/OriginLogo/Adack_Land_logo.png"
 
 function Navber() {
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="#"><img classNameName="img-fuild" src={logo} alt="Adack Land" /></a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand mt-3" href="#"><h1>آداک لند</h1></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="bi bi-list-stars"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-4 fw-bold">
-                        <li className="nav-item dropdown">
-                            <a id="Dropdown" className="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="col-md-5">
+                        <form class="d-flex">
+                            <input class="form-control me-5" type="search" placeholder="جستوجو در آداک لند..." aria-label="Search" />
+                            <button class="btn btn-outline-primary" type="submit">جستوجو</button>
+                        </form>
+                    </div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 دسته بندی ها
                             </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">سورمارکت</a></li>
-                                <hr className="dropdown-divider" />
-                                <li><a className="dropdown-item" href="#">لوازم جانبی</a></li>
-                                <hr className="dropdown-divider" />
-                                <li><a className="dropdown-item" href="#">لوازم بهداشتی</a></li>
-                                <hr className="dropdown-divider" />
-                                <li><a className="dropdown-item" href="#">لوازم تحریر</a></li>
-                            </ul>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul>
+                                    <li class="dropdown-item text-primary">محصولات</li>
+                                    <li><a class="dropdown-item text-dark" href="#">سوپرمارکت</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">لوازم جانبی</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">لوازم تحریر</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="dropdown-item text-primary">جزئیات</li>
+                                    <li><a class="dropdown-item text-dark" href="#">تنقلات و غذا...</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">موبایل و لپ تاپ...</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">دستمال کاغذی و مایع دستشویی...</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">کوله پشتی و خودکار...</a></li>
+                                </ul>
+                            </div>
                         </li>
-                        <li className="nav-item1 d-flex">
+                        <li className="nav-item1 d-flex mt-2">
                             <i className="bi bi-bookmark-heart text-danger"></i>
-                            <a className="nav-link active" aria-current="page" href="#">علاقه مندی</a>
+                            <a className="nav-link text-dark" href="#">علاقه مندی</a>
                         </li>
                         <li className="nav-item2">
-                            <a className="nav-link" href="#"><button classNameName="btn bg-warning rounded"><i className="bi bi-arrow-bar-left px-2"></i>ورود | ثبت نام</button></a>
+                            <a className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></a>
                         </li>
                         <li className="nav-item3">
-                            <a className="nav-link" href="#"><i className="bi bi-cart"></i></a>
+                            <a className="nav-link text-dark" href="#"><i className="bi bi-cart"></i></a>
                         </li>
                     </ul>
                 </div>

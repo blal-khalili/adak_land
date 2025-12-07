@@ -16,14 +16,6 @@ function App() {
     <section>
       <Navber />
 
-      <div className='container'>
-        <div className='row mt-5'>
-          <div className='col-md-4 mx-auto'>
-            <SearchBox />
-          </div>
-        </div>
-      </div>
-
       <div className='mt-5'>
         <div className='mx-auto'>
           <Carousel />
