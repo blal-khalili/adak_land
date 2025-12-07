@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# TypeOfProducts Models :
 class TypeOfProducts(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
 
@@ -9,6 +9,7 @@ class TypeOfProducts(models.Model):
         return self.title
 
 
+# Products Models :
 class Products(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
     type = models.ForeignKey(
