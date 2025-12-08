@@ -41,3 +41,10 @@ The rest of the libraries are also listed in the requirements file and will be a
 The rest of the libraries are also listed in the project file and will be added.
 
 ---
+
+## **Command to execute code in the front end :**
+
+`npm run dev`
+
+---
+
