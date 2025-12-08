@@ -71,7 +71,6 @@ The rest of the libraries are also listed in the project file and will be added.
 
 ## **Badge :**
 
-![Static Badge](https://img.shields.io/badge/Python-blue?style=flat-square&logo=Python&logoColor=blue&label=Python&labelColor=black&color=blue)      ![Static Badge](https://img.shields.io/badge/javascript-yellow?style=flat-square&logo=javascript&logoColor=yellow-black&logoSize=80&labelColor=black&color=black)
-
+![Static Badge](https://img.shields.io/badge/Python-blue?style=flat-square&logo=Python&logoColor=blue&label=Python&labelColor=black&color=blue) ![Static Badge](https://img.shields.io/badge/javascript-yellow?style=flat-square&logo=javascript&logoColor=yellow-black&labelColor=black&color=black) ![Static Badge](https://img.shields.io/badge/React-%2358C4DC?style=flat-square&logo=React&logoColor=%2358C4DC&labelColor=black&color=%2358C4DC)
 
 
