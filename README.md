@@ -71,6 +71,6 @@ The rest of the libraries are also listed in the project file and will be added.
 
 ## **Badge :**
 
-![Static Badge](https://img.shields.io/badge/Python-blue?style=flat-square&logo=Python&logoColor=blue&label=Python&labelColor=black&color=blue) ![Static Badge](https://img.shields.io/badge/javascript-yellow?style=flat-square&logo=javascript&logoColor=yellow-black&labelColor=black&color=black) ![Static Badge](https://img.shields.io/badge/React-%2358C4DC?style=flat-square&logo=React&logoColor=%2358C4DC&labelColor=black&color=%2358C4DC)
+![Static Badge](https://img.shields.io/badge/Python-blue?style=flat-square&logo=Python&logoColor=blue&label=Python&labelColor=black&color=blue) ![Static Badge](https://img.shields.io/badge/javascript-yellow?style=flat-square&logo=javascript&logoColor=yellow-black&labelColor=black&color=black) ![Static Badge](https://img.shields.io/badge/React-%2358C4DC?style=flat-square&logo=React&logoColor=%2358C4DC&labelColor=black&color=%2358C4DC) ![Static Badge](https://img.shields.io/badge/HTML5-orange?style=flat-square&logo=HTML5&logoColor=white&labelColor=orange) ![Static Badge](https://img.shields.io/badge/CSS3-purple?style=flat-square&logo=CSS3&logoColor=black&labelColor=purple) ![Static Badge](https://img.shields.io/badge/Django-%230C4B33?style=flat-square&logo=Django&logoColor=white&labelColor=%230C4B33)
 
 
