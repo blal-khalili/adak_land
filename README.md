@@ -30,3 +30,14 @@ In this project, there is a store site whose backend is written using DRF Django
 The rest of the libraries are also listed in the requirements file and will be added.
 
 ---
+
+## *Frontend library required for this project :*
+
+- [x] React
+- [x] React Router
+- [x] vite
+- [x] bootstrap
+
+The rest of the libraries are also listed in the project file and will be added.
+
+---
