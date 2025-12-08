@@ -3,9 +3,10 @@ import Navber from './components/Navbar/Navbar';
 import SearchBox from './components/Searchbox/Searchbox';
 import Carousel from './components/Carousel/Carousel';
 import supermarketlogo from "./assets/image/CategoryLogos/SuperMarketLogo/icons8-supermarket-96.png/"
-import behdashtylogo from "./assets/image/CategoryLogos/BehdashtyLogo/behdashty_logo.png/"
-import tahrirlogo from "./assets/image/CategoryLogos/TahrirLogo/Tahrir_logo.png"
-import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/janebi_logo.png/"
+import behdashtylogo from "./assets/image/CategoryLogos/BehdashtyLogo/cosmetics.png/"
+import tahrirlogo from "./assets/image/CategoryLogos/TahrirLogo/writing.png/"
+import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
+import poster1 from "./assets/image/Posters/poster1.webp/"
 import Footer from './components/Footer/Footer';
 import Card from './components/Card/Card';
 import './App.css';
@@ -53,12 +54,76 @@ function App() {
         </div>
       </div>
 
+      <div id='Offer' className="container mt-5 bg-primary rounded py-4">
+        <h2 className='text-white'>محصولات جدید</h2>
+        <div className='col-md-3 text-white'>
+          <hr />
+        </div>
+        <div className="row g-4">
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+        </div>
+      </div>
+
+      <div className='container mt-5'>
+        <div className='row g-4'>
+          <div className='col-md-6'>
+            <img className='img-fluid rounded' src={poster1} alt="" />
+          </div>
+          <div className='col-md-6'>
+            <img className='img-fluid rounded' src={poster1} alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div id='Offer' className="container mt-5">
+        <h2 className='text-center'>پرفروش ترین ها</h2>
+        <div className='col-md-3 mx-auto'>
+          <hr />
+        </div>
+        <div className="row g-4">
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+          <div className="col-md-3">
+            <Card />
+          </div>
+        </div>
+      </div>
+
+      <div className='container mt-5'>
+        <div className='row g-4'>
+          <div className='col-md-6'>
+            <img className='img-fluid rounded' src={poster1} alt="" />
+          </div>
+          <div className='col-md-6'>
+            <img className='img-fluid rounded' src={poster1} alt="" />
+          </div>
+        </div>
+      </div>
+
       <div id='Offer' className="container mt-5">
         <h2>کالا های پیشنهادی</h2>
         <div className='col-md-3'>
           <hr />
         </div>
-        <div className="row">
+        <div className="row g-4">
           <div className="col-md-3">
             <Card />
           </div>

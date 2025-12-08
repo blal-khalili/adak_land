@@ -4,7 +4,7 @@ function Card() {
     return (
         <div class="card border-0 rounded-0 shadow">
             <img src="..." class="card-img-top rounded-0" alt="..." />
-                <div class="card-body mt-3 mb-3">
+                <div className="card-body mt-3 mb-3">
                     <div class="row">
                         <div class="col-10">
                             <h4 class="card-title">Product title</h4>
