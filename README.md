@@ -48,3 +48,11 @@ The rest of the libraries are also listed in the project file and will be added.
 
 ---
 
+## Features of the Adakland site :
+
+1. Shop with ease and peace of mind.
+2. Pay securely.
+3. 3. Shop with confidence.
+4. Experience the variety of shopping with us.
+
+---
