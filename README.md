@@ -54,5 +54,17 @@ The rest of the libraries are also listed in the project file and will be added.
 2. Pay securely.
 3. Shop with confidence.
 4. Experience the variety of shopping with us.
+5. .....
+
+---
+
+## *Features of this site :*
+
+1. Clean and tidy code
+2. The codes are readable and understandable.
+3. Several up-to-date libraries have been used.
+4. Bootstrap customization is used.
+5. The admin panel is understandable.
+6. The admin panel is personalized.
 
 ---
