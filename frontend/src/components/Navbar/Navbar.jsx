@@ -1,5 +1,4 @@
 import "../Navbar/Navbar.css"
-import logo from "../../assets/image/OriginLogo/Adack_Land_logo.png"
 
 function Navber() {
     return (

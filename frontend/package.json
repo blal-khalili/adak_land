@@ -17,8 +17,7 @@
     "react": "^19.2.0",
     "react-card-slider-component": "^1.0.9",
     "react-dom": "^19.2.0",
-    "sass": "^1.94.2",
-    "vazirmatn": "^33.0.3"
+    "sass": "^1.94.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
