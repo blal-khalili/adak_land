@@ -1,9 +1,9 @@
 import "../Card/Card.css/"
-import defaultImage from '../../assets/image/CategoryLogos/TahrirLogo/writing.png'
+
 function Card() {
     return (
         <div class="card border-0 rounded-0 shadow">
-            <img src={defaultImage} class="card-img-top rounded-0" alt="..." />
+            <img src="" class="card-img-top rounded-0" alt="..." />
                 <div className="card-body mt-3 mb-3">
                     <div class="row">
                         <div class="col-10">

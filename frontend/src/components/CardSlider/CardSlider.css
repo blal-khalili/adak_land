@@ -1,13 +1,9 @@
-.swiper {
-  /* width: 600px; */
-  height: 300px;
-}
-
-
 .swiper-button-next{
   transform: scale(80%);
+  color: #0118D8;
 }
 
 .swiper-button-prev{
   transform: scale(80%);
+  color: #0118D8;
 }

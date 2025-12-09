@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Navber from './components/Navbar/Navbar';
-import SearchBox from './components/Searchbox/Searchbox';
 import Carousel from './components/Carousel/Carousel';
 import supermarketlogo from "./assets/image/CategoryLogos/SuperMarketLogo/icons8-supermarket-96.png/"
 import behdashtylogo from "./assets/image/CategoryLogos/BehdashtyLogo/cosmetics.png/"
@@ -8,7 +7,6 @@ import tahrirlogo from "./assets/image/CategoryLogos/TahrirLogo/writing.png/"
 import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
 import poster1 from "./assets/image/Posters/poster1.webp/"
 import Footer from './components/Footer/Footer';
-import Card from './components/Card/Card';
 import CardSlider from "./components/CardSlider/CardSlider"
 import './App.css';
 
@@ -17,8 +15,6 @@ function App() {
   return (
     <section>
       <Navber />
-
-      <CardSlider></CardSlider>
 
       <div className='mt-5'>
         <div className='mx-auto'>
@@ -62,20 +58,7 @@ function App() {
         <div className='col-md-3 text-white'>
           <hr />
         </div>
-        <div className="row g-4">
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-        </div>
+        <CardSlider />
       </div>
 
       <div className='container mt-5'>
@@ -94,20 +77,7 @@ function App() {
         <div className='col-md-3 mx-auto'>
           <hr />
         </div>
-        <div className="row g-4">
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-        </div>
+        <CardSlider />
       </div>
 
       <div className='container mt-5'>
@@ -126,20 +96,7 @@ function App() {
         <div className='col-md-3'>
           <hr />
         </div>
-        <div className="row g-4">
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-          <div className="col-md-3">
-            <Card />
-          </div>
-        </div>
+        <CardSlider />
       </div>
 
       <hr />

@@ -33,7 +33,7 @@ function Footer() {
                         </div>
                     </div>
 
-                    <div id="Menu" className="col-md-2 mt-5 text-center">
+                    <div id="Menu" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">منو</h2>
 
                         <a href="">
@@ -52,7 +52,7 @@ function Footer() {
                             <p>پر فروش ترین ها</p>
                         </a>
                     </div>
-                    <div id="More" className="col-md-2 mt-5 text-center">
+                    <div id="More" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">بیشتر</h2>
 
                         <a href="">
@@ -63,7 +63,7 @@ function Footer() {
                             <p>راهنمایی</p>
                         </a>
                     </div>
-                    <div id="Category" className="col-md-3 mt-5 text-center">
+                    <div id="Category" className="col-md-3 mt-5 col-6">
                         <h2 className="pb-3">دسته بندی ها</h2>
 
                         <a href="">

@@ -10,11 +10,6 @@ nav .navbar-nav a.nav-link {
     font-size: 1.1em;
 }
 
-.navbar-brand img {
-    width: 7rem;
-}
-
-
 .nav-item1 a {
     transition: 0.3s;
 }
