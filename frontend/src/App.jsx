@@ -9,6 +9,7 @@ import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
 import poster1 from "./assets/image/Posters/poster1.webp/"
 import Footer from './components/Footer/Footer';
 import Card from './components/Card/Card';
+import CardSlider from "./components/CardSlider/CardSlider"
 import './App.css';
 
 
@@ -16,6 +17,8 @@ function App() {
   return (
     <section>
       <Navber />
+
+      <CardSlider></CardSlider>
 
       <div className='mt-5'>
         <div className='mx-auto'>
