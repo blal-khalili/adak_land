@@ -1,4 +1,5 @@
 import "../Footer/Footer.css/"
+import { Link } from "react-router";
 
 
 function Footer() {
@@ -66,9 +67,9 @@ function Footer() {
                     <div id="Category" className="col-md-3 mt-5 col-6">
                         <h2 className="pb-3">دسته بندی ها</h2>
 
-                        <a href="">
+                        <Link to="/supermarket"><a>
                             <p>سورمارکت</p>
-                        </a>
+                        </a></Link>
 
                         <a href="">
                             <p>لوازم تحریر</p>

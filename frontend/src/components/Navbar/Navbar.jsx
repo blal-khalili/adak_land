@@ -1,4 +1,6 @@
 import "../Navbar/Navbar.css"
+import { Link } from "react-router";
+
 
 function Navber() {
     return (
@@ -25,7 +27,7 @@ function Navber() {
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <ul>
                                     <li class="dropdown-item text-primary">محصولات</li>
-                                    <li><a class="dropdown-item text-dark" href="#">سوپرمارکت</a></li>
+                                    <Link to="/supermarket"><li><a class="dropdown-item text-dark">سوپرمارکت</a></li></Link>
                                     <li><a class="dropdown-item text-dark" href="#">لوازم جانبی موبایل</a></li>
                                     <li><a class="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</a></li>
                                     <li><a class="dropdown-item text-dark" href="#">لوازم تحریر</a></li>
