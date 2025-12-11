@@ -26,7 +26,7 @@ function Navber() {
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <ul>
                                     <li className="dropdown-item text-primary">محصولات</li>
-                                    <li><a className="dropdown-item text-dark" href="#">سوپرمارکت</a></li>
+                                    <Link to="/supermarket"><li className="dropdown-item text-primary">سوپرمارکت</li></Link>
                                     <li><a className="dropdown-item text-dark" href="#">لوازم جانبی موبایل</a></li>
                                     <li><a className="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</a></li>
                                     <li><a className="dropdown-item text-dark" href="#">لوازم تحریر</a></li>
