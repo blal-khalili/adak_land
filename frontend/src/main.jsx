@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import ContactUs from "./components/ContactUs/ContactUs.jsx"
 import './index.css'
 import App from './App.jsx'
+import Supermarket from './Supermarket.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/ContactUs" element={<ContactUs />}></Route>
+        <Route path="/supermarket" element={<Supermarket />}></Route>
       </Routes>
+
     </BrowserRouter>
   </StrictMode>,
 )
