@@ -11,7 +11,7 @@ function Footer() {
 
                         <p className="mt-4">به آداک لند خوش آمدید از خریدتان در این فروشگاه لذت ببرید.</p>
 
-                        <p>09147917122</p>
+                        <p>09142137122</p>
                         <p>Adack Land@gamil.com</p>
 
                         <div id="Social" className="d-flex gap-3">

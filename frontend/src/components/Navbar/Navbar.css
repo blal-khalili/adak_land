@@ -4,6 +4,8 @@ nav {
     box-shadow: 0 0 30px #000000;
     top: 0;
     z-index: 999;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
 }
 
 nav .navbar-nav a.nav-link {
@@ -20,6 +22,10 @@ nav .navbar-nav a.nav-link {
 }
 
 
+.navbar input {
+    filter: none !important;
+}
+
 .nav-item1 i {
     font-size: 30px;
 }
@@ -28,11 +34,28 @@ nav .navbar-nav a.nav-link {
     height: 40px;
     border-radius: 8px;
     transition: .3s;
+    border: 2px #000000 solid;
 }
 
 .nav-item2 button:hover {
     transform: translateY(-2px);
 }
+
+
+.nav-item2 #btn-link-ContactUs {
+    height: 40px;
+    border-radius: 8px;
+    transition: .3s;
+    position: relative;
+    top: 8px;
+    border: 2px #000000 solid;
+}
+
+
+.nav-item2 #btn-link-ContactUs:hover {
+    transform: translateY(-2px);
+}
+
 
 .nav-item3 a i {
     font-size: 25px;
