@@ -8,7 +8,9 @@ import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
 import poster1 from "./assets/image/Posters/poster1.webp/"
 import Footer from './components/Footer/Footer';
 import CardSlider from "./components/CardSlider/CardSlider"
+import { Link } from "react-router";
 import './App.css';
+
 
 
 function App() {
@@ -28,27 +30,27 @@ function App() {
         <div className='row text-center'>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={supermarketlogo} alt="" />
-            <a className='text-dark' href="">
+            <Link className='text-dark' href="">
               <h5>سوپرمارکت</h5>
-            </a>
+            </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={behdashtylogo} alt="" />
-            <a className='text-dark' href="">
+            <Link className='text-dark' href="">
               <h5>لوازم آرایشی و بهداشتی</h5>
-            </a>
+            </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={tahrirlogo} alt="" />
-            <a className='text-dark' href="">
+            <Link className='text-dark' href="">
               <h5>لوازم تحریر</h5>
-            </a>
+            </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={janebilogo} alt="" />
-            <a className='text-dark' href="">
+            <Link className='text-dark' href="">
               <h5>لوازم جانبی</h5>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

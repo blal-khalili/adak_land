@@ -6,6 +6,7 @@ import carousel_img_3 from "../../assets/image/Carousel/carousel_img_3.webp";
 import carousel_img_4 from "../../assets/image/Carousel/carousel_img_4.webp";
 import carousel_img_5 from "../../assets/image/Carousel/carousel_img_5.webp";
 import "../Carousel/Carousel.css"
+import { Link } from "react-router";
 
 function Carousel() {
 
@@ -24,19 +25,19 @@ function Carousel() {
         <div id="carouselExampleAutoplaying" className="carousel slide">
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <a href=""><img src={carousel_img_1} className="d-block w-100" alt="..." /></a>
+                    <Link href=""><img src={carousel_img_1} className="d-block w-100" alt="..." /></Link>
                 </div>
                 <div className="carousel-item">
-                    <a href=""><img src={carousel_img_2} className="d-block w-100" alt="..." /></a>
+                    <Link href=""><img src={carousel_img_2} className="d-block w-100" alt="..." /></Link>
                 </div>
                 <div className="carousel-item">
-                    <a href=""><img src={carousel_img_3} className="d-block w-100" alt="..." /></a>
+                    <Link href=""><img src={carousel_img_3} className="d-block w-100" alt="..." /></Link>
                 </div>
                 <div className="carousel-item">
-                    <a href=""><img src={carousel_img_4} className="d-block w-100" alt="..." /></a>
+                    <Link href=""><img src={carousel_img_4} className="d-block w-100" alt="..." /></Link>
                 </div>
                 <div className="carousel-item">
-                    <a href=""><img src={carousel_img_5} className="d-block w-100" alt="..." /></a>
+                    <Link href=""><img src={carousel_img_5} className="d-block w-100" alt="..." /></Link>
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

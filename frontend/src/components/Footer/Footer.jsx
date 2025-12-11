@@ -16,72 +16,72 @@ function Footer() {
                         <p>Adack Land@gamil.com</p>
 
                         <div id="Social" className="d-flex gap-3">
-                            <a href="">
-                                <i class="bi bi-google"></i>
-                            </a>
+                            <Link >
+                                <i className="bi bi-google"></i>
+                            </Link>
 
-                            <a href="">
-                                <i class="bi bi-instagram"></i>
-                            </a>
+                            <Link >
+                                <i className="bi bi-instagram"></i>
+                            </Link>
 
-                            <a href="">
-                                <i class="bi bi-facebook"></i>
-                            </a>
+                            <Link >
+                                <i className="bi bi-facebook"></i>
+                            </Link>
 
-                            <a href="">
-                                <i class="bi bi-telegram"></i>
-                            </a>
+                            <Link >
+                                <i className="bi bi-telegram"></i>
+                            </Link>
                         </div>
                     </div>
 
                     <div id="Menu" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">منو</h2>
 
-                        <a href="">
+                        <Link >
                             <p>خانه</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>داغ ترین ها</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>جدید ترین ها</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>پر فروش ترین ها</p>
-                        </a>
+                        </Link>
                     </div>
                     <div id="More" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">بیشتر</h2>
 
-                        <a href="">
+                        <Link >
                             <p>سوالی دارید؟</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>راهنمایی</p>
-                        </a>
+                        </Link>
                     </div>
                     <div id="Category" className="col-md-3 mt-5 col-6">
                         <h2 className="pb-3">دسته بندی ها</h2>
 
-                        <Link to="/supermarket"><a>
+                        <Link to="/supermarket">
                             <p>سورمارکت</p>
-                        </a></Link>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>لوازم تحریر</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>لوازم جانبی موبایل</p>
-                        </a>
+                        </Link>
 
-                        <a href="">
+                        <Link >
                             <p>لوازم آرایشی و بهداشتی</p>
-                        </a>
+                        </Link>
                     </div>
 
                     <hr />
