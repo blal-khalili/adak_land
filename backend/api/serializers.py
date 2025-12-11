@@ -1,28 +1,28 @@
 from rest_framework import serializers
-from .models import Products, TypeOfProducts
+from .models import Product, TypeOfProduct
 
 
-# Products Serializers :
-class Productserializer(serializers.ModelSerializer):
+# Product Serializers :
+class Producterializer(serializers.ModelSerializer):
     class Meta:
-        model = Products
+        model = Product
         fields = "__all__"
 
 
-class OneProductserializer(serializers.ModelSerializer):
+class OneProducterializer(serializers.ModelSerializer):
     class Meta:
-        model = Products
+        model = Product
         fields = "__all__"
 
 
-# TypeOfProducts Serializers :
-class TypeOfProductserializer(serializers.ModelSerializer):
+# TypeOfProduct Serializers :
+class TypeOfProducterializer(serializers.ModelSerializer):
     class Meta:
-        model = TypeOfProducts
+        model = TypeOfProduct
         fields = "__all__"
 
 
-class OneTypeOfProductserializer(serializers.ModelSerializer):
+class OneTypeOfProducterializer(serializers.ModelSerializer):
     class Meta:
-        model = TypeOfProducts
+        model = TypeOfProduct
         fields = "__all__"

@@ -2,7 +2,7 @@ from django.db import models
 
 
 # TypeOfProducts Models :
-class TypeOfProducts(models.Model):
+class TypeOfProduct(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
@@ -10,10 +10,10 @@ class TypeOfProducts(models.Model):
 
 
 # Products Models :
-class Products(models.Model):
+class Product(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
     type = models.ForeignKey(
-        TypeOfProducts, on_delete=models.CASCADE, null=True, blank=True
+        TypeOfProduct, on_delete=models.CASCADE, null=True, blank=True
     )
     price = models.CharField(max_length=255, null=True, blank=True)
     image = models.FileField(upload_to="ProductImg", null=True, blank=True)

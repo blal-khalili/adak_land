@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import Products, TypeOfProducts
+from .models import Product, TypeOfProduct
 from .serializers import (
-    Productserializer,
-    OneProductserializer,
-    TypeOfProductserializer,
-    OneTypeOfProductserializer,
+    Producterializer,
+    OneProducterializer,
+    TypeOfProducterializer,
+    OneTypeOfProducterializer,
 )
 from rest_framework.generics import (
     CreateAPIView,
@@ -17,7 +17,7 @@ from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
-# Products view :
-class ProductsApiView(ListAPIView):
-    queryset = Products.objects.all()
-    serializer_class = Productserializer
+# Product view :
+class ProductApiView(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = Producterializer
