@@ -26,7 +26,7 @@ function Navber() {
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <ul>
                                     <li className="dropdown-item text-primary">محصولات</li>
-                                    <Link to="/supermarket"><li className="dropdown-item text-primary">سوپرمارکت</li></Link>
+                                    <li><Link to="/supermarket" className="dropdown-item text-dark">سوپرمارکت</Link></li>
                                     <li><Link className="dropdown-item text-dark" href="#">لوازم جانبی موبایل</Link></li>
                                     <li><Link className="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</Link></li>
                                     <li><Link className="dropdown-item text-dark" href="#">لوازم تحریر</Link></li>
@@ -51,7 +51,7 @@ function Navber() {
                             <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link>
                         </li>
                         <li className="nav-item3">
-                            <Link className="nav-link text-dark" href="#"><i className="bi bi-cart"></i></Link>
+                            <Link to="/shoppingcart" className="nav-link text-dark"><i className="bi bi-cart"></i></Link>
                         </li>
                     </ul>
                 </div>
