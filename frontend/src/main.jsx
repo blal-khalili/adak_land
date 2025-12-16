@@ -10,6 +10,7 @@ import RegistrationLogin from './components/Registration_Login/RegistrationLogin
 import './index.css'
 import App from './App.jsx'
 import Supermarket from './Supermarket.jsx';
+import Cart from './Shoppingcart.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="RegistrationLogin" element={<RegistrationLogin />}></Route>
         <Route path="/ContactUs" element={<ContactUs />}></Route>
         <Route path="/supermarket" element={<Supermarket />}></Route>
+        <Route path="/shoppingcart" element={<Cart />}></Route>
       </Routes>
 
     </BrowserRouter>
