@@ -12,7 +12,6 @@ function Supermarket() {
 
     return (
         <section>
-            <Navber />
             <div className='container mt-5'>
                 <h1 className='text-center'>سوپرمارکت</h1>
                 <div className='row mt-5'>
@@ -51,8 +50,6 @@ function Supermarket() {
                 </div>
             </div>
 
-            <hr />
-            <Footer />
         </section>
     )
 }

@@ -10,9 +10,6 @@ function ContactUs() {
     return (
         <section id="ContactUs-id">
 
-            <Navber></Navber>
-
-
             <div className="container mt-3">
                 <div className="row">
 
@@ -70,9 +67,6 @@ function ContactUs() {
                 </div>
             </div>
 
-            <div className="py-5 mt-5">
-                <Footer />
-            </div>
 
         </section>
     )

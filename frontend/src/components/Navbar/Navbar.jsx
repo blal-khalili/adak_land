@@ -44,12 +44,19 @@ function Navber() {
                             <i className="bi bi-bookmark-heart text-danger"></i>
                             <Link className="nav-link text-dark" href="#">علاقه مندی</Link>
                         </li>
-                        <li className="nav-item2">
-                            <Link to="/RegistrationLogin" target="_blank" className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></Link>
-                        </li>
-                        <li className="nav-item2">
-                            <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link>
-                        </li>
+                        <div className="row">
+                            <div className="col-6">
+                                <li className="nav-item2">
+                                    <Link to="/RegistrationLogin" target="_blank" className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></Link>
+                                </li>
+                            </div>
+                            <div className="col-6">
+                                <li className="nav-item2">
+                                    <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link>
+                                </li>
+                            </div>
+                        </div>
+
                         <li className="nav-item3">
                             <Link to="/shoppingcart" className="nav-link text-dark"><i className="bi bi-cart"></i></Link>
                         </li>

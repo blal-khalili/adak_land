@@ -17,18 +17,8 @@ function Cart() {
 
     return (
         <section>
-            <Navber />
-
             <div className="container mt-5">
                 <div className="row gap-3">
-                    <div className="col-md-2">
-                        <Link className="h2link" onClick={Cart}><h2 className="fw-bold border rounded border-primary px-4 text-dark">سبد خرید</h2></Link>
-                    </div>
-
-                    <div className="col-md-3">
-                        <Link className="h2link" onClick={Changes}><h2 className="fw-bold border rounded border-primary px-4 text-dark">خرید های لغو شده</h2></Link>
-                    </div>
-
                     <hr />
                 </div>
 
@@ -38,12 +28,9 @@ function Cart() {
                     </div>
                 </div>
 
-                <div className="row">
-                    <hr />
-                </div>
             </div>
 
-            <Footer />
+
         </section>
     )
 }

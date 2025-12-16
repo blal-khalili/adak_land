@@ -12,17 +12,17 @@ import { Link } from "react-router";
 import './App.css';
 
 
-
 function App() {
+
+  
   return (
     <section>
-      <Navber />
-
       <div className='mt-5'>
         <div className='mx-auto'>
           <Carousel />
         </div>
       </div>
+
 
       <div id='Category' className='container mt-5'>
         <h2 className='text-center fw-bold'>خرید براساس دسته بندی</h2>
@@ -103,7 +103,6 @@ function App() {
 
       <hr />
 
-      <Footer />
     </section>
   )
 }

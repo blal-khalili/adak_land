@@ -11,17 +11,21 @@ import './index.css'
 import App from './App.jsx'
 import Supermarket from './Supermarket.jsx';
 import Cart from './Shoppingcart.jsx';
-
+import LandingLayout from './LandingLayout'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}></Route>
+        <Route path="/" element={<LandingLayout />}>
+          <Route path="" element={<App />}></Route>
+          <Route path="/ContactUs" element={<ContactUs />}></Route>
+          <Route path="/supermarket" element={<Supermarket />}></Route>
+          <Route path="/shoppingcart" element={<Cart />}></Route>
+        </Route>
+
         <Route path="RegistrationLogin" element={<RegistrationLogin />}></Route>
-        <Route path="/ContactUs" element={<ContactUs />}></Route>
-        <Route path="/supermarket" element={<Supermarket />}></Route>
-        <Route path="/shoppingcart" element={<Cart />}></Route>
+
       </Routes>
 
     </BrowserRouter>
