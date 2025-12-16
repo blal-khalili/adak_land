@@ -38,24 +38,24 @@ function ContactUs() {
                                 </select>
                             </div>
                             <div className="col-md-6">
-                                <label for="inputEmail4" className="form-label">نام و نام خانوادگی</label>
-                                <input placeholder="نام و نام خانوادگی" type="email" className="form-control" id="inputEmail4" />
+                                <label for="inputName" className="form-label">نام و نام خانوادگی</label>
+                                <input placeholder="نام و نام خانوادگی" type="text" className="form-control" id="inputName" />
                             </div>
                             <div className="col-md-6">
-                                <label for="inputPassword4" className="form-label">ایمیل</label>
-                                <input placeholder="ایمیل" type="password" className="form-control" id="inputPassword4" />
+                                <label for="inputEmail4" className="form-label">ایمیل</label>
+                                <input placeholder="ایمیل" type="email" className="form-control" id="inputEmail4" />
                             </div>
                             <div className="col-md-6">
-                                <label for="inputEmail4" className="form-label">تلفن تماس</label>
-                                <input placeholder="تلفن تماس" type="email" className="form-control" id="inputEmail4" />
+                                <label for="inputMobileNumber" className="form-label">شماره موبایل</label>
+                                <input placeholder="شماره موبایل" type="tel" className="form-control text-end" id="inputMobileNumber" />
                             </div>
                             <div className="col-md-6">
                                 <label for="inputCity" className="form-label">شهر</label>
                                 <input placeholder="شهر خود را بنویسید" type="text" className="form-control" id="inputCity" />
                             </div>
                             <div className="col-md-6">
-                                <label for="inputCity" className="form-label">آدرس</label>
-                                <input placeholder="آدرس خود را بنویسید" type="text" className="form-control" id="inputCity" />
+                                <label for="inputAddress" className="form-label">آدرس</label>
+                                <input placeholder="آدرس خود را بنویسید" type="text" className="form-control" id="inputAddress" />
                             </div>
                             <div className="mb-3">
                                 <label for="exampleFormControlTextarea1" className="form-label">متن پیام</label>

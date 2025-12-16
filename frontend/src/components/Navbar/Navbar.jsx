@@ -45,7 +45,7 @@ function Navber() {
                             <Link className="nav-link text-dark" href="#">علاقه مندی</Link>
                         </li>
                         <li className="nav-item2">
-                            <Link className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></Link>
+                            <Link to="/RegistrationLogin" target="_blank" className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></Link>
                         </li>
                         <li className="nav-item2">
                             <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link>

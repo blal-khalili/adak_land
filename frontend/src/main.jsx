@@ -6,6 +6,7 @@ import './assets/css/custom_bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ContactUs from "./components/ContactUs/ContactUs.jsx"
+import RegistrationLogin from './components/Registration_Login/RegistrationLogin.jsx';
 import './index.css'
 import App from './App.jsx'
 import Supermarket from './Supermarket.jsx';
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
+        <Route path="RegistrationLogin" element={<RegistrationLogin />}></Route>
         <Route path="/ContactUs" element={<ContactUs />}></Route>
         <Route path="/supermarket" element={<Supermarket />}></Route>
       </Routes>
