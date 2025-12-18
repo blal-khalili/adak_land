@@ -23,7 +23,7 @@ function RegistrationLogins() {
                                 <input placeholder="شماره موبایل یا ایمیل" type="tel" className="form-control text-end mt-2" id="inputMobileNumber" />
                             </div>
                             <div className="mt-4">
-                                <Link to="#" target="_blank"><button id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button></Link>
+                                <Link to="/Confirmation_Code_Page" ><button id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button></Link>
                             </div>
                         </div>
                     </div>

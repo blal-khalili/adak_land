@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ContactUs from "./components/ContactUs/ContactUs.jsx"
 import RegistrationLogin from './components/Registration_Login/RegistrationLogin.jsx';
+import Confirmation_Code_Page from "./components/Login_Or_Registration_Confirmation_Code_Page/LoginConfirmationCodePage.jsx"
 import './index.css'
 import App from './App.jsx'
 import Supermarket from './Supermarket.jsx';
@@ -24,7 +25,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/shoppingcart" element={<Cart />}></Route>
         </Route>
 
-        <Route path="RegistrationLogin" element={<RegistrationLogin />}></Route>
+        <Route path="/RegistrationLogin" element={<RegistrationLogin />}></Route>
+        <Route path="/Confirmation_Code_Page" element={<Confirmation_Code_Page />}></Route>
 
       </Routes>
 

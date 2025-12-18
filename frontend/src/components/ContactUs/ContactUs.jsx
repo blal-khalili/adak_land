@@ -15,7 +15,7 @@ function ContactUs() {
 
                     <div className="text-center mt-5">
                         <h2 className="fw-bolder">تماس با ما</h2>
-                        <hr />
+                        <hr id="id_hr_line" />
                     </div>
 
                     <div className="py-5 mt-5" id="form_div">

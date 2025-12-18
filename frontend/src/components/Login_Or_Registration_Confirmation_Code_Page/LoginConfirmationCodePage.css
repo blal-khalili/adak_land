@@ -1,0 +1,58 @@
+/* وسط‌چین کل صفحه */
+#RegistrationLogin_id {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* بک‌گراند صفحه (مهم برای شیشه‌ای شدن) */
+#RegistrationLogin_id {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* کادر شیشه‌ای */
+.glass-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 35px 30px;
+    background: #ffffff26;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid #ffffff4d;
+    box-shadow: 0 8px 32px #00000040;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+}
+
+/* لوگو */
+.glass-box .logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+/* اینپوت */
+.glass-box input {
+    background: #ffffff33;
+    border: 1px solid #ffffff66;
+    color: #fff;
+}
+
+.glass-box input::placeholder {
+    color: #ffffffb3;
+}
+
+/* دکمه */
+#btn_RegistrationLogin {
+    height: 40px;
+    border-radius: 8px;
+    transition: .3s;
+    border: 2px #000000 solid;
+}
+
+
+#btn_RegistrationLogin:hover {
+    transform: translateY(-2px);
+}
