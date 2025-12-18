@@ -4,9 +4,20 @@ import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
 import "./Supermarket.css/"
 import CheckBox from '../components/CheckBox/Checkbox';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import axios from "axios"
 
 
 function Supermarket() {
+    const queryClient = useQueryClient()
+    const fetchProducts = async () => {
+        const res = await axios.get('http://127.0.0.1:8000/adack/list/');
+        return res.data;
+    };
+    const query = useQuery({
+        queryKey: ['products'], queryFn:fetchProducts
+    })
+
 
     // const isBigScreen = useMediaQuery({ query: '(min-width: 992px)' })
     // const isMediumScreen = useMediaQuery({ query: "(min-width: 768px)" })
@@ -22,8 +33,8 @@ function Supermarket() {
     //     }
     // }
 
-    const { products, getProducts } = ProductStore()
-    useEffect(getProducts, []);
+    // const { products, getProducts } = ProductStore()
+    // useEffect(getProducts, []);
 
     return (
         <section>
@@ -81,9 +92,10 @@ function Supermarket() {
                             </li>
                         </ul>
                     </div>
-
                     <div className="row col-md-9">
-                        {products && products.map((list) => (
+                        {/* <h1>{query.isFetching?'loading':'data'}</h1> */}
+                        {query.isStale}
+                        {query.data && query.data.map((list) => (
                             <div key={list.id} className='col-md-4 g-5'>
                                 <div className="card border-0 rounded-0 shadow">
                                     <img src={list.image} className="card-img-top rounded-0" alt="..." />
@@ -115,6 +127,8 @@ function Supermarket() {
                                 </div>
                             </div>
                         ))}
+
+
                     </div>
                 </div>
             </div>

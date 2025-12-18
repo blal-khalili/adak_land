@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { useState } from 'react'
 import "./Shoppingcart.css/"
-import carticon from "./assets/image/ShoppingCart/Cart.png/"
+import carticon from "../assets/image/ShoppingCart/Cart.png/"
 import Navber from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 
