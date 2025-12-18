@@ -12,6 +12,8 @@
     "sass:watch": "sass --no-source-map --watch ./src/assets/css/custom_bootstrap.sass ./src/assets/css/custom_bootstrap.css"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.42.0",
+    "@tanstack/react-query-devtools": "^4.42.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "react": "^19.2.0",
