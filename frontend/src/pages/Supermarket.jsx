@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import ProductStore from '../stores/ProductStore';
+import ProductStore from '../../stores/ProductStore';
 import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
 import "./Supermarket.css/"
-import CheckBox from './components/CheckBox/Checkbox';
+import CheckBox from '../components/CheckBox/Checkbox';
 
 
 function Supermarket() {

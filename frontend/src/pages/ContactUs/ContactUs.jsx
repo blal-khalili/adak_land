@@ -1,6 +1,6 @@
-import Navber from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import "../ContactUs/ContactUs.css";
+import Navber from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import "./ContactUs.css";
 
 
 

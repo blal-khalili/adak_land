@@ -1,4 +1,4 @@
-import "../Login_Or_Registration_Confirmation_Code_Page/LoginConfirmationCodePage.css"
+import "./LoginConfirmationCodePage.css"
 import Adack_Land_Logo from "../../assets/image/OriginLogo/Adack_Land_Logo.png"
 import { Link } from "react-router";
 
