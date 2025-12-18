@@ -1,11 +1,26 @@
 import { useState, useEffect } from 'react';
 import ProductStore from '../stores/ProductStore';
 import { Link } from 'react-router';
+import { useMediaQuery } from 'react-responsive'
 import "./Supermarket.css/"
 import CheckBox from './components/CheckBox/Checkbox';
 
 
 function Supermarket() {
+
+    // const isBigScreen = useMediaQuery({ query: '(min-width: 992px)' })
+    // const isMediumScreen = useMediaQuery({ query: "(min-width: 768px)" })
+    // const isSamllScreen = useMediaQuery({ query: "(max-width: 576px)" })
+
+    // const slidesPerViewResponsiveValue = () => {
+    //     if (isBigScreen) {
+    //         return 4
+    //     } else if (isMediumScreen) {
+    //         return 2
+    //     } else if (isSamllScreen) {
+    //         return 1
+    //     }
+    // }
 
     const { products, getProducts } = ProductStore()
     useEffect(getProducts, []);
@@ -19,41 +34,43 @@ function Supermarket() {
                         <h3 className='mt-4'>فیلترها</h3>
 
                         <ul className='mt-5'>
-                            <li className='d-flex mt-5'>
+                            <li className='d-flex mt-5 justify-content-between'>
                                 <h4>تنفلات</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5'>
+                            <li className='d-flex mt-5 justify-content-between'>
                                 <h4>لبنیات</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5'>
+                            <li className='d-flex mt-5 justify-content-between'>
                                 <h4>نوشیدنی</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5'>
+                            <li className='d-flex mt-5 justify-content-between'>
                                 <h4>صبحانه</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5'>
+                            <li className='d-flex mt-5 justify-content-between'>
                                 <h4>افزودنی ها</h4>
                                 <CheckBox />
                             </li>
 
-                            <li class="dropdown mt-5">
-                                <a class="filter-dropdown dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <hr />
+
+                            <li class="dropdown">
+                                <a class="filter-dropdown dropdown-toggle text-dark d-flex gap-3 pt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <h3>
                                         محدودیت قیمت
                                     </h3>
