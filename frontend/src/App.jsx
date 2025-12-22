@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import Navber from './components/Navbar/Navbar';
 import Carousel from './components/Carousel/Carousel';
 import supermarketlogo from "./assets/image/CategoryLogos/SuperMarketLogo/icons8-supermarket-96.png/"
 import behdashtylogo from "./assets/image/CategoryLogos/BehdashtyLogo/cosmetics.png/"
 import tahrirlogo from "./assets/image/CategoryLogos/TahrirLogo/writing.png/"
 import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
 import poster1 from "./assets/image/Posters/poster1.webp/"
-import Footer from './components/Footer/Footer';
 import CardSlider from "./components/CardSlider/CardSlider"
 import { Link } from "react-router";
 import './App.css';

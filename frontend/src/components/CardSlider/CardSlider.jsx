@@ -13,16 +13,16 @@ function CardSlider() {
     const isMediumScreen = useMediaQuery({ query: "(min-width: 768px)" })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 576px)" })
 
-    const slidesPerViewResponsiveValue = () =>{
-        if (isBigScreen){
+    const slidesPerViewResponsiveValue = () => {
+        if (isBigScreen) {
             return 4
-        }else if (isMediumScreen){
+        } else if (isMediumScreen) {
             return 2
-        }else if (isSamllScreen){
+        } else if (isSamllScreen) {
             return 1
         }
     }
-    
+
 
     return (
         <div className='container'>
