@@ -1,14 +1,14 @@
 import { Link } from "react-router"
 import "../Card/Card.css/"
 
-function Card() {
+function Card(prpos) {
     return (
-        <div className="card border-0 rounded-0 shadow">
+        <div key={prpos.id} className="card border-0 rounded-0 shadow">
             <img src="" className="card-img-top rounded-0" alt="..." />
                 <div className="card-body mt-3 mb-3">
                     <div className="row">
                         <div className="col-10">
-                            <h4 className="card-title">Product title</h4>
+                            <h4 className="card-title">{prpos.title}</h4>
                             <p className="card-text">
                                 <i className="bi bi-star-fill text-warning"></i>
                                 <i className="bi bi-star-fill text-warning"></i>

@@ -1,12 +1,38 @@
-import Navber from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
 import "./ContactUs.css";
 
+import { useQuery, useQueryClient,useMutation } from '@tanstack/react-query';
+import axios from "axios"
 
 
-
+const sendContact = async (data) => {
+        const res = await axios.post('http://127.0.0.1:8000/adack/contact/',data);
+        
+        return res.data;
+        
+    };
 
 function ContactUs() {
+    const queryClient = useQueryClient()
+
+
+  const mutation = useMutation({
+    mutationFn:sendContact ,
+    onSuccess: () => {
+        console.log('sending data with axios')
+      // Invalidate and refetch
+    //   queryClient.invalidateQueries({ queryKey: ['todos'] })
+    },
+  })
+
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+          mutation.mutate({
+            id: 1,
+            title: 'Do Laundry',
+          })
+    }
+    
     return (
         <section id="ContactUs-id">
 
@@ -19,7 +45,7 @@ function ContactUs() {
                     </div>
 
                     <div className="py-5 mt-5" id="form_div">
-                        <form className="row g-3" id="form">
+                        <form className="row g-3" id="form" onSubmit={submitHandler}>
                             <div className="col-md-6">
                                 <label for="inputState" className="form-label">موضوع</label>
                                 <select placeholder="موضوع را انتخاب کنید " id="inputState" className="form-select">

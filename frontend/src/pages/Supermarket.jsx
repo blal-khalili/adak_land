@@ -4,19 +4,22 @@ import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
 import "./Supermarket.css/"
 import CheckBox from '../components/CheckBox/Checkbox';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+// import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from "axios"
+import useProducts from '../hooks/useProducts';
 
 
 function Supermarket() {
-    const queryClient = useQueryClient()
-    const fetchProducts = async () => {
-        const res = await axios.get('http://127.0.0.1:8000/adack/list/');
-        return res.data;
-    };
-    const query = useQuery({
-        queryKey: ['products'], queryFn: fetchProducts
-    })
+
+    const products = useProducts();
+    // const queryClient = useQueryClient()
+    // const fetchProducts = async () => {
+    //     const res = await axios.get('http://127.0.0.1:8000/adack/list/');
+    //     return res.data;
+    // };
+    // const query = useQuery({
+    //     queryKey: ['products'], queryFn: fetchProducts
+    // })
 
 
     const isBigScreen = useMediaQuery({ query: '(min-width: 992px)' })
@@ -27,6 +30,7 @@ function Supermarket() {
     return (
         <section>
             <div className='container mt-5'>
+                
                 <h1 className='text-center'>سوپرمارکت</h1>
                 <div className='row mt-5'>
                     {isBigScreen && <div className='col-md-3 border h-50 d-inline-block rounded mt-5 '>
@@ -85,8 +89,7 @@ function Supermarket() {
 
                     {isBigScreen && <div className="row col-md-9">
                         {/* <h1>{query.isFetching?'loading':'data'}</h1> */}
-                        {query.isStale}
-                        {query.data && query.data.map((list) => (
+                        {products.data && products.data.map((list) => (
                             <div key={list.id} className='col-md-4 g-5'>
                                 <div className="card border-0 rounded-0 shadow">
                                     <img src={list.image} className="card-img-top rounded-0" alt="..." />
@@ -124,8 +127,8 @@ function Supermarket() {
 
                     {isMediumScreen && <div className="row">
                         {/* <h1>{query.isFetching?'loading':'data'}</h1> */}
-                        {query.isStale}
-                        {query.data && query.data.map((list) => (
+                        {/* {query.isStale} */}
+                        {products.data && products.data.map((list) => (
                             <div key={list.id} className='col-md-4 g-5'>
                                 <div className="card border-0 rounded-0 shadow">
                                     <img src={list.image} className="card-img-top rounded-0" alt="..." />
@@ -163,8 +166,8 @@ function Supermarket() {
 
                     {isSamllScreen && <div className="row">
                         {/* <h1>{query.isFetching?'loading':'data'}</h1> */}
-                        {query.isStale}
-                        {query.data && query.data.map((list) => (
+                        {/* {query.isStale} */}
+                        {products.data && products.data.map((list) => (
                             <div key={list.id} className='col-md-6 g-5'>
                                 <div className="card border-0 rounded-0 shadow">
                                     <img src={list.image} className="card-img-top rounded-0" alt="..." />

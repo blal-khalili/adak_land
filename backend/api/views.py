@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import Product, TypeOfProduct
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+
 from .serializers import (
     Producterializer,
     OneProducterializer,
@@ -21,3 +26,12 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 class ProductApiView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = Producterializer
+
+
+# @method_decorator(csrf_exempt, name='dispatch')
+# TODO: make a contact model
+@csrf_exempt
+def contactApi(request):
+    # TODO: write a class view to save post data from react
+    print(request.body)
+    return JsonResponse({"name": "mmd goli"})

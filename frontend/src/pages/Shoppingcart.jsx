@@ -8,7 +8,7 @@ import Card from "../components/Card/Card.jsx/"
 
 
 function Cart() {
-
+    
     const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 

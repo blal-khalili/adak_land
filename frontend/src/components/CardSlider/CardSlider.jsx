@@ -5,10 +5,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './CardSlider.css'
 import { useMediaQuery } from 'react-responsive'
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 
 
-function CardSlider() {
+function CardSlider(props) {
+
     const isBigScreen = useMediaQuery({ query: '(min-width: 992px)' })
     const isMediumScreen = useMediaQuery({ query: "(min-width: 768px)" })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 576px)" })
@@ -28,52 +30,15 @@ function CardSlider() {
         <div className='container'>
             <div className='row'>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper" slidesPerView={slidesPerViewResponsiveValue()} spaceBetween={30} >
+                    {props.p && props.p.map((list) => (
+                        <div className='col-6'>
+                        <SwiperSlide>
+                            {/* TODO: add other props to card component */}
+                            <Card id={list.id} title={list.title}></Card>
+                        </SwiperSlide>
+                    </div>
+                    ))}
 
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
-                    <div className='col-6'>
-                        <SwiperSlide>
-                            <Card></Card>
-                        </SwiperSlide>
-                    </div>
                 </Swiper>
             </div>
         </div>

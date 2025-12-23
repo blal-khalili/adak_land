@@ -7,10 +7,12 @@ import janebilogo from "./assets/image/CategoryLogos/JanebiLogo/mobile.png/"
 import poster1 from "./assets/image/Posters/poster1.webp/"
 import CardSlider from "./components/CardSlider/CardSlider"
 import { Link } from "react-router";
+import useProducts from './hooks/useProducts';
 import './App.css';
 
 
 function App() {
+   const products = useProducts();
 
   
   return (
@@ -58,7 +60,7 @@ function App() {
         <div className='col-md-3 text-white'>
           <hr />
         </div>
-        <CardSlider />
+        <CardSlider p={products.data}/>
       </div>
 
       <div className='container mt-5'>
