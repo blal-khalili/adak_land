@@ -12,9 +12,9 @@ import './App.css';
 
 
 function App() {
-   const products = useProducts();
+  const products = useProducts();
 
-  
+
   return (
     <section>
       <div className='mt-5'>
@@ -60,7 +60,7 @@ function App() {
         <div className='col-md-3 text-white'>
           <hr />
         </div>
-        <CardSlider p={products.data}/>
+        <CardSlider p={products.data} />
       </div>
 
       <div className='container mt-5'>
@@ -79,7 +79,7 @@ function App() {
         <div className='col-md-3 mx-auto'>
           <hr />
         </div>
-        <CardSlider />
+        <CardSlider p={products.data} />
       </div>
 
       <div className='container mt-5'>
@@ -98,10 +98,8 @@ function App() {
         <div className='col-md-3'>
           <hr />
         </div>
-        <CardSlider />
+        <CardSlider p={products.data} />
       </div>
-
-      <hr />
 
     </section>
   )
