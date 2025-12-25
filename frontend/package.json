@@ -12,7 +12,7 @@
     "sass:watch": "sass --no-source-map --watch ./src/assets/css/custom_bootstrap.sass ./src/assets/css/custom_bootstrap.css"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.42.0",
+    "@tanstack/react-query": "^5.90.12",
     "@tanstack/react-query-devtools": "^4.42.0",
     "axios": "^1.13.2",
     "bootstrap": "^5.3.8",
