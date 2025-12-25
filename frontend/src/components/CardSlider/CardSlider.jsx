@@ -34,7 +34,7 @@ function CardSlider(props) {
                         <div className='col-6'>
                         <SwiperSlide>
                             {/* TODO: add other props to card component */}
-                            <Card id={list.id} title={list.title}></Card>
+                            <Card id={list.id} title={list.title} type={list.type} price={list.price} image={list.image} description={list.description}></Card>
                         </SwiperSlide>
                     </div>
                     ))}
