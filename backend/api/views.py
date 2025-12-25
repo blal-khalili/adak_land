@@ -29,7 +29,6 @@ class ProductApiView(ListAPIView):
 
 
 # @method_decorator(csrf_exempt, name='dispatch')
-# TODO: make a contact model
 @csrf_exempt
 def contactApi(request):
     # TODO: write a class view to save post data from react

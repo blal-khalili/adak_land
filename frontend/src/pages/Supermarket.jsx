@@ -10,7 +10,10 @@ import useProducts from '../hooks/useProducts';
 
 
 function Supermarket() {
-
+    // TODO: make sidebar postions sticky with bootstrap scrollspy
+    // TODO: make ui smaller
+    // TODO: make pagination ui under the page
+    
     const products = useProducts();
     // const queryClient = useQueryClient()
     // const fetchProducts = async () => {

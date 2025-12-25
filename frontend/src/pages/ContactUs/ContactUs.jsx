@@ -1,38 +1,28 @@
 import "./ContactUs.css";
 
-import { useQuery, useQueryClient,useMutation } from '@tanstack/react-query';
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from "axios"
 
 
 const sendContact = async (data) => {
-        const res = await axios.post('http://127.0.0.1:8000/adack/contact/',data);
-        
-        return res.data;
-        
-    };
+    const res = await axios.post('http://127.0.0.1:8000/adack/contact/', data);
+    // TODO: save real data using useRef
+    return res.data;
+};
 
 function ContactUs() {
     const queryClient = useQueryClient()
-
-
-  const mutation = useMutation({
-    mutationFn:sendContact ,
-    onSuccess: () => {
-        console.log('sending data with axios')
-      // Invalidate and refetch
-    //   queryClient.invalidateQueries({ queryKey: ['todos'] })
-    },
-  })
-
-
+    const mutation = useMutation({
+        mutationFn: sendContact,
+    })
     const submitHandler = (e) => {
         e.preventDefault();
-          mutation.mutate({
+        mutation.mutate({
             id: 1,
             title: 'Do Laundry',
-          })
+        })
     }
-    
+
     return (
         <section id="ContactUs-id">
 
@@ -84,8 +74,34 @@ function ContactUs() {
                                 <label for="exampleFormControlTextarea1" className="form-label">متن پیام</label>
                                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                             </div>
+
+
+                            {
+                                mutation.isSuccess &&
+                                <div>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        پیام شما با موفقیت ثبت شد
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                        لطفا منتظر ادمین برای پاسخگویی باشید
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
+
+                            }
+                            {
+                                mutation.isError &&
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    در ارسال دیتا به سرور با خطا مواجه شدیم :(
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            }
+
+
+
                             <div className="col-12">
-                                <button type="submit" className="btn btn-success">ثبت و ارسال</button>
+                                <button type="submit" className="btn btn-success" disabled={mutation.isPending ? true : false} >ثبت و ارسال</button>
                             </div>
                         </form>
                     </div>

@@ -26,10 +26,10 @@ class ContactUs(models.Model):
         TypeOfCity, on_delete=models.CASCADE, null=True, blank=True
     )
     address = models.TextField(null=True, blank=True)
-    Message_text = models.TextField(null=True, blank=True)
-
+    message_text = models.TextField(null=True, blank=True)
+    admin_response = models.TextField(null=True, blank=True)
+    admin_response_confirmed = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = 'contact us'
         verbose_name = 'contact'
-
 
