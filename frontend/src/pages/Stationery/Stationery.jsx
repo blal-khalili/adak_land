@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
-import "./Supermarket.css/"
-import CheckBox from '../components/CheckBox/Checkbox';
+import "./Stationery.css/"
+import CheckBox from '../../components/CheckBox/Checkbox';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from "axios"
-import useProducts from '../hooks/useProducts';
-import Pagination from '../components/Pagination/Pagination';
+import useProducts from '../../hooks/useProducts';
+import Pagination from '../../components/Pagination/Pagination';
 
 
-function Supermarket() {
-    // TODO: make sidebar postions sticky with bootstrap scrollspy
-    // TODO: make ui smaller
-
+function Stationery() {
     const products = useProducts();
     // const queryClient = useQueryClient()
     // const fetchProducts = async () => {
@@ -33,42 +30,42 @@ function Supermarket() {
         <section>
             <div className='container mt-5'>
 
-                <h1 className='text-center'>سوپرمارکت</h1>
+                <h1 className='text-center'>لوازم تحریر</h1>
                 <div className='row mt-5'>
                     {isBigScreen && <div className='col-md-3 border h-50 d-inline-block rounded mt-5'>
                         <h3 className='mt-4'>فیلترها</h3>
 
                         <ul className='mt-5'>
                             <li className='d-flex mt-5 justify-content-between'>
-                                <h4>تنفلات</h4>
+                                <h4>خودکار</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
                             <li className='d-flex mt-5 justify-content-between'>
-                                <h4>لبنیات</h4>
+                                <h4>کوله پشتی</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
                             <li className='d-flex mt-5 justify-content-between'>
-                                <h4>نوشیدنی</h4>
+                                <h4>جامدادی</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
                             <li className='d-flex mt-5 justify-content-between'>
-                                <h4>صبحانه</h4>
+                                <h4>مداد</h4>
                                 <CheckBox />
                             </li>
 
                             <hr />
 
                             <li className='d-flex mt-5 justify-content-between'>
-                                <h4>افزودنی ها</h4>
+                                <h4>دفتر</h4>
                                 <CheckBox />
                             </li>
 
@@ -217,4 +214,4 @@ function Supermarket() {
 
 
 
-export default Supermarket
+export default Stationery

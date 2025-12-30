@@ -27,9 +27,9 @@ function Navber() {
                                 <ul>
                                     <li className="dropdown-item text-primary">محصولات</li>
                                     <li><Link to="/supermarket" className="dropdown-item text-dark">سوپرمارکت</Link></li>
-                                    <li><Link className="dropdown-item text-dark" href="#">لوازم جانبی موبایل</Link></li>
-                                    <li><Link className="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</Link></li>
-                                    <li><Link className="dropdown-item text-dark" href="#">لوازم تحریر</Link></li>
+                                    <li><Link to="/mobileaccessories" className="dropdown-item text-dark" href="#">لوازم جانبی موبایل</Link></li>
+                                    <li><Link to="/cosmetics" className="dropdown-item text-dark" href="#">لوازم آرایشی و بهداشتی</Link></li>
+                                    <li><Link to="/stationery" className="dropdown-item text-dark" href="#">لوازم تحریر</Link></li>
                                 </ul>
                                 <ul>
                                     <li className="dropdown-item text-primary">جزئیات</li>

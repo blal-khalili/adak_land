@@ -1,4 +1,7 @@
 from django.db import models
+from django_resized import ResizedImageField
+
+# from sorl.thumbnail import ImageField, get_thumbnail
 
 
 # TypeOfProducts Models :
@@ -16,7 +19,7 @@ class Product(models.Model):
         TypeOfProduct, on_delete=models.CASCADE, null=True, blank=True
     )
     price = models.CharField(max_length=255, null=True, blank=True)
-    image = models.FileField(upload_to="ProductImg", null=True, blank=True)
+    image = models.ImageField(upload_to="ProductImg", null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     create = models.DateField(auto_now=True, null=True, blank=True)
 
