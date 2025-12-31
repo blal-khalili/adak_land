@@ -6,10 +6,12 @@ from django.utils.decorators import method_decorator
 
 
 from .serializers import (
-    Producterializer,
-    OneProducterializer,
-    TypeOfProducterializer,
-    OneTypeOfProducterializer,
+    ProductSerializer,
+    OneProductSerializer,
+    TypeOfProductSerializer,
+    OneTypeOfProductSerializer,
+    PartSerializer,
+    OnePartSerializer,
 )
 from rest_framework.generics import (
     CreateAPIView,
@@ -25,7 +27,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 # Product view :
 class ProductApiView(ListAPIView):
     queryset = Product.objects.all()
-    serializer_class = Producterializer
+    serializer_class = ProductSerializer
 
 
 # @method_decorator(csrf_exempt, name='dispatch')

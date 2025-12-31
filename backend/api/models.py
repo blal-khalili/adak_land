@@ -4,9 +4,18 @@ from django_resized import ResizedImageField
 # from sorl.thumbnail import ImageField, get_thumbnail
 
 
+# Part of TypeOfProduct
+class Part(models.Model):
+    title = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
 # TypeOfProducts Models :
 class TypeOfProduct(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
+    part = models.ManyToManyField(Part, null=True, blank=True)
 
     def __str__(self):
         return self.title
