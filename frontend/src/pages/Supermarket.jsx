@@ -11,7 +11,6 @@ import Pagination from '../components/Pagination/Pagination';
 
 function Supermarket() {
     // TODO: make sidebar postions sticky with bootstrap scrollspy
-    // TODO: make ui smaller
 
     const products = useProducts();
     // const queryClient = useQueryClient()
@@ -211,7 +210,7 @@ function Supermarket() {
                 </div>
             </div>
 
-        </section>
+        </section >
     )
 }
 

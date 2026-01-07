@@ -1,16 +1,22 @@
 import "./ContactUs.css";
-
+import { useRef, useState } from "react";
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from "axios"
+import useSubjectsForm from "../../hooks/useSubjectsForm";
+import useCityForm from "../../hooks/useCityForm";
 
 
 const sendContact = async (data) => {
-    const res = await axios.post('http://127.0.0.1:8000/adack/contact/', data);
+    const res = await axios.post('http://127.0.0.1:8000/adack/create/', data);
     // TODO: save real data using useRef
     return res.data;
 };
 
 function ContactUs() {
+    const subjects = useSubjectsForm();
+    const cities = useCityForm();
+
+
     const queryClient = useQueryClient()
     const mutation = useMutation({
         mutationFn: sendContact,
@@ -22,6 +28,40 @@ function ContactUs() {
             title: 'Do Laundry',
         })
     }
+
+
+
+    const InputTitle = useRef(null)
+    const InputSubject = useRef(null)
+    const InputEmail = useRef(null)
+    const InputMobilenumber = useRef(null)
+    const InputCity = useRef(null)
+    const InputAddress = useRef(null)
+    const InputMessagetext = useRef(null)
+
+
+    const saveContactus = (event) => {
+        event.preventDefault();
+        axios.post("http://127.0.0.1:8000/adack/create/", {
+            "title": InputTitle.current.value,
+            "subject": InputSubject.current.value,
+            "email": InputEmail.current.value,
+            "mobile_number": InputMobilenumber.current.value,
+            "city": InputCity.current.value,
+            "address": InputAddress.current.value,
+            "message_text": InputMessagetext.current.value,
+        }, {
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        })
+            .then((res) => {
+                console.log(res)
+            })
+    }
+
+
+
 
     return (
         <section id="ContactUs-id">
@@ -38,41 +78,41 @@ function ContactUs() {
                         <form className="row g-3" id="form" onSubmit={submitHandler}>
                             <div className="col-md-6">
                                 <label for="inputState" className="form-label">موضوع</label>
-                                <select placeholder="موضوع را انتخاب کنید " id="inputState" className="form-select">
-                                    <option selected></option>
-                                    <option>پیگیری سفارش</option>
-                                    <option>خدمات پس از فروش</option>
-                                    <option>سایر موضوعات</option>
-                                    <option>حسابداری و امورمالی</option>
-                                    <option>کارت هدیه و گیفت کارت</option>
-                                    <option>اداک کلاب</option>
-                                    <option>طلای دیجیتال</option>
-                                    <option>گزارش خطا در نسخه آزمایشی اپلیکیشن</option>
+                                <select id="inputState" className="form-control" ref={InputSubject} type="text">
+                                    <option value="">موضوع</option>
+                                    {subjects.data && subjects.data.map((list) => (
+                                        <option value="1">{list.title}</option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="col-md-6">
                                 <label for="inputName" className="form-label">نام و نام خانوادگی</label>
-                                <input placeholder="نام و نام خانوادگی" type="text" className="form-control" id="inputName" />
+                                <input placeholder="نام و نام خانوادگی" type="text" className="form-control" id="inputName" ref={InputTitle} />
                             </div>
                             <div className="col-md-6">
                                 <label for="inputEmail4" className="form-label">ایمیل</label>
-                                <input placeholder="ایمیل" type="email" className="form-control" id="inputEmail4" />
+                                <input placeholder="ایمیل" type="email" className="form-control" id="inputEmail4" ref={InputEmail} />
                             </div>
                             <div className="col-md-6">
                                 <label for="inputMobileNumber" className="form-label">شماره موبایل</label>
-                                <input placeholder="شماره موبایل" type="tel" className="form-control text-end" id="inputMobileNumber" />
+                                <input placeholder="شماره موبایل" type="tel" className="form-control text-end" id="inputMobileNumber" ref={InputMobilenumber} />
                             </div>
                             <div className="col-md-6">
-                                <label for="inputCity" className="form-label">شهر</label>
-                                <input placeholder="شهر خود را بنویسید" type="text" className="form-control" id="inputCity" />
+                                <label for="inputState" className="form-label">شهر</label>
+                                <select id="inputState" className="form-control" ref={InputCity} type="text">
+                                    <option value="">شهر</option>
+                                    {cities.data && cities.data.map((list) => (
+                                        <option value="1">{list.title}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="col-md-6">
                                 <label for="inputAddress" className="form-label">آدرس</label>
-                                <input placeholder="آدرس خود را بنویسید" type="text" className="form-control" id="inputAddress" />
+                                <input placeholder="آدرس خود را بنویسید" type="text" className="form-control" id="inputAddress" ref={InputAddress} />
                             </div>
                             <div className="mb-3">
                                 <label for="exampleFormControlTextarea1" className="form-label">متن پیام</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="4" ref={InputMessagetext}></textarea>
                             </div>
 
 
@@ -101,7 +141,7 @@ function ContactUs() {
 
 
                             <div className="col-12">
-                                <button type="submit" className="btn btn-success" disabled={mutation.isPending ? true : false} >ثبت و ارسال</button>
+                                <button onClick={saveContactus} type="submit" className="btn btn-success" disabled={mutation.isPending ? true : false} >ثبت و ارسال</button>
                             </div>
                         </form>
                     </div>

@@ -22,3 +22,13 @@ from rest_framework.generics import (
 class ContactUsApiView(CreateAPIView):
     queryset = ContactUs.objects.all()
     serializer_class = ContactUsserializer
+
+
+class TypeOfSubjectApiView(ListAPIView):
+    queryset = TypeOfSubject.objects.all()
+    serializer_class = TypeOfSubjectserializer
+
+
+class TypeOfCityApiView(ListAPIView):
+    queryset = TypeOfCity.objects.all()
+    serializer_class = TypeOfCityserializer
