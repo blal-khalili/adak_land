@@ -8,7 +8,6 @@ import useCityForm from "../../hooks/useCityForm";
 
 const sendContact = async (data) => {
     const res = await axios.post('http://127.0.0.1:8000/adack/create/', data);
-    // TODO: save real data using useRef
     return res.data;
 };
 
