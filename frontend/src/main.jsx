@@ -14,7 +14,7 @@ import App from './App.jsx'
 import Supermarket from './pages/Supermarket.jsx';
 import MobileAccessories from './pages/MobileAccessories/MobileAccessories.jsx';
 import Cosmetics from './pages/Cosmetics/Cosmetics.jsx';
-import Stationery from './pages/Stationery/stationery.jsx';
+import Stationery from './pages/Stationery/Stationery.jsx';
 import Cart from './pages/Shoppingcart.jsx';
 import CardPage from './pages/CardPage/Cardpage.jsx';
 import LandingLayout from './LandingLayout'
