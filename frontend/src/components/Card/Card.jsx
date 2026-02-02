@@ -27,7 +27,7 @@ function Card(prpos) {
                         <h5>{prpos.price}</h5>
                     </div>
                     <div className="col-8">
-                        <Link href="#" className="btn btn-dark w-100 p-3 rounded-0 text-warning">ADD TO CART</Link>
+                        <Link to="/cardpage" href="#" className="btn btn-dark w-100 p-3 rounded-0 text-warning">ADD TO CART</Link>
                     </div>
                 </div>
         </div>

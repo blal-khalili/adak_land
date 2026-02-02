@@ -21,7 +21,7 @@ class ContactUs(models.Model):
         TypeOfSubject, on_delete=models.CASCADE, null=True, blank=True
     )
     email = models.EmailField(null=True, blank=True)
-    mobile_number = models.IntegerField(null=True, blank=True)
+    mobile_number = models.TextField(null=True, blank=True)
     city = models.ForeignKey(
         TypeOfCity, on_delete=models.CASCADE, null=True, blank=True
     )
@@ -29,7 +29,7 @@ class ContactUs(models.Model):
     message_text = models.TextField(null=True, blank=True)
     admin_response = models.TextField(null=True, blank=True)
     admin_response_confirmed = models.BooleanField(default=False)
-    class Meta:
-        verbose_name_plural = 'contact us'
-        verbose_name = 'contact'
 
+    class Meta:
+        verbose_name_plural = "contact us"
+        verbose_name = "contact"

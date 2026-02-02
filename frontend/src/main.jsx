@@ -12,7 +12,11 @@ import Confirmation_Code_Page from "./pages/Login_Or_Registration_Confirmation_C
 import './index.css'
 import App from './App.jsx'
 import Supermarket from './pages/Supermarket.jsx';
+import MobileAccessories from './pages/MobileAccessories/MobileAccessories.jsx';
+import Cosmetics from './pages/Cosmetics/Cosmetics.jsx';
+import Stationery from './pages/Stationery/stationery.jsx';
 import Cart from './pages/Shoppingcart.jsx';
+import CardPage from './pages/CardPage/Cardpage.jsx';
 import LandingLayout from './LandingLayout'
 import {
   useQuery,
@@ -38,6 +42,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/supermarket" element={<Supermarket />}></Route>
             <Route path="/shoppingcart" element={<Cart />}></Route>
             <Route path="/productsfilter" element={<ProductsFilter />}></Route>
+            <Route path="/mobileaccessories" element={<MobileAccessories />}></Route>
+            <Route path="/cosmetics" element={<Cosmetics />}></Route>
+            <Route path="/stationery" element={<Stationery />}></Route>
+            <Route path="/cardpage" element={<CardPage />}></Route>
           </Route>
 
           <Route path="/RegistrationLogin" element={<RegistrationLogin />}></Route>
