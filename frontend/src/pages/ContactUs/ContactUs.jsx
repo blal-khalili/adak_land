@@ -2,6 +2,8 @@ import "./ContactUs.css";
 import { useForm } from "react-hook-form";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import useSubjectsForm from "../../hooks/useSubjectsForm";
+import useCityForm from "../../hooks/useCityForm";
 
 const sendContact = async (data) => {
   const res = await axios.post("http://127.0.0.1:8000/adack/contact/", data);
@@ -11,6 +13,8 @@ const sendContact = async (data) => {
 
 function ContactUs() {
   const queryClient = useQueryClient();
+  const subjects = useSubjectsForm();
+  const cities = useCityForm();
   const mutation = useMutation({
     mutationFn: sendContact,
   });
@@ -47,22 +51,16 @@ function ContactUs() {
                 <label for="inputState" className="form-label">
                   موضوع
                 </label>
-                <select
-                  {...register("subject")}
-                  placeholder="موضوع را انتخاب کنید "
+                <select {...register("subject", { required: { value: true, message: "انتخاب موضوع اجباریست" } })}
                   id="inputState"
                   className="form-select"
                 >
-                  <option selected></option>
-                  <option>پیگیری سفارش</option>
-                  <option>خدمات پس از فروش</option>
-                  <option>سایر موضوعات</option>
-                  <option>حسابداری و امورمالی</option>
-                  <option>کارت هدیه و گیفت کارت</option>
-                  <option>اداک کلاب</option>
-                  <option>طلای دیجیتال</option>
-                  <option>گزارش خطا در نسخه آزمایشی اپلیکیشن</option>
+                  <option selected>موضوع خود را انتخاب کنید</option>
+                  {subjects.data && subjects.data.map((list) => (
+                    <option value="1">{list.title}</option>
+                  ))}
                 </select>
+                {errors.subject && <p className="text-danger">{errors.subject.message}</p>}
               </div>
               <div className="col-md-6">
                 <label for="inputName" className="form-label">
@@ -104,13 +102,15 @@ function ContactUs() {
                 <label for="inputCity" className="form-label">
                   شهر
                 </label>
-                <input
-                  {...register("city",{required:{value:true,message:'وارد کردن شهر اجباریست'}})}
-                  placeholder="شهر خود را بنویسید"
-                  type="text"
+                <select {...register("city", { required: { value: true, message: ' انتخاب شهر اجباریست' } })}
                   className="form-control"
                   id="inputCity"
-                />
+                >
+                  <option selected>شهر خود را انتخاب کنید</option>
+                  {cities.data && cities.data.map((list) => (
+                    <option value="1">{list.title}</option>
+                  ))}
+                </select>
                 {errors.city && <p className="text-danger">{errors.city.message}</p>}
               </div>
               <div className="col-md-6">
