@@ -38,6 +38,7 @@ function Supermarket() {
                         <h3 className='mt-4'>فیلترها</h3>
 
                         <ul className='mt-5'>
+                            {/* TODO: make an available filter */}
                             <li className='d-flex mt-5 justify-content-between'>
                                 <h4>تنفلات</h4>
                                 <CheckBox />

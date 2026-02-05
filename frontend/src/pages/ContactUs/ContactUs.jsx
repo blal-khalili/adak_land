@@ -7,9 +7,16 @@ import useCityForm from "../../hooks/useCityForm";
 
 const sendContact = async (data) => {
   const res = await axios.post("http://127.0.0.1:8000/adack/contact/", data);
-  // TODO: save real data using useRef
   return res.data;
 };
+
+const invalidEmails = ["example.com", "hi2.io"]
+const invalidphonenumber = ["0910", "0911", "0912",
+  "0913", "0914", "0915",
+  "0916", "0917", "0918",
+  "0919", "0930", "0933",
+  "0935", "0936", "0937",
+  "0938", "0939", "0920", "0921"]
 
 function ContactUs() {
   const queryClient = useQueryClient();
@@ -29,7 +36,7 @@ function ContactUs() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const formSubmitHandler = (data) => {
@@ -46,7 +53,11 @@ function ContactUs() {
           </div>
 
           <div className="py-5 mt-5" id="form_div">
-            <form className="row g-3" id="form" onChange={handleSubmit(formSubmitHandler)}>
+            <form
+              className="row g-3"
+              id="form"
+              onChange={handleSubmit(formSubmitHandler)}
+            >
               <div className="col-md-6">
                 <label for="inputState" className="form-label">
                   موضوع
@@ -67,52 +78,112 @@ function ContactUs() {
                   نام و نام خانوادگی
                 </label>
                 <input
-                  {...register("fullname")}
+                  {...register("fullname", {
+                    validate: {
+                      wordlength: (fullname) => {
+                        if (fullname.length > 15) {
+                          return "اسم نباید بیش از 15 حرف باشد"
+                        }
+                      }
+                    }
+                  })}
                   placeholder="نام و نام خانوادگی"
                   type="text"
                   className="form-control"
                   id="inputName"
                 />
+                {errors.fullname && (
+                  <p className="text-danger">{errors.fullname.message}</p>
+                )}
               </div>
               <div className="col-md-6">
                 <label for="inputEmail4" className="form-label">
                   ایمیل
                 </label>
                 <input
-                  {...register("email")}
+                  {...register("email", {
+                    validate: {
+                      isunkownEmail: (email) => {
+                        let vaild = true;
+                        for (let emailAddress of invalidEmails) {
+                          if (email.includes(emailAddress)) {
+                            vaild = false
+                          }
+                        }
+                        if (vaild == false) {
+                          return "ایمیل معتبر نیست";
+                        }
+                      }, isEmailYahoo: (email) => {
+                        if (email.includes('@yahoo.com')) {
+                          return 'به علت کنسل شدن ایمیل های یاهو در سال 2025 این ایمیل قابل استفاده نیست'
+                        }
+                      },
+                    },
+                  })}
                   placeholder="ایمیل"
                   type="email"
                   className="form-control"
                   id="inputEmail4"
                 />
+                {errors.email && (
+                  <p className="text-danger">{errors.email.message}</p>
+                )}
               </div>
               <div className="col-md-6">
                 <label for="inputMobileNumber" className="form-label">
                   شماره موبایل
                 </label>
                 <input
-                  {...register("phonenumber")}
+                  {...register("phonenumber", {
+                    validate: {
+                      isphonenumber: (phonenumber) => {
+                        let valid = false;
+                        for (let prefix of invalidphonenumber) {
+                          if (phonenumber.includes(prefix)) {
+                            valid = true
+                          } else {
+                            valid == false
+                          }
+                        }
+                        if (valid == false) {
+                          return "شماره تلفن معتبر نیست"
+                        }
+                      }
+                    }
+                  })}
                   placeholder="شماره موبایل"
                   type="tel"
                   className="form-control text-end"
                   id="inputMobileNumber"
                 />
+                {errors.phonenumber && (
+                  <p className="text-danger">{errors.phonenumber.message}</p>
+                )}
               </div>
               <div className="col-md-6">
                 <label for="inputCity" className="form-label">
                   شهر
                 </label>
-                <select {...register("city", { required: { value: true, message: ' انتخاب شهر اجباریست' } })}
+                <select {...register("city", {
+                  required: {
+                    value: true,
+                    message: "وارد کردن شهر اجباریست",
+                  },
+                })}
+                  placeholder="شهر خود را بنویسید"
+                  type="text"
                   className="form-control"
-                  id="inputCity"
-                >
+                  id="inputCity">
                   <option selected>شهر خود را انتخاب کنید</option>
                   {cities.data && cities.data.map((list) => (
                     <option value="1">{list.title}</option>
                   ))}
                 </select>
-                {errors.city && <p className="text-danger">{errors.city.message}</p>}
+                {errors.city && (
+                  <p className="text-danger">{errors.city.message}</p>
+                )}
               </div>
+
               <div className="col-md-6">
                 <label for="inputAddress" className="form-label">
                   آدرس
@@ -126,7 +197,11 @@ function ContactUs() {
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleFormControlTextarea1" className="form-label">
+                <label onClick={() => {
+                  for (let i of invalidEmails) {
+                    console.log(i)
+                  }
+                }} for="exampleFormControlTextarea1" className="form-label">
                   متن پیام
                 </label>
                 <textarea
@@ -182,9 +257,10 @@ function ContactUs() {
 
               <div className="col-12">
                 <button
+
                   type="submit"
                   className="btn btn-success"
-                  disabled={mutation.isPending ? true : false}
+                  disabled={mutation.isPending ? true : false || !isValid}
                 >
                   ثبت و ارسال
                 </button>

@@ -1,5 +1,4 @@
 from django.db import models
-from django_resized import ResizedImageField
 
 # from sorl.thumbnail import ImageField, get_thumbnail
 
@@ -31,6 +30,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="ProductImg", null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     create = models.DateField(auto_now=True, null=True, blank=True)
+    available = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
