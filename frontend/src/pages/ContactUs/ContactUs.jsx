@@ -5,9 +5,10 @@ import axios from "axios";
 
 const sendContact = async (data) => {
   const res = await axios.post("http://127.0.0.1:8000/adack/contact/", data);
-  // TODO: save real data using useRef
   return res.data;
 };
+
+const invalidEmails = ['example.com','hi2.io']
 
 function ContactUs() {
   const queryClient = useQueryClient();
@@ -25,7 +26,7 @@ function ContactUs() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors,isValid },
   } = useForm();
 
   const formSubmitHandler = (data) => {
@@ -42,7 +43,11 @@ function ContactUs() {
           </div>
 
           <div className="py-5 mt-5" id="form_div">
-            <form className="row g-3" id="form" onChange={handleSubmit(formSubmitHandler)}>
+            <form
+              className="row g-3"
+              id="form"
+              onChange={handleSubmit(formSubmitHandler)}
+            >
               <div className="col-md-6">
                 <label for="inputState" className="form-label">
                   موضوع
@@ -75,24 +80,45 @@ function ContactUs() {
                   className="form-control"
                   id="inputName"
                 />
+                {/* TODO: make a custom validation for phone number page */}
               </div>
               <div className="col-md-6">
                 <label for="inputEmail4" className="form-label">
                   ایمیل
                 </label>
                 <input
-                  {...register("email")}
+                  {...register("email",{validate: {
+                      isunkownEmail: (email) => {
+                        let vaild = true;
+                        for(let emailAddress of invalidEmails){
+                          if (email.includes(emailAddress)){
+                            vaild = false
+                          }
+                        }
+                        if (vaild == false) {
+                          return "ایمیل معتبر نیست";
+                        } 
+                      },isEmailYahoo:(email)=>{
+                        if (email.includes('@yahoo.com')){
+                          return 'به علت کنسل شدن ایمیل های یاهو در سال 2025 این ایمیل قابل استفاده نیست'
+                        }
+                      },
+                    },})}
                   placeholder="ایمیل"
                   type="email"
                   className="form-control"
                   id="inputEmail4"
                 />
+                {errors.email && (
+                    <p className="text-danger">{errors.email.message}</p>
+                )}
               </div>
               <div className="col-md-6">
                 <label for="inputMobileNumber" className="form-label">
                   شماره موبایل
                 </label>
                 <input
+                  // TODO: make a custom validation for phone number page
                   {...register("phonenumber")}
                   placeholder="شماره موبایل"
                   type="tel"
@@ -105,13 +131,20 @@ function ContactUs() {
                   شهر
                 </label>
                 <input
-                  {...register("city",{required:{value:true,message:'وارد کردن شهر اجباریست'}})}
+                  {...register("city", {
+                    required: {
+                      value: true,
+                      message: "وارد کردن شهر اجباریست",
+                    },
+                  })}
                   placeholder="شهر خود را بنویسید"
                   type="text"
                   className="form-control"
                   id="inputCity"
                 />
-                {errors.city && <p className="text-danger">{errors.city.message}</p>}
+                {errors.city && (
+                  <p className="text-danger">{errors.city.message}</p>
+                )}
               </div>
               <div className="col-md-6">
                 <label for="inputAddress" className="form-label">
@@ -126,7 +159,11 @@ function ContactUs() {
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleFormControlTextarea1" className="form-label">
+                <label onClick={()=>{
+                  for(let i of invalidEmails){
+                    console.log(i)
+                  }
+                }} for="exampleFormControlTextarea1" className="form-label">
                   متن پیام
                 </label>
                 <textarea
@@ -182,9 +219,10 @@ function ContactUs() {
 
               <div className="col-12">
                 <button
+                
                   type="submit"
                   className="btn btn-success"
-                  disabled={mutation.isPending ? true : false}
+                  disabled={mutation.isPending ? true : false || !isValid}
                 >
                   ثبت و ارسال
                 </button>
