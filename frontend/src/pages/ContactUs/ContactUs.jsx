@@ -10,13 +10,23 @@ const sendContact = async (data) => {
   return res.data;
 };
 
-const invalidEmails = ["example.com", "hi2.io"]
-const invalidphonenumber = ["0910", "0911", "0912",
+const invalidEmails = [
+  "example.com", "hi2.io",
+  "example.net", "example.org",
+  "test.com", ".net", ".org",]
+
+
+const Validphonenumber = [
+  "0910", "0911", "0912",
   "0913", "0914", "0915",
   "0916", "0917", "0918",
   "0919", "0930", "0933",
   "0935", "0936", "0937",
-  "0938", "0939", "0920", "0921"]
+  "0938", "0939", "0920",
+  "0901", "0902", "0903",
+  "0905", "0990", "0993",
+  "0904", "0921", "0921",]
+
 
 function ContactUs() {
   const queryClient = useQueryClient();
@@ -138,7 +148,7 @@ function ContactUs() {
                     validate: {
                       isphonenumber: (phonenumber) => {
                         let valid = false;
-                        for (let prefix of invalidphonenumber) {
+                        for (let prefix of Validphonenumber) {
                           if (phonenumber.includes(prefix)) {
                             valid = true
                           } else {
@@ -147,6 +157,10 @@ function ContactUs() {
                         }
                         if (valid == false) {
                           return "شماره تلفن معتبر نیست"
+                        }
+                      }, islengthphonenumber: (lengthphonenumber) => {
+                        if (lengthphonenumber.length > 11) {
+                          return "شماره تلفن بیش از حد مجاز طولانی هست !!!"
                         }
                       }
                     }
