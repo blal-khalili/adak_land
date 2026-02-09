@@ -5,10 +5,12 @@ import axios from "axios";
 import useSubjectsForm from "../../hooks/useSubjectsForm";
 import useCityForm from "../../hooks/useCityForm";
 
+
 const sendContact = async (data) => {
   const res = await axios.post("http://127.0.0.1:8000/adack/contact/", data);
   return res.data;
 };
+
 
 const invalidEmails = [
   "example.com", "hi2.io",
@@ -26,6 +28,43 @@ const Validphonenumber = [
   "0901", "0902", "0903",
   "0905", "0990", "0993",
   "0904", "0921", "0921",]
+
+
+const invalidfullnamecharacter = [
+  "!", "@", "#",
+  "$", "%", "^",
+  "&", "*", "+",
+  "-", "~", ":",
+  "<", ">", ".",
+  "?", "=", "_",
+  ";", "'", "/",
+  "|", "/", "[",
+  "]", "{", "}",
+  "(", ")", ",",
+  "÷", "»", "«",
+  "€", "¥", "©",
+  "é", "£", "§",
+  "®", "№", "℗",
+  "✓", "™", "¶",
+  "😊" , "😂", "🤧", "😔",
+  "🤣" , "😍", "💔", "🤗",
+  "😒" , "👌", "❤️‍🩹", "😢",
+  "😘" , "😁", "🫠", "😝",
+  "❤️" , "💕", "😤", "😩",
+  "👍" , "🙌", "🙃", "😏",
+  "😎" , "😃", "🙂", "😡",
+  "😋" , "😐", "🤨", "🥹",
+  "🥲" , "😑", "😓", "🙂‍↔️",
+  "🤔" , "😮", "🙈", "🙂‍↕️",
+  "🤪" , "😒", "🫢", "💩",
+  "🙄" , "🥱", "🤤", "😖",
+  "😴" , "🥺", "😈", "😺",
+  "😭" , "🤫", "🙊", "👻",
+  "🤯" , "🥰", "🦦", "👀",
+  "😅" , "☹️", "🤭", "😸",
+  "😱" , "🤩", "😬", "😹",
+  "😌" , "🫣", "🤮", "😚",
+]
 
 
 function ContactUs() {
@@ -91,6 +130,15 @@ function ContactUs() {
                   {...register("fullname", {
                     validate: {
                       wordlength: (fullname) => {
+                        let vaild = true;
+                        for (let fullnamecharacter of invalidfullnamecharacter) {
+                          if (fullname.includes(fullnamecharacter)) {
+                            vaild = false
+                          }
+                        }
+                        if (vaild == false) {
+                          return "فقط باید از حروف استفاده شود !!!"
+                        }
                         if (fullname.length > 15) {
                           return "اسم نباید بیش از 15 حرف باشد"
                         }
@@ -272,6 +320,7 @@ function ContactUs() {
               <div className="col-12">
                 <button
 
+                  id="btn_css"
                   type="submit"
                   className="btn btn-success"
                   disabled={mutation.isPending ? true : false || !isValid}
