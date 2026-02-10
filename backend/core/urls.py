@@ -23,5 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("adack/", include("api.urls")),
+    # TODO use seprate urls for contact app
     path("adack/", include("contactus.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -22,12 +22,25 @@ from rest_framework.generics import (
 )
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
-
+from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as filters
 
 # Product view :
+
+
+class ProductFilter(filters.FilterSet):
+    available = filters.BooleanFilter(field_name="available")
+
+    class Meta:
+        model = Product
+        fields = ['available',]
+
+
 class ProductApiView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ProductFilter
 
 
 # @method_decorator(csrf_exempt, name='dispatch')

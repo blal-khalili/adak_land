@@ -12,7 +12,10 @@ import Pagination from '../components/Pagination/Pagination';
 function Supermarket() {
     // TODO: make sidebar postions sticky with bootstrap scrollspy
 
-    const products = useProducts();
+    // TODO: separate filter to its own component and save this state in that component
+    const [available,setAvailable] = useState(null);
+
+    const products = useProducts(available);
     // const queryClient = useQueryClient()
     // const fetchProducts = async () => {
     //     const res = await axios.get('http://127.0.0.1:8000/adack/list/');
@@ -39,9 +42,12 @@ function Supermarket() {
 
                         <ul className='mt-5'>
                             {/* TODO: make an available filter */}
+                            <li>
+                                <h4>موجود</h4>
+                                <input type='checkbox' onChange={(e)=>{setAvailable(e.target.checked)}}></input>
+                            </li>
                             <li className='d-flex mt-5 justify-content-between'>
                                 <h4>تنفلات</h4>
-                                <CheckBox />
                             </li>
 
                             <hr />

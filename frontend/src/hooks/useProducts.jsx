@@ -1,15 +1,17 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient, } from '@tanstack/react-query';
 import axios from "axios"
 
 
-function useProducts(){
+function useProducts(available){
     const queryClient = useQueryClient()
-    const fetchProducts = async () => {
-        const res = await axios.get('http://127.0.0.1:8000/adack/list/');
+    const fetchProducts = async ({queryKey}) => {
+        const [_key,params] = queryKey
+        // console.log(params)
+        const res = await axios.get('http://127.0.0.1:8000/adack/list/',{params});
         return res.data;
     };
     const query = useQuery({
-        queryKey: ['products'], queryFn: fetchProducts
+        queryKey: ['products',{available}], queryFn: fetchProducts
     })
 
     return query
