@@ -31,6 +31,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)
     create = models.DateField(auto_now=True, null=True, blank=True)
     available = models.BooleanField(default=False)
+    popular = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

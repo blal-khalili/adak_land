@@ -1,3 +1,7 @@
 #Category a {
     text-decoration: none;
 }
+
+#Category img {
+    width: 60px;
+}

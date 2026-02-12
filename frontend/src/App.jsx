@@ -25,39 +25,39 @@ function App() {
 
 
       <div id='Category' className='container mt-5'>
-        <h2 className='text-center fw-bold'>خرید براساس دسته بندی</h2>
-        <hr className='col-md-5 mx-auto' />
+        <h4 className='text-center fw-bold'>خرید براساس دسته بندی</h4>
+        <hr className='col-md-2 mx-auto' />
         <div className='row text-center'>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={supermarketlogo} alt="" />
             <Link className='text-dark' href="">
-              <h5>سوپرمارکت</h5>
+              <p>سوپرمارکت</p>
             </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={behdashtylogo} alt="" />
             <Link className='text-dark' href="">
-              <h5>لوازم آرایشی و بهداشتی</h5>
+              <p>لوازم آرایشی و بهداشتی</p>
             </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={tahrirlogo} alt="" />
             <Link className='text-dark' href="">
-              <h5>لوازم تحریر</h5>
+              <p>لوازم تحریر</p>
             </Link>
           </div>
           <div className='col-md-3 col-6'>
             <img className='img-fluid' src={janebilogo} alt="" />
             <Link className='text-dark' href="">
-              <h5>لوازم جانبی</h5>
+              <p>لوازم جانبی</p>
             </Link>
           </div>
         </div>
       </div>
 
       <div id='Offer' className="container mt-5 bg-primary rounded py-4">
-        <h2 className='text-white'>محصولات جدید</h2>
-        <div className='col-md-3 text-white'>
+        <h4 className='text-white'>محصولات جدید</h4>
+        <div className='col-md-2 text-white'>
           <hr />
         </div>
         <CardSlider p={products.data} />
@@ -75,8 +75,8 @@ function App() {
       </div>
 
       <div id='Offer' className="container mt-5">
-        <h2 className='text-center'>پرفروش ترین ها</h2>
-        <div className='col-md-3 mx-auto'>
+        <h4 className='text-center'>پرفروش ترین ها</h4>
+        <div className='col-md-2 mx-auto'>
           <hr />
         </div>
         <CardSlider p={products.data} />
@@ -94,8 +94,8 @@ function App() {
       </div>
 
       <div id='Offer' className="container mt-5">
-        <h2>کالا های پیشنهادی</h2>
-        <div className='col-md-3'>
+        <h4>کالا های پیشنهادی</h4>
+        <div className='col-md-2'>
           <hr />
         </div>
         <CardSlider p={products.data} />
