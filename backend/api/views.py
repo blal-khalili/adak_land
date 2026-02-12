@@ -1,19 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Product, TypeOfProduct
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from .filters import ProductFilter
-
-
-from .serializers import (
-    ProductSerializer,
-    OneProductSerializer,
-    TypeOfProductSerializer,
-    OneTypeOfProductSerializer,
-    PartSerializer,
-    OnePartSerializer,
-)
 from rest_framework.generics import (
     CreateAPIView,
     RetrieveAPIView,
@@ -26,13 +14,6 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Product view :
-
-
-class ProductApiView(ListAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = ProductFilter
 
 
 # @method_decorator(csrf_exempt, name='dispatch')

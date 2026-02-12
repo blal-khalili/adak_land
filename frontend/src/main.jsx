@@ -17,6 +17,7 @@ import Cosmetics from './pages/Cosmetics/Cosmetics.jsx';
 import Stationery from './pages/Stationery/Stationery.jsx';
 import Cart from './pages/Shoppingcart.jsx';
 import CardPage from './pages/CardPage/Cardpage.jsx';
+import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import LandingLayout from './LandingLayout'
 import {
   useQuery,
@@ -46,6 +47,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/cosmetics" element={<Cosmetics />}></Route>
             <Route path="/stationery" element={<Stationery />}></Route>
             <Route path="/cardpage" element={<CardPage />}></Route>
+            <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
           </Route>
 
           <Route path="/RegistrationLogin" element={<RegistrationLogin />}></Route>

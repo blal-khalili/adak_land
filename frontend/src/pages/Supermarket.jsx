@@ -63,7 +63,9 @@ function Supermarket() {
                     {isBigScreen && <div className="row col-md-10">
                         {/* <h1>{query.isFetching?'loading':'data'}</h1> */}
                         {products.data && products.data.map((list) => (
+                            // TODO: add Link component to isMediumScreen,isSamllScreen
                             <div key={list.id} className='col-md-3 g-5'>
+                                <Link to={`/products/detail/${list.slug}`} className='text-decoration-none'>
                                 <div className="card border-0 rounded-0 shadow">
                                     <img src={list.image} className="card-img-top rounded-0 img-fluid" alt="..." />
                                     <div className="card-body mt-3 mb-3">
@@ -92,6 +94,7 @@ function Supermarket() {
                                         </div>
                                     </div>
                                 </div>
+                            </Link>
                             </div>
                         ))}
 
