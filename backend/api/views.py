@@ -14,11 +14,3 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Product view :
-
-
-# @method_decorator(csrf_exempt, name='dispatch')
-@csrf_exempt
-def contactApi(request):
-    # TODO: write a class view to save post data from react
-    print(request.body)
-    return JsonResponse({"name": "mmd goli"})

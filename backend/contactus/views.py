@@ -19,6 +19,19 @@ from rest_framework.generics import (
 )
 
 
+# @method_decorator(csrf_exempt, name='dispatch')
+# @csrf_exempt
+# def contactApi(request):
+#     # TODO: write a class view to save post data from react
+#     print(request.body)
+#     return JsonResponse({"name": "mmd goli"})
+
+
+class ContactUsListAPIView(ListAPIView):
+    queryset = ContactUs.objects.all()
+    serializer_class = ContactUsserializer
+
+
 class ContactUsApiView(CreateAPIView):
     queryset = ContactUs.objects.all()
     serializer_class = ContactUsserializer
