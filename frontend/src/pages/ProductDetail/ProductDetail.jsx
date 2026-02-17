@@ -28,6 +28,15 @@ function ProductDetail() {
 
                     <div className="col-md-4 mt-4">
                         <h2>{product.title}</h2>
+                        <ul>
+                            {product.colors && product.colors.map((color) => (
+                                <li>
+                                    <div style={{height:"20px",width:"20px",backgroundColor:`${color.color_code}`, borderRadius:'50px',border:"2px solid black", display:'inline-block'}}></div>
+                                    {color.title}
+                                </li>
+                            ))}
+                        </ul>
+
                         <ul className="mt-5">
                             {/* <li>{product.available}</li> */}
                         </ul>
