@@ -1,0 +1,89 @@
+#buyB .notification {
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: relative;
+    height: 10rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+#buyB .notification:before {
+    content: "";
+    inset: 0.0625rem;
+    border-radius: 0.9375rem;
+    z-index: 2
+}
+
+#buyB .notification:after {
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    transition: transform 300ms ease;
+    z-index: 4;
+}
+
+#buyB .notification:hover:after {
+    transform: translateX(0.15rem)
+}
+
+#buyB .notititle {
+    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+#buyB .notification:hover .notititle {
+    transform: translateX(0.15rem)
+}
+
+#buyB .notibody {
+    padding: 0 1.25rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+#buyB .notification:hover .notibody {
+    transform: translateX(0.25rem)
+}
+
+#buyB .notiglow,
+#buyB .notiborderglow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side at center, white, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+#buyB .notiglow {
+    z-index: 3;
+}
+
+#buyB .notiborderglow {
+    z-index: 1;
+}
+
+#buyB .notification:hover .notiglow {
+    opacity: 0.1
+}
+
+#buyB .notification:hover .notiborderglow {
+    opacity: 0.1
+}
+
+#buyB .note {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0.9rem;
+    width: 75%;
+}

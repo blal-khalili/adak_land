@@ -1,35 +1,20 @@
 import { Link } from "react-router"
 import "../Card/Card.css/"
 
-function Card(prpos) {
+function Card(props) {
     return (
-        <div key={prpos.id} className="card border-0 rounded-0 shadow">
-            <img src={prpos.image} className="card-img-top rounded-0 img-fluid" alt="..." />
-                <div className="card-body mt-3 mb-3">
-                    <div className="row">
-                        <div className="col-10">
-                            <p className="card-title">{prpos.title}</p>
-                            <p className="card-text">
-                                <i className="bi bi-star-fill text-warning"></i>
-                                <i className="bi bi-star-fill text-warning"></i>
-                                <i className="bi bi-star-fill text-warning"></i>
-                                <i className="bi bi-star-fill text-warning"></i>
-                                (123)
-                            </p>
-                        </div>
-                        <div className="col-2">
-                            <i className="bi bi-bookmark-plus fs-3"></i>
-                        </div>
-                    </div>
+        <div id="productcard" key={props.id} className="card">
+            <div className="card__content">
+                <img src={props.image} className="card__image"/>
+                <div className="card__text">
+                    <p className="card__title">{props.title}</p>
+                    <p className="card__description">{props.description}</p>
                 </div>
-                <div className="row align-items-center text-center g-0">
-                    <div className="col-4">
-                        <p>{prpos.price}</p>
-                    </div>
-                    <div className="col-8">
-                        <Link to="/cardpage" href="#" className="btn btn-dark w-100 p-3 rounded-0 text-warning">ADD TO CART</Link>
-                    </div>
+                <div className="card__footer">
+                    <div className="card__price">{props.price}</div>
+                    <div className="card__badge bg-success text-white rounded p-2">NEW</div>
                 </div>
+            </div>
         </div>
     )
 }

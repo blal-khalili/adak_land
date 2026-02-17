@@ -33,14 +33,14 @@ function Supermarket() {
                         <ul className='mt-5'>
                             <li>
                                 <h4>موجود</h4>
-                                <input type='checkbox' onChange={(e) => { e.target.checked?setAvailable(true):setAvailable(null); }}></input>
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setAvailable(true) : setAvailable(null); }}></input>
                             </li>
 
                             <hr />
 
                             <li>
                                 <h4>پرطرفدارترین</h4>
-                                <input type='checkbox' onChange={(e) => { e.target.checked?setpopular(true):setpopular(null); }}></input>
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setpopular(true) : setpopular(null); }}></input>
                             </li>
 
                             <hr />
@@ -66,35 +66,19 @@ function Supermarket() {
                             // TODO: add Link component to isMediumScreen,isSamllScreen
                             <div key={list.id} className='col-md-3 g-5'>
                                 <Link to={`/products/detail/${list.slug}`} className='text-decoration-none'>
-                                <div className="card border-0 rounded-0 shadow">
-                                    <img src={list.image} className="card-img-top rounded-0 img-fluid" alt="..." />
-                                    <div className="card-body mt-3 mb-3">
-                                        <div className="row">
-                                            <div className="col-10">
-                                                <p className="card-title">{list.title}</p>
-                                                <p className="card-text">
-                                                    <i className="bi bi-star-fill text-warning"></i>
-                                                    <i className="bi bi-star-fill text-warning"></i>
-                                                    <i className="bi bi-star-fill text-warning"></i>
-                                                    <i className="bi bi-star-fill text-warning"></i>
-                                                    (123)
-                                                </p>
+                                    <div id="productcard" key={list.id} className="card">
+                                        <div className="card__content">
+                                            <img src={list.image} className="card__image" />
+                                            <div className="card__text">
+                                                <p className="card__title">{list.title}</p>
+                                                <p className="card__description">{list.description}</p>
                                             </div>
-                                            <div className="col-2">
-                                                <i className="bi bi-bookmark-plus fs-5"></i>
+                                            <div className="card__footer">
+                                                <div className="card__price">{list.price}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row align-items-center text-center g-0">
-                                        <div className="col-4">
-                                            <p>{list.price}</p>
-                                        </div>
-                                        <div className="col-8">
-                                            <Link href="#" className="btn btn-dark w-100 p-3 rounded-0 text-warning">ADD TO CART</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
+                                </Link>
                             </div>
                         ))}
 

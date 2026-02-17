@@ -33,6 +33,6 @@ class Product(models.Model):
     available = models.BooleanField(default=False)
     popular = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, allow_unicode=True)
-    
+
     def __str__(self):
         return self.title

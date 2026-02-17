@@ -30,7 +30,6 @@ const Validphonenumber = [
   "0904", "0921", "0921",]
 
 
-// TODO: make this validation great again!
 const validfullnamecharacter = [
   "الف", "ب", "پ", "ت", "ث",
   "ج", "چ", "ح", "خ", "د",

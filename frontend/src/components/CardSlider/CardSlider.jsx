@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import './CardSlider.css'
 import { useMediaQuery } from 'react-responsive'
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router';
 
 
 
@@ -17,7 +18,7 @@ function CardSlider(props) {
 
     const slidesPerViewResponsiveValue = () => {
         if (isBigScreen) {
-            return 4
+            return 5
         } else if (isMediumScreen) {
             return 2
         } else if (isSamllScreen) {
@@ -32,12 +33,13 @@ function CardSlider(props) {
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper" slidesPerView={slidesPerViewResponsiveValue()} spaceBetween={30} >
                     {props.p && props.p.map((list) => (
                         <div className='col-6'>
-                        <SwiperSlide>
-                            <Card id={list.id} title={list.title} type={list.type} price={list.price} image={list.image} description={list.description}></Card>
-                        </SwiperSlide>
-                    </div>
+                            <SwiperSlide>
+                                <Link className='productlink' to={`/products/detail/${list.slug}`}>
+                                    <Card id={list.id} title={list.title} type={list.type} price={list.price} image={list.image} description={list.description}></Card>
+                                </Link>
+                            </SwiperSlide>
+                        </div>
                     ))}
-
                 </Swiper>
             </div>
         </div>
