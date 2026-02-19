@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 function Navber() {
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div className="container-fluid">
                 <Link className="navbar-brand mt-3" href="#"><h1>آداک لند</h1></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -49,7 +49,7 @@ function Navber() {
                         </li>
                         <li className="nav-item2">
                             {/* <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link> */}
-                            <Link to="/ContactUs" target="_blank" className="nav-link" id="btn-link-ContactUs_id" href="#"><button className="bg-primary text-white"><i className="bi bi-person-circle px-1"></i>تماس با ما</button></Link>
+                            <Link to="/ContactUs" className="nav-link" id="btn-link-ContactUs_id" href="#"><button className="bg-primary text-white"><i className="bi bi-person-circle px-1"></i>تماس با ما</button></Link>
                         </li>
                         <li className="nav-item3">
                             <Link to="/shoppingcart" className="nav-link text-dark"><i className="bi bi-cart"></i></Link>

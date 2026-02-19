@@ -22,7 +22,7 @@ function Carousel() {
     }, []);
 
     return (
-        <div id="carouselExampleAutoplaying" className="carousel slide">
+        <div id="carouselExampleAutoplaying" className="carousel slide py-5 mt-5">
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <Link href=""><img src={carousel_img_1} className="d-block w-100" alt="..." /></Link>
