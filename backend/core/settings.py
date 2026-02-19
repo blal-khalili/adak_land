@@ -143,6 +143,13 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
+
 JAZZMIN_SETTINGS = {
     "site_title": "Adack Land",
     "copyright": "Sobhan Alipour",
