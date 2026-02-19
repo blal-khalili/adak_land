@@ -1,5 +1,13 @@
 from rest_framework import serializers
-from .models import Product, TypeOfProduct, Part, ProductColor, ProductSpecification
+from .models import (
+    Product,
+    TypeOfProduct,
+    Part,
+    ProductColor,
+    ProductSpecification,
+    ProductReview,
+)
+
 
 
 # Product Serializers :
@@ -31,10 +39,18 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class OneProductSerializer(serializers.ModelSerializer):
     colors = ColorSerializer(many=True, read_only=True, source="productcolor_set")
-    specification = SpecificationSerializer(many=True, read_only=True, source="productspecification_set")
+    specification = SpecificationSerializer(
+        many=True, read_only=True, source="productspecification_set"
+    )
 
     class Meta:
         model = Product
+        fields = "__all__"
+
+
+class ProductReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductReview
         fields = "__all__"
 
 

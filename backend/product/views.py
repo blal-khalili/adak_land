@@ -5,6 +5,7 @@ from .models import Product
 from .serializers import (
     ProductSerializer,
     OneProductSerializer,
+    ProductReviewSerializer,
     TypeOfProductSerializer,
     OneTypeOfProductSerializer,
     PartSerializer,
@@ -34,7 +35,7 @@ class ProductDetailAPIView(RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = OneProductSerializer
     permission_classes = [AllowAny]
-    lookup_field = 'slug'
+    lookup_field = "slug"
 
     # def get_queryset(self):
     #     slug = self.kwargs['slug']
@@ -50,3 +51,8 @@ class ProductDetailAPIView(RetrieveAPIView):
     #     self.queryset = Product.objects.get(slug=slug)
     #     return super().get_object()
 
+
+class ProductReviwCreateApiView(CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductReviewSerializer
+    permission_classes = [IsAuthenticated]
