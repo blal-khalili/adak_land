@@ -8,11 +8,10 @@ function Card(props) {
                 <img src={props.image} className="card__image"/>
                 <div className="card__text">
                     <p className="card__title">{props.title}</p>
-                    <p className="card__description">{props.description}</p>
                 </div>
                 <div className="card__footer">
                     <div className="card__price">{props.price}</div>
-                    <div className="card__badge bg-success text-white rounded p-2">NEW</div>
+                    {/* <div className="card__badge bg-success text-white rounded p-2">NEW</div> */}
                 </div>
             </div>
         </div>
