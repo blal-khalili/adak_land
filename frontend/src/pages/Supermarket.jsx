@@ -70,7 +70,6 @@ function Supermarket() {
                                             <img src={list.image} className="card__image" />
                                             <div className="card__text">
                                                 <p className="card__title">{list.title}</p>
-                                                <p className="card__description">{list.description}</p>
                                             </div>
                                             <div className="card__footer">
                                                 <div className="card__price">{list.price}</div>

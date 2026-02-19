@@ -15,16 +15,17 @@ class ColorInline(admin.TabularInline):  # or admin.StackedInline for a differen
     # raw_id_fields = ('product',)
 
 
-# Register your models here.
-
-# Register your models here.
+class ProductSpecificationInline(admin.TabularInline):  # or admin.StackedInline for a different layout
+    model = ProductSpecification
+    extra = 1  # number of empty forms to display
+    # raw_id_fields = ('product',)
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["title"]
     # list_filter = ('status',)
     # readonly_fields = ('created_dt', 'completed_dt')
-    inlines = [ColorInline]
+    inlines = [ColorInline, ProductSpecificationInline]
 
 
 admin.site.register(ProductColor)
