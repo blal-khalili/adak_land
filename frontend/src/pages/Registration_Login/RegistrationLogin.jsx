@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 
 
-
+// TODO: add a second field for passowrd and first field for username
 function RegistrationLogins() {
     return (
         <section id='RegistrationLogin_id'>
