@@ -80,3 +80,18 @@
 #btn_RegistrationLogin:hover {
     transform: translateY(-2px);
 }
+
+
+
+#RegistrationLogin_id label {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-shadow: 2px 1px #1b56FD;
+}
+
+
+
+#text_tag_p {
+    text-shadow: 2px 1px #1b56FD;
+}

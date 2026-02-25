@@ -24,11 +24,12 @@ function RegistrationLogins() {
                         <div className="Login_Registration">
                             <div>
                                 <h5 className="fw-bolder">ورود یا ثبت‌نام در آداک لند</h5>
-                                <p className="mt-5">لطفا شماره موبایل یا ایمیل خود را وارد کنید</p>
+                                <p id="text_tag_p" className="mt-5">لطفا نام کاربری و رمز عبور خود را وارد کنید</p>
                                 <div className="mt-4">
-                                    <label for="inputMobileNumber" className="form-label">شماره موبایل</label>
+                                    <label for="inputUsername" className="form-label">نام کاربری</label>
                                     <input ref={inputUsername} placeholder="نام کاربری خود را وارد کنید" type="text" className="form-control text-end mt-2" id="inputUsername" />
-                                    <input ref={inputPassword} placeholder="رمز خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPassword" />
+                                    <label for="inputPassword" className="form-labe mt-3">رمز عبور</label>
+                                    <input ref={inputPassword} placeholder="رمز عبور خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPassword" />
                                 </div>
                                 <div className="mt-4">
                                     {/* <Link to="/Confirmation_Code_Page" ></Link> */}
