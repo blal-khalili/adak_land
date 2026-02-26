@@ -27,7 +27,7 @@ function Supermarket() {
 
                 <h1 className='text-center'>سوپرمارکت</h1>
                 <div className='row mt-5'>
-                    {isBigScreen && <div className='col-md-2 border h-50 d-inline-block rounded mt-5 border-danger border-3'>
+                    {isBigScreen && <div className='col-md-2 border h-50 d-inline-block rounded mt-5 border-danger border-3  sticky-top'>
                         <h3 className='mt-4'>فیلترها</h3>
 
                         <ul className='mt-5'>

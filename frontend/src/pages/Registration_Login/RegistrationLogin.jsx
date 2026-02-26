@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 
 
-// TODO: add a second field for passowrd and first field for username
 function RegistrationLogins() {
     const inputUsername =  useRef(null)
     const inputPassword =  useRef(null)

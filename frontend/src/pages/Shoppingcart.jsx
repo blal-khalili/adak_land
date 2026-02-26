@@ -8,7 +8,7 @@ import Card from "../components/Card/Card.jsx/"
 
 
 function Cart() {
-    
+    // TODO: add this page to auth wrapper
     const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 

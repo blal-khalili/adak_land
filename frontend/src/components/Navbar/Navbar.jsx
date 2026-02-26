@@ -42,7 +42,8 @@ function Navber() {
                         </li>
                         <li className="nav-item1 d-flex mt-2">
                             <i className="bi bi-bookmark-heart text-danger"></i>
-                            <Link className="nav-link text-dark" href="#">علاقه مندی</Link>
+                            {/* TODO: delte this /profile link */}
+                            <Link className="nav-link text-dark" href="#" to="/profile">علاقه مندی</Link>
                         </li>
                         <li className="nav-item2">
                             <Link to="/RegistrationLogin" className="nav-link" href="#"><button className="bg-primary text-white"><i className="bi bi-arrow-bar-left px-1"></i>ورود | ثبت نام</button></Link>

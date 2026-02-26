@@ -18,6 +18,7 @@ import Stationery from './pages/Stationery/Stationery.jsx';
 import Cart from './pages/Shoppingcart.jsx';
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import LandingLayout from './LandingLayout'
+import Profile from './pages/Profile.jsx';
 import {
   useQuery,
   useQueryClient,
@@ -25,6 +26,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import AuthWrapper from './AuthWrapper.jsx';
 
 
 const queryClient = new QueryClient()
@@ -46,6 +48,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/cosmetics" element={<Cosmetics />}></Route>
             <Route path="/stationery" element={<Stationery />}></Route>
             <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
+            <Route element={<AuthWrapper/>}>
+                <Route path="/profile" element={<Profile />}></Route>
+            </Route>
           </Route>
 
           <Route path="/RegistrationLogin" element={<RegistrationLogin />}></Route>
