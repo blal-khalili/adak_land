@@ -1,6 +1,6 @@
 import "./RegistrationLogin.css"
 import Adack_Land_Logo from "../../assets/image/OriginLogo/Adack_Land_Logo.png"
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import authStore from "../../../stores/authStore";
 import login from "../../../utils/auth/auth";
 import { useRef } from "react";
@@ -9,6 +9,7 @@ import { useRef } from "react";
 
 
 function RegistrationLogins() {
+    let navigate = useNavigate();
     const inputUsername =  useRef(null)
     const inputPassword =  useRef(null)
 
@@ -33,7 +34,11 @@ function RegistrationLogins() {
                                 <div className="mt-4">
                                     {/* <Link to="/Confirmation_Code_Page" ></Link> */}
                                     <button onClick={() => {
-                                        login(inputUsername.current.value,inputPassword.current.value)
+                                        if (login(inputUsername.current.value,inputPassword.current.value)==true){
+                                            navigate('/profile')
+                                        }else{
+                                            navigate('/profile')
+                                        }
                                     }
                                     } id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button>
                                 </div>
