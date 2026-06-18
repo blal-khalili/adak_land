@@ -1,20 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { userProfileDetail } from "../../utils/auth/auth"
 
 
-
-function Profile(){
+function Profile() {
+    const [userInfo, setUserInfo] = useState({});
     
- return <>
- 
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <br />
- <h1>profile page</h1>
- </>
+
+    useEffect(() => {
+        setUserInfo(userProfileDetail())
+    }, [])
+
+
+    return <>
+        <h1>profile page</h1>
+        <button onClick={() => {
+            console.log(userInfo.username)
+        }}>jflds</button>
+        {/* qury to backend */}
+        {/* show in the page */}
+    </>
 }
 
 
