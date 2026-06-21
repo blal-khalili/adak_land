@@ -1,10 +1,14 @@
 import { create } from "zustand";
 
 const authStore = create((set) => ({
-    userId:null,
-    username:null,
+    phoneNumber:null,
+    email:null,
+    error: null,
     // TODO: make this function set all user data including name , profile picture, username , etc...
-    setUser: (name) => set((state) => ({ username: name })),
+    setPhoneNumber: (phoneNumber) => set({phoneNumber}),
+    setEmail: (email) => set({email}),
+    setError: (error) => set({error}),
+    
 }));
 
 export default authStore;

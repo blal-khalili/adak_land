@@ -9,9 +9,12 @@ import { useRef } from "react";
 
 
 function RegistrationLogins() {
+    const { setEmail,setPhoneNumber } = authStore()
     let navigate = useNavigate();
     const inputUsername = useRef(null)
     const inputPassword = useRef(null)
+    const email = authStore((state)=>state.email)
+    const loginError = authStore((state)=>state.error)
 
     const { username, setUser } = authStore()
 
@@ -23,6 +26,11 @@ function RegistrationLogins() {
                         <img src={Logo_Adack_Land} className="logo col-md-3 mx-auto" alt="" />
                         <div className="Login_Registration">
                             <div>
+                                {loginError &&
+                                    <div class="alert alert-danger" role="alert">
+                                        {loginError}
+                                    </div>
+                                }
                                 <h5 className="text_h5 fw-bolder">ورود در آداک لند</h5>
                                 <p id="text_tag_p" className="mt-5">لطفا نام کاربری و رمز عبور خود را وارد کنید</p>
                                 <div className="mt-4">
@@ -34,10 +42,11 @@ function RegistrationLogins() {
                                 <div className="mt-4">
                                     {/* <Link to="/Confirmation_Code_Page" ></Link> */}
                                     <button onClick={() => {
+                                        // setEmail('gggggggggggggggggg')
                                         if (login(inputUsername.current.value, inputPassword.current.value) == true) {
-                                            navigate('/profile')
+                                            // navigate('/profile')
                                         } else {
-                                            navigate('/profile')
+                                            // navigate('/profile')
                                         }
                                     }
                                     } id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button>

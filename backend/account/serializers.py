@@ -6,3 +6,37 @@ class OneUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+    phone_number = serializers.CharField(max_length=11)
+    # username = serializers.CharField()
+    password = serializers.CharField()
+    password_validate = serializers.CharField()
+
+    
+    def create(self, validated_data):
+        if validated_data["password"] != validated_data["password_validate"]:
+            raise serializers.ValidationError('پسورد و تکرار آن باهم مطابق نیست')
+
+        email = validated_data["email"]
+        # username = validated_data["username"]
+        phone_number = validated_data["phone_number"]
+        password = validated_data["password"]
+
+        user = User.objects.filter(email=email).first()
+        if user != None:
+            raise serializers.ValidationError('این ایمیل قبلا ثبت نام کرده است')
+
+        new_user = User(email=email,username=email,phone_number=phone_number)
+        new_user.set_password(password)
+        new_user.save()
+
+        return validated_data
+
+
+    class Meta:
+        model = User
+        # fields = ["username", "email", "phone_number", "password", "password_validate"]
+        fields = ["email", "phone_number", "password", "password_validate"]

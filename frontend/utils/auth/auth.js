@@ -5,14 +5,16 @@ import { jwtDecode } from "jwt-decode";
 
 
 const login = async (username, password) => {
-  // const { setUser } = authStore()
+
+  
   let is_authenticated = false;
   await authAxiosInstance.post("api/token/", {
     username: username,
     password: password,
   })
-    .then((res) => {
-      console.log(res.data)
+  .then((res) => {
+    console.log(res.data)
+    authStore.getState().setEmail('uuuuuuuuuuuuu')
       // Cookies.remove("refresh_token")
       // Cookies.remove("access_token")
       Cookies.set('refresh_token', res.data.refresh, { secure: true })
@@ -21,7 +23,7 @@ const login = async (username, password) => {
       // is_authenticated = true;
     })
     .catch(() => {
-      console.log('erororooooooooooooooooooooo')
+      authStore.getState().setError('مشکلی در لاگین رخ داد')
       // is_authenticated = false;
     })
 
@@ -29,6 +31,28 @@ const login = async (username, password) => {
     return is_authenticated
   // TODO: redirect user to home page with a message
 };
+
+
+
+
+const register = async (phone_number, email, password, password_validate) => {
+  // const { setUser } = authStore()
+  
+  await authAxiosInstance.post("account/create/", {
+    phone_number: phone_number,
+    email: email,
+    password: password,
+    password_validate: password_validate
+  })
+    .then((res) => {
+      console.log(res.data)
+      console.log('o999999999999999999')
+    })
+    .catch(() => {
+     
+    })
+};
+
 const checkAuth = () => {
   const access_token = Cookies.get('access_token')
   const decoded = jwtDecode(access_token);
@@ -62,4 +86,4 @@ const  userProfileDetail = async () => {
 
 
 export default login;
-export { login, checkAuth, userProfileDetail };
+export { login, register, checkAuth, userProfileDetail };
