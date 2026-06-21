@@ -83,7 +83,7 @@ function ContactUs() {
   };
 
   return (
-    <section id="ContactUs-id">
+    <section id="ContactUs-id" className="py-5 mt-5">
       <div className="container mt-3">
         <div className="row">
           <div className="text-center mt-5">

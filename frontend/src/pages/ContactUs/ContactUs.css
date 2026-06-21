@@ -1,3 +1,26 @@
+#ContactUs-id {
+    background-image: url("../../assets/image/Background_ContactUs/composition-black-friday-shopping-cart-with-copy-space_23-2148667046.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+
+
+#form_div {
+    border: 1px solid #000000 !important;
+    border-radius: 40px;
+
+    background: #ffffff2d;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+
+
+
+
 #id_hr_line {
     height: 3px;
     background-color: #000000;
@@ -15,10 +38,10 @@
 
 
 
-#form_div {
+/* #form_div {
     border: 1px #000000 solid !important;
     border-radius: 40px;
-}
+} */
 
 
 #form {

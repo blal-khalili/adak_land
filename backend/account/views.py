@@ -1,15 +1,10 @@
 from django.shortcuts import render
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, CreateAPIView
 from .models import User
-from rest_framework.permissions import AllowAny
-from rest_framework import serializers
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from .serializers import OneUserSerializer
+
 # Create your views here.
-
-
-class OneUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
 
 
 class UserDetailAPIView(RetrieveAPIView):
@@ -17,3 +12,9 @@ class UserDetailAPIView(RetrieveAPIView):
     serializer_class = OneUserSerializer
     permission_classes = [AllowAny]
     lookup_field = "id"
+
+
+class UserCreateAPIView(CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = OneUserSerializer
+    permission_classes = []

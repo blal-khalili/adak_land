@@ -7,4 +7,3 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     phone_number = models.CharField(max_length=13)
     avatar = models.ImageField(upload_to="user_avatar/", null=True)
-    

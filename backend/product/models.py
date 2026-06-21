@@ -15,7 +15,7 @@ class Part(models.Model):
 # TypeOfProducts Models :
 class TypeOfProduct(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
-    part = models.ManyToManyField(Part, null=True, blank=True)
+    part = models.ManyToManyField(Part, blank=True)
 
     def __str__(self):
         return self.title

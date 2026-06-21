@@ -1,29 +1,5 @@
-/* .Login_Registration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-
-#btn_RegistrationLogin {
-    height: 40px;
-    border-radius: 8px;
-    transition: .3s;
-    border: 2px #000000 solid;
-}
-
-
-#btn_RegistrationLogin:hover {
-    transform: translateY(-2px);
-} */
-
-
-
-
 /* وسط‌چین کل صفحه */
-#RegistrationLogin_id {
+#Sign_in_id {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -31,7 +7,7 @@
 }
 
 /* بک‌گراند صفحه (مهم برای شیشه‌ای شدن) */
-#RegistrationLogin_id {
+#Sign_in_id {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
@@ -69,7 +45,7 @@
 }
 
 /* دکمه */
-#btn_RegistrationLogin {
+#btn_Sign_in {
     height: 40px;
     border-radius: 8px;
     transition: .3s;
@@ -77,13 +53,13 @@
 }
 
 
-#btn_RegistrationLogin:hover {
+#btn_Sign_in:hover {
     transform: translateY(-2px);
 }
 
 
 
-#RegistrationLogin_id label {
+#Sign_in_id label {
     display: flex;
     justify-content: start;
     align-items: start;
@@ -95,8 +71,6 @@
 #text_tag_p {
     text-shadow: 2px 1px #1b56FD;
 }
-
-
 
 
 .text_h5 {

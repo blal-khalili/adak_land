@@ -9,6 +9,7 @@ import ContactUs from "./pages/ContactUs/ContactUs.jsx"
 import ProductsFilter from './pages/Filter/ProductsFilter.jsx';
 import RegistrationLogin from './pages/Registration_Login/RegistrationLogin.jsx';
 import Confirmation_Code_Page from "./pages/Login_Or_Registration_Confirmation_Code_Page/LoginConfirmationCodePage.jsx"
+import Sign_in_Page from "./pages/Sign_in/Sign_in_Page.jsx"
 import './index.css'
 import App from './App.jsx'
 import Supermarket from './pages/Supermarket.jsx';
@@ -55,6 +56,7 @@ createRoot(document.getElementById('root')).render(
 
           <Route path="/RegistrationLogin" element={<RegistrationLogin />}></Route>
           <Route path="/Confirmation_Code_Page" element={<Confirmation_Code_Page />}></Route>
+          <Route path="/Sign_in_Page" element={<Sign_in_Page />}></Route>
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
