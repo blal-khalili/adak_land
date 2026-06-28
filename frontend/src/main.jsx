@@ -19,7 +19,9 @@ import Stationery from './pages/Stationery/Stationery.jsx';
 import Cart from './pages/Shoppingcart.jsx';
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import LandingLayout from './LandingLayout'
-import Profile from './pages/Profile.jsx';
+import Profile from './pages/Profile/Profile.jsx';
+import Personalinfo from "./pages/Personal_information/Personalinfo.jsx";
+import Editprofile from "./pages/Edit_profile/Editprofile.jsx"
 import {
   useQuery,
   useQueryClient,
@@ -39,6 +41,7 @@ createRoot(document.getElementById('root')).render(
       <QueryClientProvider client={queryClient}>
 
         <Routes>
+          
           <Route path="/" element={<LandingLayout />}>
             <Route path="" element={<App />}></Route>
             <Route path="/ContactUs" element={<ContactUs />}></Route>
@@ -49,8 +52,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/cosmetics" element={<Cosmetics />}></Route>
             <Route path="/stationery" element={<Stationery />}></Route>
             <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
+            <Route path="/Personalinfo" element={<Personalinfo />}></Route>
+            <Route path="/Editprofile" element={<Editprofile />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
             <Route element={<AuthWrapper/>}>
-                <Route path="/profile" element={<Profile />}></Route>
+                
             </Route>
           </Route>
 

@@ -87,8 +87,8 @@ function ContactUs() {
       <div className="container mt-3">
         <div className="row">
           <div className="text-center mt-5">
-            <h2 className="fw-bolder">تماس با ما</h2>
-            <hr id="id_hr_line" />
+            <h2 className="fw-bolder text-white">تماس با ما</h2>
+            <span id="span_id_hr"><hr id="id_hr_line" /></span>
           </div>
 
           <div className="py-5 mt-5" id="form_div">
@@ -98,7 +98,7 @@ function ContactUs() {
               onChange={handleSubmit(formSubmitHandler)}
             >
               <div className="col-md-6">
-                <label for="inputState" className="form-label">
+                <label for="inputState" className="form-label text-white">
                   موضوع
                 </label>
                 <select {...register("subject", { required: { value: true, message: "انتخاب موضوع اجباریست" } })}
@@ -113,7 +113,7 @@ function ContactUs() {
                 {errors.subject && <p className="text-danger">{errors.subject.message}</p>}
               </div>
               <div className="col-md-6">
-                <label for="inputName" className="form-label">
+                <label for="inputName" className="form-label text-white">
                   نام و نام خانوادگی
                 </label>
                 <input
@@ -145,7 +145,7 @@ function ContactUs() {
                 )}
               </div>
               <div className="col-md-6">
-                <label for="inputEmail4" className="form-label">
+                <label for="inputEmail4" className="form-label text-white">
                   ایمیل
                 </label>
                 <input
@@ -178,7 +178,7 @@ function ContactUs() {
                 )}
               </div>
               <div className="col-md-6">
-                <label for="inputMobileNumber" className="form-label">
+                <label for="inputMobileNumber" className="form-label text-white">
                   شماره موبایل
                 </label>
                 <input
@@ -213,7 +213,7 @@ function ContactUs() {
                 )}
               </div>
               <div className="col-md-6">
-                <label for="inputCity" className="form-label">
+                <label for="inputCity" className="form-label text-white">
                   شهر
                 </label>
                 <select {...register("city", {
@@ -237,7 +237,7 @@ function ContactUs() {
               </div>
 
               <div className="col-md-6">
-                <label for="inputAddress" className="form-label">
+                <label for="inputAddress" className="form-label text-white">
                   آدرس
                 </label>
                 <input
@@ -253,7 +253,7 @@ function ContactUs() {
                   for (let i of invalidEmails) {
                     console.log(i)
                   }
-                }} for="exampleFormControlTextarea1" className="form-label">
+                }} for="exampleFormControlTextarea1" className="form-label text-white">
                   متن پیام
                 </label>
                 <textarea

@@ -107,13 +107,6 @@ function Navber() {
                                 </ul>
                             </div>
                         </li>
-                        <li className="nav-item1 d-flex mt-2">
-                            <i className="bi bi-bookmark-heart text-danger"></i>
-                            {/* TODO: delte this /profile link */}
-                            <Link className="nav-link text-dark" href="#" to="/profile">
-                                علاقه مندی
-                            </Link>
-                        </li>
                         <li className="nav-item2">
                             <Link to="/RegistrationLogin" className="nav-link" href="#">
                                 <button className="bg-primary text-white">
@@ -141,7 +134,12 @@ function Navber() {
                                 </button>
                             </Link>
                         </li>
-                        <li className="nav-item3">
+                        <li className="nav-item1 d-flex">
+                            <Link className="nav-link text-dark" href="#" to="/profile">
+                            <i class="bi bi-bell"></i>
+                            </Link>
+                        </li>
+                        <li className="nav-item3 mt-1">
                             <Link to="/shoppingcart" className="nav-link text-dark">
                                 <i className="bi bi-cart"></i>
                             </Link>

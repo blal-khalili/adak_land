@@ -1,5 +1,5 @@
 #ContactUs-id {
-    background-image: url("../../assets/image/Background_ContactUs/composition-black-friday-shopping-cart-with-copy-space_23-2148667046.avif");
+    background-image: url("../../assets/image/Background_ContactUs/Background_ContactUs.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -23,7 +23,7 @@
 
 #id_hr_line {
     height: 3px;
-    background-color: #000000;
+    background-color: #EFB80B;
     border: none;
     width: 160px;
     border-radius: 50px;
@@ -32,6 +32,11 @@
     opacity: 1;
 }
 
+
+
+#span_id_hr {
+    filter: drop-shadow(2px 2px 10px #EFB80B);
+}
 
 
 
@@ -55,4 +60,35 @@
     background-color: #006400;
     border-radius: 15px;
     border: 1px #000000 solid;
+}
+
+
+
+
+
+
+
+
+
+/* footer */
+
+
+#Social a {
+    text-decoration: none;
+    color: #000;
+}
+
+#Menu a {
+    text-decoration: none;
+    color: #000;
+}
+
+#More a {
+    text-decoration: none;
+    color: #000;
+}
+
+#Category a {
+    text-decoration: none;
+    color: #000;
 }
