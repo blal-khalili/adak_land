@@ -2,9 +2,42 @@ import "./Profile.css";
 import { Link } from "react-router";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import authAxiosInstance from "../../../utils/auth/customAxios";
+import authStore from "../../../stores/authStore";
+import Cookies from 'js-cookie'
+import { jwtDecode } from "jwt-decode";
+
 
 
 function Profile() {
+    const [fullName, setFullName] = useState('ناشناخته')
+    const [phoneNumber, setPhoneNumber] = useState(null)
+    const [avatarImg, setAvatarImg] = useState(null)
+    // TODO: zustand need to save information but it dosn't
+    const loginError = authStore((state) => state.error)
+    // const userId = authStore((state)=>state.userId)
+    const userId = authStore.getState().userId
+
+
+
+
+
+    useEffect(() => {
+        // const access_token = Cookies.get('access_token')
+        // const decoded = jwtDecode(access_token);
+
+        authAxiosInstance.get(`account/detail/1/`, {
+        })
+            .then((res) => {
+                console.log(res.data)
+                setFullName(res.data.username)
+                setPhoneNumber(res.data.phone_number)
+                setAvatarImg(res.data.avatar)
+            })
+    }, [])
+
+
     return (
         <section id="Profile_page_id" className="py-5 mt-5">
 
@@ -17,21 +50,27 @@ function Profile() {
                         <aside className="sidebar">
 
                             <div className="user-box">
-
+                                <div>
+                                    {userId &&
+                                        <div class="alert alert-danger" role="alert">
+                                            {userId}
+                                        </div>
+                                    }
+                                </div>
                                 <img
-                                    src="https://via.placeholder.com/100"
+                                    src={avatarImg}
                                     alt="Profile"
                                 />
 
                                 <h3>
                                     {/* <i className="bi bi-person-fill"></i> */}
                                     <FaRegUser />
-                                    سهند علیپور
+                                    {fullName}
                                 </h3>
 
                                 <p>
                                     <i className="bi bi-telephone-fill"></i>
-                                    09123456789
+                                    {phoneNumber}
                                 </p>
 
                                 <Link id="btn_editprofile_link" className="" to="/Editprofile" href="#">

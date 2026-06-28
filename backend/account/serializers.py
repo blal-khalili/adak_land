@@ -5,7 +5,8 @@ from .models import User
 class OneUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
+        # fields = "__all__"
+        exclude = ['password','groups','is_active','is_staff','is_superuser','last_login','user_permissions']
 
 
 class CreateUserSerializer(serializers.ModelSerializer):

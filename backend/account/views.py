@@ -10,7 +10,7 @@ from .serializers import OneUserSerializer,CreateUserSerializer
 class UserDetailAPIView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = OneUserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
 
 

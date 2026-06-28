@@ -5,31 +5,30 @@ import { jwtDecode } from "jwt-decode";
 
 
 const login = async (username, password) => {
-
-  
-  let is_authenticated = false;
   await authAxiosInstance.post("api/token/", {
     username: username,
     password: password,
   })
-  .then((res) => {
-    console.log(res.data)
-    authStore.getState().setEmail('uuuuuuuuuuuuu')
-      // Cookies.remove("refresh_token")
-      // Cookies.remove("access_token")
+    .then((res) => {
+      console.log(res.data)
+      authStore.getState().setEmail('uuuuuuuuuuuuu')
+
+      Cookies.remove("refresh_token")
+      Cookies.remove("access_token")
       Cookies.set('refresh_token', res.data.refresh, { secure: true })
       Cookies.set('access_token', res.data.access, { secure: true })
-      // setUser()
-      // is_authenticated = true;
+
+
+      const access_token = Cookies.get('access_token')
+      const decoded = jwtDecode(access_token);
+      authStore.getState().setUserId(decoded.user_id)
+      console.log('success')
+            authStore.getState().setError('با موفقیت وارد شدید')
+
     })
     .catch(() => {
       authStore.getState().setError('مشکلی در لاگین رخ داد')
-      // is_authenticated = false;
     })
-
-    // TODO: is_authenticated logic is not working and no matter what it just returns false
-    return is_authenticated
-  // TODO: redirect user to home page with a message
 };
 
 
@@ -37,7 +36,7 @@ const login = async (username, password) => {
 
 const register = async (phone_number, email, password, password_validate) => {
   // const { setUser } = authStore()
-  
+
   await authAxiosInstance.post("account/create/", {
     phone_number: phone_number,
     email: email,
@@ -49,39 +48,40 @@ const register = async (phone_number, email, password, password_validate) => {
       console.log('o999999999999999999')
     })
     .catch(() => {
-     
+
     })
 };
 
+// TODO: check if also refresh token expired
 const checkAuth = () => {
   const access_token = Cookies.get('access_token')
   const decoded = jwtDecode(access_token);
   const time_difference = decoded.exp - Math.floor(Date.now() / 1000)
   let is_expired = false
 
-  if (time_difference <= 0){
+  if (time_difference <= 0) {
     is_expired = true;
-  }else{
+  } else {
     is_expired = false;
   }
 
   return is_expired
 }
 
-const  userProfileDetail = async () => {
+const userProfileDetail = async () => {
   const access_token = Cookies.get('access_token')
   const decoded = jwtDecode(access_token);
   let jjjjj = {}
   console.log(decoded.user_id)
   await authAxiosInstance.get(`account/detail/${decoded.user_id}`)
-  .then((res) => {
-      jjjjj =  res.data
+    .then((res) => {
+      jjjjj = res.data
     })
     .catch(() => {
-      
+
     })
-    console.log(jjjjj)
-    return jjjjj
+  console.log(jjjjj)
+  return jjjjj
 }
 
 
