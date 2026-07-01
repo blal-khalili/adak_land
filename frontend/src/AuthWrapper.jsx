@@ -1,25 +1,19 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { checkAuth } from "../utils/auth/auth";
-
+import authStore from "../stores/authStore";
+import useCheckAuth from "./hooks/useCheckAuth";
 
 function AuthWrapper() {
   let navigate = useNavigate();
+  const [isExpired] = useCheckAuth()
 
-  useEffect(()=>{
-    if(checkAuth()){
-      navigate('/RegistrationLogin')
-    }else{
-    }
-  },[])
-  
   return (
     <>
-    <br />
-    <br />
-    <br />
-    <br />
-      <Outlet></Outlet>
+      {isExpired ?
+        navigate('/RegistrationLogin') :
+        <Outlet></Outlet>
+      }
     </>
   );
 }

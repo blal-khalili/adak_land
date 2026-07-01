@@ -54,9 +54,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
             <Route path="/Personalinfo" element={<Personalinfo />}></Route>
             <Route path="/Editprofile" element={<Editprofile />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
             <Route element={<AuthWrapper/>}>
-                
+              <Route path="/profile" element={<Profile />}></Route>
             </Route>
           </Route>
 
