@@ -3,7 +3,17 @@ import Cookies from 'js-cookie'
 import { jwtDecode } from "jwt-decode";
 import { checkAuth } from "./auth";
 
-const authAxiosInstance = axios.create({
+export const normalAxiosInstance = axios.create({
+  baseURL: 'http://127.0.0.1:8000/',
+  timeout: 10000, // Set timeout to 10 seconds
+  headers: {
+    "Content-Type": 'application/json',
+    // "Access-Control-Allow-Origin": "http://localhost:5173/", // Allow CORS
+  },
+});
+
+
+export const authAxiosInstance = axios.create({
   baseURL: 'http://127.0.0.1:8000/',
   timeout: 10000, // Set timeout to 10 seconds
   headers: {

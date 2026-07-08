@@ -2,9 +2,8 @@ import "./RegistrationLogin.css"
 import Logo_Adack_Land from "../../assets/image/OriginLogo/Logo_Adack_Land.png"
 import { Link, useNavigate } from "react-router";
 import authStore from "../../../stores/authStore";
-import login from "../../../utils/auth/auth";
-import { useRef } from "react";
-
+import login, { checkAuth } from "../../../utils/auth/auth";
+import { useEffect, useEffectEvent, useRef } from "react";
 
 
 
@@ -15,8 +14,23 @@ function RegistrationLogins() {
     const inputPassword = useRef(null)
     const email = authStore((state) => state.email)
     const loginError = authStore((state) => state.error)
+    const isLoggedIn = authStore((state) => state.isLoggedIn)
 
     const { username, setUser } = authStore()
+
+
+    useEffect(()=>{
+        if(isLoggedIn == true){
+            navigate('/')
+        }
+    },[isLoggedIn])
+
+
+    useEffect(() => {
+        if (checkAuth() == false) {
+            navigate('/')
+        }
+    }, [])
 
 
 
@@ -46,12 +60,7 @@ function RegistrationLogins() {
                                 <div className="mt-4">
                                     {/* <Link to="/Confirmation_Code_Page" ></Link> */}
                                     <button onClick={() => {
-                                        // setEmail('gggggggggggggggggg')
-                                        if (login(inputUsername.current.value, inputPassword.current.value) == true) {
-                                            // navigate('/profile')
-                                        } else {
-                                            // navigate('/profile')
-                                        }
+                                        login(inputUsername.current.value, inputPassword.current.value)
                                     }
                                     } id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button>
                                 </div>

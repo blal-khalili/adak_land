@@ -1,14 +1,15 @@
 import authStore from "../../stores/authStore";
-import authAxiosInstance from "./customAxios";
+import { authAxiosInstance, normalAxiosInstance } from "./customAxios";
 import Cookies from 'js-cookie'
 import { jwtDecode } from "jwt-decode";
 
 
 const login = async (username, password) => {
-  await authAxiosInstance.post("api/token/", {
+  await normalAxiosInstance.post("api/token/", {
     username: username,
     password: password,
   })
+
     .then((res) => {
       console.log(res.data)
       authStore.getState().setEmail('uuuuuuuuuuuuu')
@@ -23,11 +24,12 @@ const login = async (username, password) => {
       const decoded = jwtDecode(access_token);
       authStore.getState().setUserId(decoded.user_id)
       console.log('success')
-            authStore.getState().setError('با موفقیت وارد شدید')
-
+      authStore.getState().setError('با موفقیت وارد شدید')
+      authStore.getState().setIsLoggedIn(true)
     })
     .catch(() => {
       authStore.getState().setError('مشکلی در لاگین رخ داد')
+      authStore.getState().setIsLoggedIn(false)
     })
 };
 
@@ -37,7 +39,7 @@ const login = async (username, password) => {
 const register = async (phone_number, email, password, password_validate) => {
   // const { setUser } = authStore()
 
-  await authAxiosInstance.post("account/create/", {
+  await normalAxiosInstance.post("account/create/", {
     phone_number: phone_number,
     email: email,
     password: password,
@@ -54,17 +56,20 @@ const register = async (phone_number, email, password, password_validate) => {
 
 // TODO: check if also refresh token expired
 const checkAuth = () => {
+  let is_expired = false;
   const access_token = Cookies.get('access_token')
-  const decoded = jwtDecode(access_token);
-  const time_difference = decoded.exp - Math.floor(Date.now() / 1000)
-  let is_expired = false
-
-  if (time_difference <= 0) {
-    is_expired = true;
+  if (access_token == null) {
+    is_expired = true
   } else {
-    is_expired = false;
-  }
+    const decoded = jwtDecode(access_token);
+    const time_difference = decoded.exp - Math.floor(Date.now() / 1000)
 
+    if (time_difference <= 0) {
+      is_expired = true
+    } else {
+      is_expired = false
+    }
+  }
   return is_expired
 }
 
