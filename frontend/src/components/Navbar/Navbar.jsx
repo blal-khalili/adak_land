@@ -2,12 +2,12 @@ import Logo_Navbar from "../../assets/image/OriginLogo/Logo_Navbar.png"
 import "../Navbar/Navbar.css";
 import { Link } from "react-router";
 import { useEffect } from "react";
-import useCheckAuth from "../../hooks/useCheckAuth";
-import useProfileData from "../../hooks/useProfileData";
+// import useCheckAuth from "../../hooks/useCheckAuth";
+// import useProfileData from "../../hooks/useProfileData";
 
 function Navber() {
-    const [profileData] = useProfileData()
-    const [isExpired] = useCheckAuth()
+    // const [profileData] = useProfileData()
+    // const [isExpired] = useCheckAuth()
 
     return (
         <nav className="navbar navbar-expand-lg mb-5 fixed-top">
@@ -113,9 +113,34 @@ function Navber() {
                                 </ul>
                             </div>
                         </li>
-                        {isExpired ? 
-                        <div>
-                            <li className="nav-item2">
+
+                        {/* {isExpired ?
+                            <div>
+                                <li className="nav-item2">
+                                    <Link to="/RegistrationLogin" className="nav-link" href="#">
+                                        <button className="bg-primary text-white">
+                                            <i className="bi bi-arrow-bar-left px-1"></i>ورود
+                                        </button>
+                                    </Link>
+                                </li>
+                                <li className="nav-item2">
+                                    <Link to="/Sign_in_Page" className="nav-link" href="#">
+                                        <button className="bg-primary text-white">
+                                            <i className="bi bi-arrow-bar-left px-1"></i>ثبت نام کنید
+                                        </button>
+                                    </Link>
+                                </li>
+                            </div> :
+                            <div>
+                                <img src={profileData.avatar} alt="" width={40} />
+                                <p>{profileData}</p>
+                            </div>
+                        } */}
+
+
+
+
+                        <li className="nav-item2">
                             <Link to="/RegistrationLogin" className="nav-link" href="#">
                                 <button className="bg-primary text-white">
                                     <i className="bi bi-arrow-bar-left px-1"></i>ورود
@@ -129,14 +154,9 @@ function Navber() {
                                 </button>
                             </Link>
                         </li>
-                        </div>:
-                        <div>
-                            {/* <img src={profileData.avatar} alt="" width={40} /> */}
-                            {/* <p>{profileData}</p> */}
-                        </div>
-                        }
 
-                        
+
+
 
                         <li className="nav-item2">
                             {/* <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link> */}
@@ -153,7 +173,7 @@ function Navber() {
                         </li>
                         <li className="nav-item1 d-flex">
                             <Link className="nav-link text-dark" href="#" to="/profile">
-                            <i class="bi bi-bell"></i>
+                                <i className="bi bi-bell"></i>
                             </Link>
                         </li>
                         <li className="nav-item3 mt-1">

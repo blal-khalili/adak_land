@@ -63,8 +63,14 @@
 }
 
 
+/* #h2-text {
+    color: #35545a;
+} */
 
 
+#ContactUs-id #color-text-errors {
+    color: #ddff00;
+}
 
 
 
@@ -75,20 +81,197 @@
 
 #Social a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff !important;
 }
 
 #Menu a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff !important;
 }
 
 #More a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff !important;
 }
 
 #Category a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff !important;
+}
+
+
+#footer {
+    background-color: #1A1A1A;
+    color: #ffffff !important;
+    /* background-image: url("../../assets/image/Background_ContactUs/Background_ContactUs.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+}
+
+
+#footer .bi {
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+/* navbar */
+
+
+nav {
+    background: #302f2f1f !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px #000000;
+    z-index: 999;
+}
+
+
+#btn-search:hover {
+    font-weight: bold;
+    box-shadow: 0 0 15px #ffffff;
+}
+
+
+
+/* nav {
+    padding: 10px 20px;
+    box-shadow: 0 0 30px #000000;
+    top: 0;
+    z-index: 999;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    background-color: #302f2f97 !important;
+    backdrop-filter: blur(10px) !important;
+} */
+
+nav .navbar-nav a.nav-link {
+    font-size: 1.1em;
+}
+
+.nav-item1 a {
+    transition: 0.3s;
+}
+
+.nav-item1 a:hover {
+    color: #0118D8 !important;
+    transform: translateY(-2px);
+    font-weight: bold;
+}
+
+
+.navbar input {
+    filter: none !important;
+}
+
+.nav-item1 i {
+    font-size: 30px;
+}
+
+.nav-item2 button {
+    height: 40px;
+    border-radius: 8px;
+    transition: .3s;
+    border: 2px #000000 solid;
+}
+
+.nav-item2 button:hover {
+    transform: translateY(-2px);
+}
+
+
+.nav-item2 #btn-link-ContactUs {
+    height: 40px;
+    border-radius: 8px;
+    transition: .3s;
+    position: relative;
+    top: 8px;
+    border: 2px #000000 solid;
+}
+
+
+.nav-item2 #btn-link-ContactUs:hover {
+    transform: translateY(-2px);
+}
+
+
+.nav-item3 a i {
+    font-size: 25px;
+    transition: .3s;
+}
+
+.nav-item3 a i:hover {
+    color: #d80101;
+    transform: scale(1.2);
+    text-shadow: 0 0 2px currentColor;
+}
+
+.dropdown-menu {
+    box-shadow: 0 3px 6px #000, 0 3px 6px #000;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    left: 0px;
+    top: 63px;
+}
+
+@media only screen and (min-width: 992px) {
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .dropdown-menu.show {
+        display: flex;
+    }
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-menu li .dropdown-item {
+    font-size: 1em;
+    padding: 0.5em 1em;
+}
+
+.dropdown-menu li .dropdown-item:hover {
+    text-decoration: underline #EFB80B;
+}
+
+.dropdown-menu li:first-child {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.dropdown-menu li:first-child:hover {
+    background-color: #f1f1f1;
+}
+
+@media only screen and (max-width: 992px) {
+    .dropdown-menu.show {
+        flex-wrap: wrap;
+        max-height: 350px;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1140px) {
+    .dropdown:hover .dropdown-menu {
+        width: 40vw;
+        flex-wrap: wrap;
+    }
+}
+
+
+
+.logo {
+    width: 230px;
+    height: auto;
 }

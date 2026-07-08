@@ -41,10 +41,11 @@ createRoot(document.getElementById('root')).render(
       <QueryClientProvider client={queryClient}>
 
         <Routes>
-          
+
+          <Route path="/ContactUs" element={<ContactUs />}></Route>
+
           <Route path="/" element={<LandingLayout />}>
             <Route path="" element={<App />}></Route>
-            <Route path="/ContactUs" element={<ContactUs />}></Route>
             <Route path="/supermarket" element={<Supermarket />}></Route>
             <Route path="/shoppingcart" element={<Cart />}></Route>
             <Route path="/productsfilter" element={<ProductsFilter />}></Route>
@@ -54,7 +55,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
             <Route path="/Personalinfo" element={<Personalinfo />}></Route>
             <Route path="/Editprofile" element={<Editprofile />}></Route>
-            <Route element={<AuthWrapper/>}>
+            <Route element={<AuthWrapper />}>
               <Route path="/profile" element={<Profile />}></Route>
             </Route>
           </Route>

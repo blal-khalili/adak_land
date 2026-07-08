@@ -9,14 +9,17 @@ import { useRef } from "react";
 
 
 function RegistrationLogins() {
-    const { setEmail,setPhoneNumber } = authStore()
+    const { setEmail, setPhoneNumber } = authStore()
     let navigate = useNavigate();
     const inputUsername = useRef(null)
     const inputPassword = useRef(null)
-    const email = authStore((state)=>state.email)
-    const loginError = authStore((state)=>state.error)
+    const email = authStore((state) => state.email)
+    const loginError = authStore((state) => state.error)
 
     const { username, setUser } = authStore()
+
+
+
 
     return (
         <section id='RegistrationLogin_id'>
@@ -27,7 +30,8 @@ function RegistrationLogins() {
                         <div className="Login_Registration">
                             <div>
                                 {loginError &&
-                                    <div class="alert alert-danger" role="alert">
+                                    <div id="alert_Login_Registration" className="alert alert-danger" role="alert">
+                                        <span className="icon">⚠️</span>
                                         {loginError}
                                     </div>
                                 }
