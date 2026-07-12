@@ -7,8 +7,6 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
 
-
-
 const invalidEmails = [
     "example.com", "hi2.io",
     "example.net", "example.org",

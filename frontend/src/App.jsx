@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Carousel from './components/Carousel/Carousel';
 import supermarketlogo from "./assets/image/CategoryLogos/SuperMarketLogo/icons8-supermarket-96.png/"
 import behdashtylogo from "./assets/image/CategoryLogos/BehdashtyLogo/cosmetics.png/"
@@ -9,11 +9,29 @@ import CardSlider from "./components/CardSlider/CardSlider"
 import { Link } from "react-router";
 import useProducts from './hooks/useProducts';
 import './App.css';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 function App() {
   const products = useProducts();
 
+  const showSwal = () => {
+    withReactContent(Swal).fire({
+      text: "به حساب کاربری خود وارد شدید",
+      icon: "success",
+    }).then((result) => {
+      if (result) {
+        localStorage.setItem('login_pop_up_accepted',true)
+      }
+    })
+  }
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('login_pop_up_accepted')) == false){
+      showSwal()
+    }
+  }, [])
 
   return (
     <section>

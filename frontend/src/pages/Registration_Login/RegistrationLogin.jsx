@@ -21,6 +21,7 @@ function RegistrationLogins() {
 
     useEffect(()=>{
         if(isLoggedIn == true){
+            localStorage.setItem('login_pop_up_accepted',false)
             navigate('/')
         }
     },[isLoggedIn])
