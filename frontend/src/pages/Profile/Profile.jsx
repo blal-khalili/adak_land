@@ -15,7 +15,6 @@ function Profile() {
     const [phoneNumber, setPhoneNumber] = useState(null)
     const [avatarImg, setAvatarImg] = useState(null)
     // TODO: zustand need to save information but it dosn't
-    const loginError = authStore((state) => state.error)
     // const userId = authStore((state)=>state.userId)
     const userId = authStore.getState().userId
 

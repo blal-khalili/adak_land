@@ -2,7 +2,7 @@ import "./Sign_in_Page.css"
 import Logo_Adack_Land from "../../assets/image/OriginLogo/Logo_Adack_Land.png"
 import { Link, useNavigate } from "react-router";
 import authStore from "../../../stores/authStore";
-import { register } from "../../../utils/auth/auth";
+import { signIn } from "../../../utils/auth/auth";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
@@ -31,7 +31,9 @@ const Validphonenumber = [
 function sign_in() {
     let navigate = useNavigate();
 
-    const { username, setUser } = authStore()
+    // const { username, setUser } = authStore()
+    const signInError = authStore((state) => state.error)
+
 
 
 
@@ -45,7 +47,11 @@ function sign_in() {
 
     const formSubmitHandler = (data) => {
         console.log(data);
-        // register(inputPhonenumber.current.value, inputEmail.current.value, inputPassword.current.value, inputPasswordValidate.current.value)
+        console.log(data.phonenumber)
+        // TODO: fix the registers for password and confirm_password fields
+        signIn(data.phonenumber, data.email, '1', '871')
+        // TODO: if user is logged in the user should not see this page and should be navigated to home
+        // TODO: after sign in navigate the user to Registrationlogin page
 
     };
 
@@ -56,9 +62,11 @@ function sign_in() {
             <div className="container">
                 <div className="row py-5 mt-4">
                     <div>
+
                         <form action="" className="row g-3"
                             id="form"
                             onSubmit={handleSubmit(formSubmitHandler)}>
+
                             <div className="glass-box">
                                 <img src={Logo_Adack_Land} className="logo col-md-3 mx-auto" alt="" />
                                 <div className="Login_Registration">
@@ -66,7 +74,12 @@ function sign_in() {
                                         <h5 className="text_h5 fw-bolder">ثبت‌نام در آداک لند</h5>
                                         <p id="text_tag_p" className="mt-5">لطفا تمامی فیلد ها را به درستی وارد کنید</p>
                                         <div className="mt-4">
-
+                                            {signInError &&
+                                                <div id="alert_Login_Registration" className="alert alert-danger" role="alert">
+                                                    <span className="icon">⚠️</span>
+                                                    {signInError}
+                                                </div>
+                                            }
                                             <div>
                                                 <label for="inputPhonenumber" className="form-label mt-3">شماره تلفن</label>
                                                 <input {...register("phonenumber", {
@@ -135,10 +148,7 @@ function sign_in() {
                                         </div>
                                         <div className="mt-4">
                                             {/* <Link to="/Confirmation_Code_Page" ></Link> */}
-                                            <button type="submit">jflsdjk</button>
-                                            <button onClick={() => {
-                                            }
-                                            } id="btn_RegistrationLogin" className="bg-primary text-white">ثبت‌نام در آداک لند</button>
+                                            <button type="submit" id="btn_RegistrationLogin" className="bg-primary text-white">ثبت‌نام در آداک لند</button>
                                         </div>
                                     </div>
                                 </div>

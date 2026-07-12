@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 
 
 const login = async (username, password) => {
+  // TOOD: use the server provided error
   await normalAxiosInstance.post("api/token/", {
     username: username,
     password: password,
@@ -36,7 +37,7 @@ const login = async (username, password) => {
 
 
 
-const register = async (phone_number, email, password, password_validate) => {
+const signIn = async (phone_number, email, password, password_validate) => {
   // const { setUser } = authStore()
 
   await normalAxiosInstance.post("account/create/", {
@@ -49,8 +50,9 @@ const register = async (phone_number, email, password, password_validate) => {
       console.log(res.data)
       console.log('o999999999999999999')
     })
-    .catch(() => {
-
+    .catch((error) => {
+      error.response.data
+      authStore.getState().setError(error.response.data[0])
     })
 };
 
@@ -91,4 +93,4 @@ const userProfileDetail = async () => {
 
 
 export default login;
-export { login, register, checkAuth, userProfileDetail };
+export { login, signIn, checkAuth, userProfileDetail };
