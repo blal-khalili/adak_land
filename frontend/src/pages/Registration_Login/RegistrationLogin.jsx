@@ -24,7 +24,7 @@ function RegistrationLogins() {
             localStorage.setItem('login_pop_up_accepted',false)
             navigate('/')
         }
-    },[isLoggedIn])
+    }, [isLoggedIn])
 
 
     useEffect(() => {
