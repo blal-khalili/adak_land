@@ -22,6 +22,7 @@ function Profile() {
 
 
 
+    // TODO: profile should not take the user data this function should be handled sepratly
     useEffect(() => {
         // const access_token = Cookies.get('access_token')
         // const decoded = jwtDecode(access_token);

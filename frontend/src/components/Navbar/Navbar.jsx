@@ -3,11 +3,15 @@ import "../Navbar/Navbar.css";
 import { Link } from "react-router";
 import { useEffect } from "react";
 // import useCheckAuth from "../../hooks/useCheckAuth";
-// import useProfileData from "../../hooks/useProfileData";
+import useProfileData from "../../hooks/useProfileData";
+import { checkAuth, logout } from "../../../utils/auth/auth";
+import authStore, { useBearStore } from "../../../stores/authStore";
+import { userProfileDetail } from "../../../utils/auth/auth";
+
 
 function Navber() {
-    // const [profileData] = useProfileData()
-    // const [isExpired] = useCheckAuth()
+    const userData = useBearStore.getState().userData
+    const isLoggedIn = useBearStore.getState().isLoggedIn
 
     return (
         <nav className="navbar navbar-expand-lg mb-5 fixed-top">
@@ -114,7 +118,15 @@ function Navber() {
                             </div>
                         </li>
 
-                        {/* {isExpired ?
+                        {isLoggedIn ?
+                            <div>
+                                {userData &&
+                                    <div>
+                                        <img src={userData.avatar} alt="" width={40} />
+                                        <p>{userData.username}</p>
+                                    </div>
+                                }
+                            </div>:
                             <div>
                                 <li className="nav-item2">
                                     <Link to="/RegistrationLogin" className="nav-link" href="#">
@@ -130,17 +142,13 @@ function Navber() {
                                         </button>
                                     </Link>
                                 </li>
-                            </div> :
-                            <div>
-                                <img src={profileData.avatar} alt="" width={40} />
-                                <p>{profileData}</p>
-                            </div>
-                        } */}
+                            </div> 
+                        }
 
 
 
 
-                        <li className="nav-item2">
+                        {/* <li className="nav-item2">
                             <Link to="/RegistrationLogin" className="nav-link" href="#">
                                 <button className="bg-primary text-white">
                                     <i className="bi bi-arrow-bar-left px-1"></i>ورود
@@ -153,7 +161,7 @@ function Navber() {
                                     <i className="bi bi-arrow-bar-left px-1"></i>ثبت نام کنید
                                 </button>
                             </Link>
-                        </li>
+                        </li> */}
 
 
 
@@ -170,6 +178,12 @@ function Navber() {
                                     <i className="bi bi-person-circle px-1"></i>تماس با ما
                                 </button>
                             </Link>
+                        </li>
+                        <li>
+                            {/* TODO: when logging out the state of userData doesn't change */}
+                                <button onClick={()=>{logout()}} className="bg-primary text-white">
+                                    <i className="bi bi-person-circle px-1"></i>خروج
+                                </button>
                         </li>
                         <li className="nav-item1 d-flex">
                             <Link className="nav-link text-dark" href="#" to="/profile">

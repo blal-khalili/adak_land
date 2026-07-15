@@ -1,4 +1,4 @@
-import authStore from "../../stores/authStore";
+import authStore, { useBearStore } from "../../stores/authStore";
 import { authAxiosInstance, normalAxiosInstance } from "./customAxios";
 import Cookies from 'js-cookie'
 import { jwtDecode } from "jwt-decode";
@@ -20,7 +20,7 @@ const login = async (username, password) => {
       Cookies.set('refresh_token', res.data.refresh, { secure: true })
       Cookies.set('access_token', res.data.access, { secure: true })
 
-
+      // userProfileDetail()
       const access_token = Cookies.get('access_token')
       const decoded = jwtDecode(access_token);
       authStore.getState().setUserId(decoded.user_id)
@@ -79,19 +79,26 @@ const checkAuth = () => {
 const userProfileDetail = async () => {
   const access_token = Cookies.get('access_token')
   const decoded = jwtDecode(access_token);
-  let jjjjj = {}
-  console.log(decoded.user_id)
-  await authAxiosInstance.get(`account/detail/${decoded.user_id}`)
-    .then((res) => {
-      jjjjj = res.data
-    })
-    .catch(() => {
 
+  await authAxiosInstance.get(`account/detail/1/`, {
+  })
+    .then((res) => {
+      useBearStore.getState().setUserData(res.data)
+      useBearStore.getState().setIsLoggedIn(true)
+
+      // console.log(res.data)
     })
-  console.log(jjjjj)
-  return jjjjj
+}
+
+
+const logout = () =>{
+      Cookies.remove("refresh_token")
+      Cookies.remove("access_token")
+      useBearStore.getState().setUserData(null)
+      useBearStore.getState().setIsLoggedIn(null)
+
 }
 
 
 export default login;
-export { login, signIn, checkAuth, userProfileDetail };
+export { login, signIn, checkAuth, userProfileDetail, logout };

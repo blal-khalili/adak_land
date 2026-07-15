@@ -2,7 +2,7 @@ import "./RegistrationLogin.css"
 import Logo_Adack_Land from "../../assets/image/OriginLogo/Logo_Adack_Land.png"
 import { Link, useNavigate } from "react-router";
 import authStore from "../../../stores/authStore";
-import login, { checkAuth } from "../../../utils/auth/auth";
+import login, { checkAuth, userProfileDetail } from "../../../utils/auth/auth";
 import { useEffect, useEffectEvent, useRef } from "react";
 
 
@@ -19,10 +19,12 @@ function RegistrationLogins() {
     const { username, setUser } = authStore()
 
 
-    useEffect(()=>{
-        if(isLoggedIn == true){
-            localStorage.setItem('login_pop_up_accepted',false)
-            navigate('/')
+    useEffect(() => {
+        if (isLoggedIn == true) {
+            localStorage.setItem('login_pop_up_accepted', false)
+            userProfileDetail().then(() => {
+                navigate('/')
+            })
         }
     }, [isLoggedIn])
 
