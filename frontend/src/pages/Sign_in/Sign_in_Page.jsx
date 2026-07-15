@@ -3,8 +3,10 @@ import Logo_Adack_Land from "../../assets/image/OriginLogo/Logo_Adack_Land.png"
 import { Link, useNavigate } from "react-router";
 import authStore from "../../../stores/authStore";
 import { signIn } from "../../../utils/auth/auth";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 const invalidEmails = [
@@ -27,12 +29,55 @@ const Validphonenumber = [
 
 
 
+const validrightcharacterpassword = [
+    "الف", "ب", "پ", "ت", "ث",
+    "ج", "چ", "ح", "خ", "د",
+    "ذ", "ر", "ز", "ژ", "س",
+    "ش", "ص", "ض", "ط", "ظ",
+    "ع", "غ", "ف", "ق", "ک",
+    "گ", "ل", "م", "ن", "و",
+    "ه", "ی", "ا", "آ",
+
+    "a", "b", "c", "d", "e",
+    "f", "g", "h", "i", "j",
+    "k", "l", "m", "n", "o",
+    "p", "q", "r", "s", "t",
+    "u", "v", "w", "x", "y",
+    "z",
+
+    "A", "B", "C", "D", "E",
+    "F", "G", "H", "I", "J",
+    "K", "L", "M", "N", "O",
+    "P", "Q", "R", "S", "T",
+    "U", "V", "W", "X", "Y",
+    "Z",
+
+    " ",
+
+    "0", "1", "2", "3", "4",
+    "5", "6", "7", "8", "9",
+]
+
+
+
+
 
 function sign_in() {
     let navigate = useNavigate();
 
     // const { username, setUser } = authStore()
     const signInError = authStore((state) => state.error)
+    const isLoggedIn = authStore((state) => state.isLoggedIn)
+
+
+
+    useEffect(() => {
+        console.log(isLoggedIn)
+        if (isLoggedIn == true) {
+            localStorage.setItem('signIn_pop_up_accepted', false)
+            // navigate('/RegistrationLogin')
+        }
+    }, [isLoggedIn])
 
 
 
@@ -49,11 +94,32 @@ function sign_in() {
         console.log(data);
         console.log(data.phonenumber)
         // TODO: fix the registers for password and confirm_password fields
-        signIn(data.phonenumber, data.email, '1', '871')
+        signIn(data.phonenumber, data.email, data.password, data.password_validate)
         // TODO: if user is logged in the user should not see this page and should be navigated to home
         // TODO: after sign in navigate the user to Registrationlogin page
 
     };
+
+
+
+
+    const showSwal = () => {
+        withReactContent(Swal).fire({
+            text: "حساب کاربری خود را با موفقیت ساختید ✓",
+            icon: "success",
+        }).then((result) => {
+            if (result) {
+                localStorage.setItem('signIn_pop_up_accepted', true)
+            }
+        })
+    }
+
+
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem('signIn_pop_up_accepted')) == false) {
+            showSwal()
+        }
+    }, [])
 
 
 
@@ -138,13 +204,85 @@ function sign_in() {
 
 
 
-                                            <label for="inputPassword" className="form-labe mt-3">رمز عبور</label>
-                                            <input placeholder="رمز عبور خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPassword" />
+                                            <div>
+                                                <label htmlFor="inputPassword" className="form-label mt-3">
+                                                    رمز عبور
+                                                </label>
+
+                                                <input
+                                                    {...register("password", {
+                                                        validate: {
+                                                            ispassword: (password) => {
+                                                                for (let character of password) {
+                                                                    if (!validrightcharacterpassword.includes(character)) {
+                                                                        return "از کاراکترهای مجاز استفاده کنید!!!";
+                                                                    }
+                                                                }
+
+                                                                return true;
+                                                            },
+
+                                                            islengthpassword: (password) => {
+                                                                if (password.length < 6) {
+                                                                    return "رمز عبور باید حداقل ۶ کاراکتر باشد!!!";
+                                                                }
+
+                                                                return true;
+                                                            },
+                                                        },
+                                                    })}
+                                                    placeholder="رمز عبور خود را وارد کنید"
+                                                    type="password"
+                                                    className="form-control text-end mt-2"
+                                                    id="inputPassword"
+                                                />
+
+                                                {errors.password && (
+                                                    <p id="color-text-errors">{errors.password.message}</p>
+                                                )}
+                                            </div>
 
 
 
-                                            <label for="inputPasswordValidate" className="form-labe mt-3">تکرار رمز عبور</label>
-                                            <input placeholder="رمز عبور خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPasswordValidate" />
+                                            <div>
+                                                <label htmlFor="inputPasswordValidate" className="form-label mt-3">
+                                                    تکرار رمز عبور
+                                                </label>
+
+                                                <input
+                                                    {...register("password_validate", {
+                                                        validate: {
+                                                            isMatch: (value) => {
+                                                                if (value !== watch("password")) {
+                                                                    return "رمز عبور و تکرار آن یکسان نیستند !!!";
+                                                                }
+
+                                                                return true;
+                                                            },
+
+                                                            isLength: (value) => {
+                                                                if (value.length < 6) {
+                                                                    return "رمز عبور باید حداقل ۶ کاراکتر باشد !!!";
+                                                                }
+
+                                                                return true;
+                                                            },
+                                                        },
+                                                    })}
+                                                    placeholder="تکرار رمز عبور را وارد کنید"
+                                                    type="password"
+                                                    className="form-control text-end mt-2"
+                                                    id="inputPasswordValidate"
+                                                />
+
+                                                {errors.password_validate && (
+                                                    <p id="color-text-errors">
+                                                        {errors.password_validate.message}
+                                                    </p>
+                                                )}
+                                            </div>
+
+
                                         </div>
                                         <div className="mt-4">
                                             {/* <Link to="/Confirmation_Code_Page" ></Link> */}

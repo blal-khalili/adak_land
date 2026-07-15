@@ -49,6 +49,7 @@ const signIn = async (phone_number, email, password, password_validate) => {
     .then((res) => {
       console.log(res.data)
       console.log('o999999999999999999')
+      authStore.getState().setIsLoggedIn(true)
     })
     .catch((error) => {
       error.response.data
