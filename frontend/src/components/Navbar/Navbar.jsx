@@ -13,6 +13,13 @@ function Navber() {
     const userData = useBearStore.getState().userData
     const isLoggedIn = useBearStore.getState().isLoggedIn
 
+    useEffect(()=>{
+        if (checkAuth() == true){
+            useBearStore.getState().setIsLoggedIn(false)
+        }
+    },[])
+
+
     return (
         <nav className="navbar navbar-expand-lg mb-5 fixed-top">
             <div className="container-fluid">
@@ -181,7 +188,7 @@ function Navber() {
                         </li>
                         <li>
                             {/* TODO: when logging out the state of userData doesn't change */}
-                                <button onClick={()=>{logout()}} className="bg-primary text-white">
+                                <button onClick={()=>{checkLogin()}} className="bg-primary text-white">
                                     <i className="bi bi-person-circle px-1"></i>خروج
                                 </button>
                         </li>

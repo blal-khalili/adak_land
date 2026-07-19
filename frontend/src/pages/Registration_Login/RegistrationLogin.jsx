@@ -61,7 +61,7 @@ function RegistrationLogins() {
                                     <input ref={inputPassword} placeholder="رمز عبور خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPassword" />
                                 </div>
                                 <div className="mt-4">
-                                    {/* <Link to="/Confirmation_Code_Page" ></Link> */}
+                                    {/* <Link to="/ConfirmationCodePage" ></Link> */}
                                     <button onClick={() => {
                                         login(inputUsername.current.value, inputPassword.current.value)
                                     }
