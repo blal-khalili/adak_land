@@ -26,6 +26,7 @@ function Navber() {
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false"
+                    
                     aria-label="Toggle navigation"
                 >
                     <span className="bi bi-list-stars"></span>
