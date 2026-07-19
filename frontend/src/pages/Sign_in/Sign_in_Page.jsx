@@ -94,7 +94,9 @@ function sign_in() {
         console.log(data);
         console.log(data.phonenumber)
         // TODO: fix the registers for password and confirm_password fields
-        signIn(data.phonenumber, data.email, data.password, data.password_validate)
+        signIn(data.phonenumber, data.email, data.password, data.password_validate).then(
+            navigate('/confirm-code')
+        )
         // TODO: if user is logged in the user should not see this page and should be navigated to home
         // TODO: after sign in navigate the user to Registrationlogin page
 
@@ -285,7 +287,7 @@ function sign_in() {
 
                                         </div>
                                         <div className="mt-4">
-                                            {/* <Link to="/Confirmation_Code_Page" ></Link> */}
+                                            {/* <Link to="/ConfirmationCodePage" ></Link> */}
                                             <button type="submit" id="btn_RegistrationLogin" className="bg-primary text-white">ثبت‌نام در آداک لند</button>
                                         </div>
                                     </div>

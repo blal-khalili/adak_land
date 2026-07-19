@@ -201,3 +201,13 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # SMTP server host
+# EMAIL_PORT = 465  # SMTP server port (587 for TLS, 465 for SSL)
+# EMAIL_USE_TLS = True  # True for TLS, False for SSL
+# EMAIL_HOST_USER = 'khalili.blal1@gmail.com'  # SMTP server username
+# EMAIL_HOST_PASSWORD = ''  # SMTP server password
+# EMAIL_USE_SSL = False  # Set to True if using SSL
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Default sender email address

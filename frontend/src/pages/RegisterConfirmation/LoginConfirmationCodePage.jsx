@@ -2,7 +2,7 @@ import "./LoginConfirmationCodePage.css";
 import Adack_Land_Logo from "../../assets/image/OriginLogo/Adack_Land_Logo.png";
 import { Link } from "react-router";
 
-function Confirmation_Code_Page() {
+function ConfirmationCodePage() {
     return (
         <section id="RegistrationLogin_id">
             <div className="container">
@@ -43,4 +43,4 @@ function Confirmation_Code_Page() {
     );
 }
 
-export default Confirmation_Code_Page;
+export default ConfirmationCodePage;
