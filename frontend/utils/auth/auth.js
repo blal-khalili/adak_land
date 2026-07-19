@@ -80,7 +80,7 @@ const userProfileDetail = async () => {
   const access_token = Cookies.get('access_token')
   const decoded = jwtDecode(access_token);
 
-  await authAxiosInstance.get(`account/detail/1/`, {
+  await authAxiosInstance.get(`account/detail/${decoded.user_id}/`, {
   })
     .then((res) => {
       useBearStore.getState().setUserData(res.data)

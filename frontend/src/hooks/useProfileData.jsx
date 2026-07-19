@@ -13,7 +13,7 @@ function useProfileData() {
             const access_token = Cookies.get('access_token')
             const decoded = jwtDecode(access_token);
             
-        authAxiosInstance.get(`account/detail/1/`, {
+        authAxiosInstance.get(`account/detail/${decoded.user_id}/`, {
         })
         .then((res) => {
             setProfileData(res.data)

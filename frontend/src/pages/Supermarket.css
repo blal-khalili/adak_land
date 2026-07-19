@@ -1,3 +1,826 @@
-.filter-dropdown {
+#supermarket_section .col-md-2.border {
+
+    background: #ffffff !important;
+
+    border: none !important;
+
+    border-radius: 35px !important;
+
+    padding: 30px 20px !important;
+
+    direction: rtl;
+
+    position: sticky;
+
+    top: 90px;
+
+    box-shadow: 0 6px 10px #38383c;
+
+    overflow: hidden;
+
+    width: 240px;
+
+}
+
+
+
+/* Badge */
+
+#supermarket_section .col-md-2.border::before {
+
+    content: "FILTER";
+
+    position: absolute;
+
+    top: 18px;
+
+    left: -35px;
+
+    background:
+        linear-gradient(135deg,
+            #0118D8,
+            #00fff7);
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    padding: 8px 45px;
+
+    transform: rotate(-45deg);
+
+    letter-spacing: 2px;
+
+}
+
+
+
+/* Title */
+
+#supermarket_section .col-md-2.border h3 {
+
+    text-align: center;
+
+    font-size: 26px;
+
+    font-weight: 900;
+
+    color: #000000;
+
+    margin-bottom: 35px;
+
+}
+
+
+
+#supermarket_section .col-md-2.border h3::after {
+
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 5px;
+
+    margin: 15px auto 0;
+
+    border-radius: 20px;
+
+    background:
+
+        linear-gradient(90deg,
+            #0118D8,
+            #00fff7);
+
+}
+
+
+
+/* List */
+
+#supermarket_section .col-md-2.border ul {
+
+    padding: 0;
+
+}
+
+
+
+#supermarket_section .col-md-2.border li:not(.price-filter) {
+
+    list-style: none;
+
+    background: #f5f5f7;
+
+    border-radius: 22px;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+
+        inset 3px 3px 8px #838385,
+
+        inset -4px -4px 10px #ffffff;
+
+    transition: .3s;
+
+}
+
+
+
+#supermarket_section .col-md-2.border li:not(.price-filter):hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 6px 10px #38383c;
+
+}
+
+
+
+/* Text */
+
+
+#supermarket_section .col-md-2.border h4 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    color: #000000;
+
+}
+
+
+
+/* Checkbox */
+
+
+#supermarket_section .col-md-2.border input[type="checkbox"] {
+
+    appearance: none;
+
+    width: 55px;
+
+    height: 30px;
+
+    background: #d2d2d7;
+
+    border-radius: 40px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 3px 3px 8px #00000026;
+
+}
+
+
+
+#supermarket_section .col-md-2.border input[type="checkbox"]::before {
+
+    content: "";
+
+    width: 24px;
+
+    height: 24px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 3px;
+
+    right: 4px;
+
+    transition: .4s;
+
+}
+
+
+
+#supermarket_section .col-md-2.border input[type="checkbox"]:checked {
+
+    background:
+
+        linear-gradient(135deg,
+            #0118D8,
+            #00fff7);
+
+}
+
+
+
+#supermarket_section .col-md-2.border input[type="checkbox"]:checked::before {
+
+    transform: translateX(-24px);
+
+}
+
+
+
+
+/* Price Filter */
+
+
+
+#supermarket_section .price-filter {
+
+    display: block !important;
+
+    background:
+
+        linear-gradient(145deg,
+            #ffffff,
+            #eeeeef) !important;
+
+    border-radius: 28px !important;
+
+    padding: 22px !important;
+
+    margin-top: 18px;
+
+    box-shadow:
+
+        inset 3px 3px 8px #9d9d9f,
+
+        inset -3px -3px 10px #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+
+#supermarket_section .price-filter::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    background: #38383c;
+
+    opacity: .12;
+
+    filter: blur(40px);
+
+    top: -30px;
+
+    left: -20px;
+
+}
+
+
+/* 
+.price-filter h4 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    position: relative;
+
+    margin-bottom: 25px !important;
+
+    font-size: medium !important;
+
+}
+
+
+
+.price-filter h4::before {
+
+    content: "💰";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dddde0;
+
+    border-radius: 14px;
+
+    padding: 8px;
+
+} */
+
+
+
+
+
+#supermarket_section .price-filter h4 {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    white-space: nowrap;
+
+    position: relative;
+
+    margin-bottom: 25px !important;
+
+    font-size: 16px !important;
+
+    font-weight: 900;
+
+}
+
+
+
+/* آیکون کنار متن */
+
+#supermarket_section .price-filter h4::before {
+
+    content: "💰";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    background: #dddde0;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+
+}
+
+
+
+
+
+
+/* Price boxes */
+
+
+#supermarket_section .price-values {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+#supermarket_section .price-values span {
+
+    flex: 1;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    color: #dc3545;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    padding: 12px 5px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 8px 18px #00000014;
+
+}
+
+
+
+/* Range */
+
+
+#supermarket_section .price-range {
+
+    width: 100%;
+
+    height: 9px;
+
+    appearance: none;
+
+    background:
+
+        linear-gradient(90deg,
+            #0118D8 45%,
+            #00fff7 45%);
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    outline: none;
+
+}
+
+
+
+/* Chrome */
+
+#supermarket_section .price-range::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 30px;
+
+    height: 30px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    border: 6px solid #0118D8;
+
+    box-shadow: 0 6px 10px #38383c;
+
+    transition: .3s;
+
+}
+
+
+
+#supermarket_section .price-range::-webkit-slider-thumb:hover {
+
+    transform: scale(1.25);
+
+}
+
+
+
+/* Firefox */
+
+#supermarket_section .price-range::-moz-range-thumb {
+
+    width: 30px;
+
+    height: 30px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    border: 6px solid #dc3545;
+
+}
+
+
+
+/* Dropdown */
+
+#supermarket_section .filter-dropdown {
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 16px !important;
+
+    color: #333 !important;
+
+    box-shadow:
+
+        5px 5px 15px rgba(0, 0, 0, .08);
+
     text-decoration: none;
+
+}
+
+
+
+#supermarket_section .filter-dropdown h6 {
+
+    margin: 0;
+
+    font-weight: 800;
+
+}
+
+
+
+#supermarket_section .dropdown-menu {
+
+    border: 0 !important;
+
+    border-radius: 25px !important;
+
+    padding: 20px !important;
+
+    box-shadow:
+
+        0 20px 40px rgba(0, 0, 0, .15);
+
+}
+
+
+
+#supermarket_section .dropdown-menu p {
+
+    color: #dc3545;
+
+    font-weight: 900;
+
+}
+
+
+
+/* Animation */
+
+#supermarket_section .col-md-2.border * {
+
+    transition: .35s ease;
+
+}
+
+
+
+
+/* Luxury Price Selector */
+
+
+
+#supermarket_section .price-filter {
+
+    display: block !important;
+
+    background:
+        linear-gradient(145deg,
+            #ffffff,
+            #f3f3f5) !important;
+
+    border-radius: 32px !important;
+
+    padding: 25px !important;
+
+}
+
+
+
+#supermarket_section .price-filter h4 {
+
+    margin-bottom: 25px !important;
+
+}
+
+
+
+/* Main Circle */
+
+
+#supermarket_section .luxury-price-card {
+
+    text-align: center;
+
+}
+
+
+
+#supermarket_section .price-circle {
+
+    width: 150px;
+
+    height: 150px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+            #ffffff,
+            #a6a6a9);
+
+    border: 8px solid #0118D8;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow: 0 6px 10px #828284;
+
+    position: relative;
+
+}
+
+
+
+#supermarket_section .price-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -12px;
+
+    border-radius: 50%;
+
+    border: 2px dashed #0118D8;
+
+    animation: rotatePrice 8s linear infinite;
+
+}
+
+
+
+@keyframes rotatePrice {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+
+#supermarket_section .price-circle strong {
+
+    font-size: 22px;
+
+    color: #000000;
+
+    font-weight: 900;
+
+}
+
+
+
+#supermarket_section .currency {
+
+    font-size: 12px;
+
+    color: #000000;
+
+    font-weight: 700;
+
+}
+
+
+
+/* Buttons */
+
+
+#supermarket_section .price-options {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+}
+
+
+
+#supermarket_section .price-options button {
+
+    border: none;
+
+    background: #ffffff;
+
+    padding: 10px 12px;
+
+    border-radius: 18px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    color: #000000;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 10px #828284;
+
+    transition: .3s;
+
+}
+
+
+
+#supermarket_section .price-options button:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+
+#supermarket_section .price-options .active {
+
+    background:
+
+        linear-gradient(135deg,
+            #0118D8,
+            #00fff7);
+
+    color: white;
+
+    box-shadow: 0 6px 10px #828284;
+
+}
+
+
+
+
+
+#supermarket_section #h1_title {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 0 6px 10px #38383c;
+    font-size: xx-large !important;
+}
+
+
+
+
+
+#supermarket_section #Supermarket_hr {
+    width: 220px;
+    height: 5px;
+    margin: 20px auto;
+    border: none;
+    opacity: 1;
+
+    border-radius: 50px;
+
+    background: linear-gradient(90deg,
+            #0118D8,
+            #00fff7,
+            #0118D8,
+            #00fff7,
+            #0118D8);
+
+    background-size: 300% 100%;
+    animation: goldShine 3s linear infinite;
+
+    box-shadow:
+        0 0 8px #00fff7cc,
+        0 0 18px #0118d899;
+}
+
+@keyframes goldShine {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
 }

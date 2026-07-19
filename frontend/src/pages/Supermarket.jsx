@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
-import "./Supermarket.css/"
+import "./Supermarket.css"
 import CheckBox from '../components/CheckBox/Checkbox';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from "axios"
@@ -21,12 +21,21 @@ function Supermarket() {
     const isSamllScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
 
+    const [price, setPrice] = useState(2000000);
+
+
     return (
-        <section>
+        <section id="supermarket_section">
             <div className='container mt-5'>
 
-                <h1 className='text-center'>سوپرمارکت</h1>
-                <div className='row mt-5'>
+                <div className='row py-5 mt-5'>
+                    <div className="col-12 text-center py-5 mt-5">
+                        <h1 id="h1_title">
+                            سوپرمارکت
+                        </h1>
+
+                        <hr id="Supermarket_hr" />
+                    </div>
                     {isBigScreen && <div className='col-md-2 border h-50 d-inline-block rounded mt-5 border-danger border-3  sticky-top'>
                         <h3 className='mt-4'>فیلترها</h3>
 
@@ -45,15 +54,54 @@ function Supermarket() {
 
                             <hr />
 
-                            <li class="dropdown">
-                                <a class="filter-dropdown dropdown-toggle text-dark d-flex gap-3 pt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <h6>
-                                        محدودیت قیمت
-                                    </h6>
-                                </a>
-                                <ul class="dropdown-menu p-2 pt-4">
-                                    <p>از 1000000 تا 2000000 تومان</p>
-                                </ul>
+                            <li className="price-filter">
+
+                                <h4 className="Price_limit_h4">محدودیت قیمت</h4>
+
+                                <div className="luxury-price-card">
+
+                                    <div className="price-circle">
+
+                                        <strong>
+                                            {price.toLocaleString()}
+                                        </strong>
+
+                                        <span className="currency">
+                                            تومان
+                                        </span>
+
+                                    </div>
+
+
+                                    <div className="price-options">
+
+                                        <button
+                                            className={price === 1000000 ? "active" : ""}
+                                            onClick={() => setPrice(1000000)}
+                                        >
+                                            1M
+                                        </button>
+
+
+                                        <button
+                                            className={price === 2000000 ? "active" : ""}
+                                            onClick={() => setPrice(2000000)}
+                                        >
+                                            2M
+                                        </button>
+
+
+                                        <button
+                                            className={price === 5000000 ? "active" : ""}
+                                            onClick={() => setPrice(5000000)}
+                                        >
+                                            5M
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
                             </li>
                         </ul>
                     </div>}

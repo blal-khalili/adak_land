@@ -26,8 +26,11 @@ function Profile() {
     useEffect(() => {
         // const access_token = Cookies.get('access_token')
         // const decoded = jwtDecode(access_token);
+        const access_token = Cookies.get('access_token')
+        const decoded = jwtDecode(access_token);
+        
 
-        authAxiosInstance.get(`account/detail/1/`, {
+        authAxiosInstance.get(`account/detail/${decoded.user_id}/`, {
         })
             .then((res) => {
                 console.log(res.data)
@@ -50,13 +53,13 @@ function Profile() {
                         <aside className="sidebar">
 
                             <div className="user-box">
-                                <div>
+                                {/* <div>
                                     {userId &&
                                         <div class="alert alert-danger" role="alert">
                                             {userId}
                                         </div>
                                     }
-                                </div>
+                                </div> */}
                                 <img
                                     src={avatarImg}
                                     alt="Profile"

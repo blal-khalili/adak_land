@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useMediaQuery } from 'react-responsive'
-import "./MobileAccessories.css/"
+import "./MobileAccessories.css"
 import CheckBox from '../../components/CheckBox/Checkbox';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from "axios"
@@ -25,61 +25,110 @@ function MobileAccessories() {
     const isMediumScreen = useMediaQuery({ query: "(max-width: 992px)" })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 768px)" })
 
+    const [price, setPrice] = useState(2000000);
+    const [available, setAvailable] = useState(false);
+    const [popular, setPopular] = useState(false);
+
 
     return (
-        <section>
+        <section id="MobileAccessories_section">
             <div className='container mt-5'>
 
-                <h1 className='text-center'>لوازم جانبی موبایل</h1>
-                <div className='row mt-5'>
-                    {isBigScreen && <div className='col-md-3 border h-50 d-inline-block rounded mt-5'>
+                <div className='row py-5 mt-5'>
+                    <div className="col-12 text-center py-5 mt-5">
+                        <h1 id="h1_title">
+                            لوازم جانبی موبایل
+                        </h1>
+
+                        <hr id="MobileAccessories_hr" />
+                    </div>
+                    {isBigScreen && <div className='col-md-2 border h-50 d-inline-block rounded mt-5 border-danger border-3  sticky-top'>
                         <h3 className='mt-4'>فیلترها</h3>
 
                         <ul className='mt-5'>
-                            <li className='d-flex mt-5 justify-content-between'>
+                            <li>
                                 <h4>قاب گوشی</h4>
-                                <CheckBox />
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setAvailable(true) : setAvailable(null); }}></input>
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5 justify-content-between'>
+                            <li>
                                 <h4>سیم شارژر</h4>
-                                <CheckBox />
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setpopular(true) : setpopular(null); }}></input>
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5 justify-content-between'>
+                            <li>
                                 <h4>گلس</h4>
-                                <CheckBox />
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setpopular(true) : setpopular(null); }}></input>
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5 justify-content-between'>
-                                <h4>فلش</h4>
-                                <CheckBox />
+                            <li>
+                                <h4>فلش مموری</h4>
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setpopular(true) : setpopular(null); }}></input>
                             </li>
 
                             <hr />
 
-                            <li className='d-flex mt-5 justify-content-between'>
-                                <h4>پاوربانک</h4>
-                                <CheckBox />
+                            <li>
+                                <h4>پاور بانک</h4>
+                                <input type='checkbox' onChange={(e) => { e.target.checked ? setpopular(true) : setpopular(null); }}></input>
                             </li>
 
                             <hr />
 
-                            <li class="dropdown">
-                                <a class="filter-dropdown dropdown-toggle text-dark d-flex gap-3 pt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <h3>
-                                        محدودیت قیمت
-                                    </h3>
-                                </a>
-                                <ul class="dropdown-menu p-2 pt-4">
-                                    <p>از 1000000 تا 2000000 تومان</p>
-                                </ul>
+                            <li className="price-filter">
+
+                                <h4 className="Price_limit_h4">محدودیت قیمت</h4>
+
+                                <div className="luxury-price-card">
+
+                                    <div className="price-circle">
+
+                                        <strong>
+                                            {price.toLocaleString()}
+                                        </strong>
+
+                                        <span className="currency">
+                                            تومان
+                                        </span>
+
+                                    </div>
+
+
+                                    <div className="price-options">
+
+                                        <button
+                                            className={price === 1000000 ? "active" : ""}
+                                            onClick={() => setPrice(1000000)}
+                                        >
+                                            1M
+                                        </button>
+
+
+                                        <button
+                                            className={price === 2000000 ? "active" : ""}
+                                            onClick={() => setPrice(2000000)}
+                                        >
+                                            2M
+                                        </button>
+
+
+                                        <button
+                                            className={price === 5000000 ? "active" : ""}
+                                            onClick={() => setPrice(5000000)}
+                                        >
+                                            5M
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
                             </li>
                         </ul>
                     </div>}
