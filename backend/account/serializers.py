@@ -1,3 +1,5 @@
+import random
+import time
 from rest_framework import serializers
 from .models import User
 
@@ -32,6 +34,10 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
         new_user = User(email=email,username=email,phone_number=phone_number)
         new_user.set_password(password)
+        new_user.verification_code = random.randint(100000,999999)
+        new_user.verification_code_timestamp = int(time.time())
+        new_user.is_active = False
+        
         new_user.save()
 
         return validated_data
@@ -41,3 +47,13 @@ class CreateUserSerializer(serializers.ModelSerializer):
         model = User
         # fields = ["username", "email", "phone_number", "password", "password_validate"]
         fields = ["email", "phone_number", "password", "password_validate"]
+
+
+class UserVrficationSerializer(serializers.Serializer):
+    def get_attribute(self, instance):
+        print(instance.email)
+        return super().get_attribute(instance)
+        
+        
+    def update(self, instance, validated_data):
+        return super().update(instance, validated_data)
