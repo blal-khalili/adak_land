@@ -118,6 +118,7 @@ function sign_in() {
 
 
     useEffect(() => {
+        // TODO: this line should have an error about jason parsing and its not getting the correct value i guess
         if (JSON.parse(localStorage.getItem('signIn_pop_up_accepted')) == false) {
             showSwal()
         }

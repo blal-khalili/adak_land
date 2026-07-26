@@ -1,7 +1,7 @@
 import json
 import time
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from rest_framework.generics import RetrieveAPIView, CreateAPIView,RetrieveUpdateAPIView
 from .models import User
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
@@ -39,10 +39,19 @@ class UserCreateAPIView(CreateAPIView):
 @csrf_exempt
 def user_vrfication(request,email):
     data = json.loads(request.body)
-    user = User.objects.filter(email=data['email']).first()
-    if user.verification_code_timestamp + 120 < time.time():
-        print('code is expired')
+    user = User.objects.filter(email=email).first()
+
+    if user:
+        if user.verification_code_timestamp + 120 < time.time():
+            return JsonResponse(['زمان کد منقظی شده'], safe=False)
+        else:
+            if user.verification_code == data['verification_code']:
+                user.is_active = True
+                user.save()
+                return JsonResponse(['اکانت شما با موفقت تایید شد لطفا به اکانت خود وارد شوید'], safe=False)
+            else:
+                return JsonResponse(['کد ارسال شده نادرست است'], safe=False)
     else:
-        print('activate user')
+        return JsonResponse(['مشکلی رخ داده'], safe=False)
 
     return HttpResponse('<h1>hi</h1>')

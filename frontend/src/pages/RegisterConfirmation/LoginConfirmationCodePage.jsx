@@ -1,8 +1,13 @@
 import "./LoginConfirmationCodePage.css";
 import Logo_Adack_Land from "../../assets/image/OriginLogo/Logo_Adack_Land.png"
 import { Link } from "react-router";
+import { verify_account } from "../../../utils/auth/auth";
+import { useRef } from "react";
 
 function ConfirmationCodePage() {
+
+    const verification_code_input = useRef(null)
+    
     return (
         <section id="RegistrationLogin_id">
             <div className="container">
@@ -18,6 +23,7 @@ function ConfirmationCodePage() {
                                         کد تایید
                                     </label>
                                     <input
+                                        ref={verification_code_input}
                                         placeholder="کد تایید"
                                         type="tel"
                                         className="form-control text-end mt-2"
@@ -25,14 +31,15 @@ function ConfirmationCodePage() {
                                     />
                                 </div>
                                 <div className="mt-4">
-                                    <Link to="#" target="_blank">
                                         <button
+                                        onClick={()=>{verify_account(verification_code_input.current.value)}}
                                             id="btn_RegistrationLogin"
                                             className="bg-primary text-white"
                                         >
                                             تایید
                                         </button>
-                                    </Link>
+                                    {/* <Link to="#" target="_blank">
+                                    </Link> */}
                                 </div>
                             </div>
                         </div>

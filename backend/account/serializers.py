@@ -2,7 +2,8 @@ import random
 import time
 from rest_framework import serializers
 from .models import User
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 class OneUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,8 +35,16 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
         new_user = User(email=email,username=email,phone_number=phone_number)
         new_user.set_password(password)
-        new_user.verification_code = random.randint(100000,999999)
+        random_verification_code = random.randint(100000,999999)
+        new_user.verification_code = random_verification_code
         new_user.verification_code_timestamp = int(time.time())
+        send_mail(
+                'کد تایید شما در آداک لند',
+                f'کد تایید شما {random_verification_code} است.',
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=False,
+            )
         new_user.is_active = False
         
         new_user.save()

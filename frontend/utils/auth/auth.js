@@ -39,6 +39,7 @@ const login = async (username, password) => {
 
 const signIn = async (phone_number, email, password, password_validate) => {
   // const { setUser } = authStore()
+  localStorage.setItem('signin_user_email', email)
 
   await normalAxiosInstance.post("account/create/", {
     phone_number: phone_number,
@@ -91,14 +92,30 @@ const userProfileDetail = async () => {
 }
 
 
-const logout = () =>{
-      Cookies.remove("refresh_token")
-      Cookies.remove("access_token")
-      useBearStore.getState().setUserData(null)
-      useBearStore.getState().setIsLoggedIn(null)
+const logout = () => {
+  Cookies.remove("refresh_token")
+  Cookies.remove("access_token")
+  useBearStore.getState().setUserData(null)
+  useBearStore.getState().setIsLoggedIn(null)
 
 }
 
 
+const verify_account = async (verification_code) => {
+  let user_email = localStorage.getItem('signin_user_email')
+  await normalAxiosInstance.post(`account/verify-account/${user_email}/`, {
+    // verification_code: verification_code
+    verification_code:verification_code
+  })
+    .then(() => {
+      console.log('ok')
+
+    })
+    .catch((error) => {
+      console.log('not ok')
+    })
+
+}
+
 export default login;
-export { login, signIn, checkAuth, userProfileDetail, logout };
+export { login, signIn, checkAuth, userProfileDetail, logout, verify_account };
