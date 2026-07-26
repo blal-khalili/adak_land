@@ -50,9 +50,38 @@
     border-radius: 8px;
     transition: .3s;
     border: 2px #000000 solid;
+    width: 70px;
+    font-weight: bold;
 }
 
 
 #btn_RegistrationLogin:hover {
     transform: translateY(-2px);
+}
+
+
+
+.glass-box .logo_class {
+    width: 260px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.text_h5 {
+    background-image: linear-gradient(to right, #ffffff, #EFB80B);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-weight: 800;
+    text-shadow: 1px 1px 5px #0000006f;
+}
+
+
+
+
+
+#text_tag_p {
+    text-shadow: 2px 1px #1b56FD;
 }
