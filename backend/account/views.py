@@ -38,6 +38,10 @@ class UserCreateAPIView(CreateAPIView):
 
 @csrf_exempt
 def user_vrfication(request,email):
+    # print(dir(request.META['HTTP_USER_AGENT']))
+    # print(request.headers)
+    # print(dir(request))
+    
     data = json.loads(request.body)
     user = User.objects.filter(email=email).first()
 
@@ -53,5 +57,4 @@ def user_vrfication(request,email):
                 return JsonResponse(['کد ارسال شده نادرست است'], safe=False)
     else:
         return JsonResponse(['مشکلی رخ داده'], safe=False)
-
-    return HttpResponse('<h1>hi</h1>')
+    # return HttpResponse('<h1>hi</h1>')

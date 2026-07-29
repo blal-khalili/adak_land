@@ -19,7 +19,7 @@ function Navber() {
         }
     },[])
 
-
+    // TODO: مشکل غیب شدن محتوا زیر نوبار حل شود
     return (
         <nav className="navbar navbar-expand-lg mb-5 fixed-top">
             <div className="container-fluid">
