@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router";
 import useProduct from "../../hooks/useProduct";
 import axios from "axios"
 import "./ProductDetail.css"
+import authAxiosInstance from "../../../utils/auth/customAxios";
 
 
 function ProductDetail() {
@@ -62,7 +63,11 @@ function ProductDetail() {
                             <li className="mt-1 text-white px-2"><p>{product.create}</p></li>
                             <div className="notibody mt-2 d-flex text-white justify-content-center">{product.price}</div>
                             <hr className="text-white" />
-                            <button className="btn btn-danger text-white mx-4">افزودن به سبد خرید</button>
+                            <button className="btn btn-danger text-white mx-4" onClick={()=>{
+                                authAxiosInstance.post('cart/create/cartitem/',{
+                                    product:1
+                                }).then()
+                            }}>افزودن به سبد خرید</button>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,27 @@
 from django.shortcuts import render
+from rest_framework.generics import RetrieveAPIView, CreateAPIView,RetrieveUpdateAPIView
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from .models import Cart,CartItem
+from .serializers import CartItemCreateSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
+
+
+class CartItemCreateAPIView(CreateAPIView):
+    queryset = CartItem.objects.all()
+    serializer_class = CartItemCreateSerializer
+    permission_classes = [IsAuthenticated]
+
+    # def post(self, request, format=None):
+    #     serializer = CartItemCreateSerializer(data=request.data)
+    #     print(serializer)
+    #     if serializer.is_valid():
+    #         print('-'*1000)
+    #         serializer.cart = Cart.objects.get(id=2).id
+    #         # serializer.amount = 4
+            
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

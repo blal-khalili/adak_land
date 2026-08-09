@@ -47,6 +47,7 @@ def user_vrfication(request,email):
 
     if user:
         if user.verification_code_timestamp + 120 < time.time():
+            # TODO: send status code for frontend error handling
             return JsonResponse(['زمان کد منقظی شده'], safe=False)
         else:
             if user.verification_code == data['verification_code']:

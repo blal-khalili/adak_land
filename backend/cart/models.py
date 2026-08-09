@@ -7,7 +7,7 @@ from product.models import Product
 class Cart(models.Model):
     cart_id = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
-    payment_date = models.DateTimeField(auto_created=True)
+    payment_date = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False, editable=False)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
-    price = models.IntegerField(null=True, blank=True)
+    final_price = models.IntegerField(null=True, blank=True)
     amount = models.IntegerField()
 
 
