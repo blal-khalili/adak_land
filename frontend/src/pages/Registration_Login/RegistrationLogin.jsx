@@ -23,7 +23,7 @@ function RegistrationLogins() {
         if (isLoggedIn == true) {
             localStorage.setItem('login_pop_up_accepted', false)
             userProfileDetail().then(() => {
-                navigate('/confirm-code')
+                navigate('/')
             })
         }
     }, [isLoggedIn])

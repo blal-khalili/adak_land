@@ -18,3 +18,16 @@ class CartItemCreateSerializer(serializers.ModelSerializer):
         validated_data['cart'] = cart
         
         return super().create(validated_data)
+
+class CartItemListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = "__all__"
+
+
+class CartDetailSerializer(serializers.ModelSerializer):
+    cartitems = CartItemListSerializer(source='cartitem_set',many=True, read_only=True)
+    class Meta:
+        model = Cart
+        fields = '__all__'
+

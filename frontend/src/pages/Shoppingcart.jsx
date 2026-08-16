@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import "./Shoppingcart.css/"
 import carticon from "../assets/image/ShoppingCart/Cart.png/"
@@ -12,6 +12,9 @@ function Cart() {
     const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 
+    useEffect(()=>{
+        // TODO: get data related to this shoping cart and show them in this page
+    })
 
 
     return (
