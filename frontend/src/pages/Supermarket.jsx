@@ -221,4 +221,4 @@ function Supermarket() {
 
 
 
-export default Supermarket
+export default Supermarket;

@@ -7,17 +7,18 @@ import useProfileData from "../../hooks/useProfileData";
 import { checkAuth, logout } from "../../../utils/auth/auth";
 import authStore, { useBearStore } from "../../../stores/authStore";
 import { userProfileDetail } from "../../../utils/auth/auth";
+import { CgProfile } from "react-icons/cg";
 
 
 function Navber() {
     const userData = useBearStore.getState().userData
     const isLoggedIn = useBearStore.getState().isLoggedIn
 
-    useEffect(()=>{
-        if (checkAuth() == true){
+    useEffect(() => {
+        if (checkAuth() == true) {
             useBearStore.getState().setIsLoggedIn(false)
         }
-    },[])
+    }, [])
 
     // TODO: مشکل غیب شدن محتوا زیر نوبار حل شود
     return (
@@ -33,7 +34,7 @@ function Navber() {
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false"
-                    
+
                     aria-label="Toggle navigation"
                 >
                     <span className="bi bi-list-stars"></span>
@@ -126,33 +127,60 @@ function Navber() {
                             </div>
                         </li>
 
-                        {isLoggedIn ?
-                            <div>
-                                {userData &&
-                                    <div>
-                                        <img src={userData.avatar} alt="" width={40} />
-                                        <p>{userData.username}</p>
-                                    </div>
-                                }
-                            </div>:
-                            <div>
-                                <li className="nav-item2">
-                                    <Link to="/RegistrationLogin" className="nav-link" href="#">
-                                        <button className="bg-primary text-white">
-                                            <i className="bi bi-arrow-bar-left px-1"></i>ورود
-                                        </button>
-                                    </Link>
+                        {isLoggedIn ? (
+                            <>
+                                <li className="nav-user">
+                                    {userData && (
+                                        <span className="profile-username">
+                                            {userData.username}
+                                        </span>
+                                    )}
                                 </li>
-                                <li className="nav-item2">
-                                    <Link to="/Sign_in_Page" className="nav-link" href="#">
-                                        <button className="bg-primary text-white">
-                                            <i className="bi bi-arrow-bar-left px-1"></i>ثبت نام کنید
-                                        </button>
-                                    </Link>
-                                </li>
-                            </div> 
-                        }
 
+                                <li className="nav-item1 d-flex">
+                                    <Link
+                                        className="nav-link text-dark profile-link"
+                                        to="/profile"
+                                    >
+                                        {userData?.avatar ? (
+                                            <img
+                                                src={userData.avatar}
+                                                alt="profile"
+                                                className="profile-avatar"
+                                            />
+                                        ) : (
+                                            <i><CgProfile className="profile-icon" /></i>
+                                        )}
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li className="nav-item2">
+                                    <Link
+                                        to="/RegistrationLogin"
+                                        className="nav-link"
+                                    >
+                                        <button className="bg-primary text-white">
+                                            <i className="bi bi-arrow-bar-left px-1"></i>
+                                            ورود
+                                        </button>
+                                    </Link>
+                                </li>
+
+                                <li className="nav-item2">
+                                    <Link
+                                        to="/Sign_in_Page"
+                                        className="nav-link"
+                                    >
+                                        <button className="bg-primary text-white">
+                                            <i className="bi bi-arrow-bar-left px-1"></i>
+                                            ثبت نام کنید
+                                        </button>
+                                    </Link>
+                                </li>
+                            </>
+                        )}
 
 
 
@@ -174,27 +202,21 @@ function Navber() {
 
 
 
-                        <li className="nav-item2">
-                            {/* <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link> */}
-                            <Link
-                                to="/ContactUs"
-                                className="nav-link"
-                                id="btn-link-ContactUs_id"
-                                href="#"
-                            >
-                                <button className="bg-primary text-white">
-                                    <i className="bi bi-person-circle px-1"></i>تماس با ما
-                                </button>
-                            </Link>
-                        </li>
-                        <li>
-                            {/* TODO: when logging out the state of userData doesn't change */}
-                                <button onClick={()=>{checkLogin()}} className="bg-primary text-white">
-                                    <i className="bi bi-person-circle px-1"></i>خروج
-                                </button>
-                        </li>
+                        {/* TODO: when logging out the state of userData doesn't change */}
+                        {/* <li>
+                            <button onClick={() => { checkLogin() }} className="bg-primary text-white">
+                                <i className="bi bi-person-circle px-1"></i>خروج
+                            </button>
+                        </li> */}
+                        {/* {isLoggedIn && (
+                            <li className="nav-item1 d-flex">
+                                <Link className="nav-link text-dark" to="/profile">
+                                    <i><CgProfile /></i>
+                                </Link>
+                            </li>
+                        )} */}
                         <li className="nav-item1 d-flex">
-                            <Link className="nav-link text-dark" href="#" to="/profile">
+                            <Link className="nav-link text-dark" href="#">
                                 <i className="bi bi-bell"></i>
                             </Link>
                         </li>

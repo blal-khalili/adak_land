@@ -71,6 +71,7 @@
 /* دکمه */
 #btn_RegistrationLogin {
     height: 40px;
+    width: 150px !important;
     border-radius: 8px;
     transition: .3s;
     border: 2px #000000 solid;

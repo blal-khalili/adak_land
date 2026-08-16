@@ -16,10 +16,10 @@ function Cart() {
 
     return (
         <section>
-            <div className="container mt-5">
-                <h3>سبد خرید <span className="bg-danger p-1 px-3 text-white fw-bold">3</span></h3>
-                <hr />
-                <div className="row">
+            <div className="container py-5 mt-5">
+                <div className="row py-5 mt-5">
+                    <h3>سبد خرید <span className="bg-danger p-1 px-3 text-white fw-bold">3</span></h3>
+                    <hr />
                     {isSamllScreen && <div className="col-md-3 border rounded border-danger pt-4 mt-5">
                         <div className="d-flex justify-content-between">
                             <p>قیمت کالا ها</p>
@@ -66,4 +66,4 @@ function Cart() {
 
 
 
-export default Cart
+export default Cart;

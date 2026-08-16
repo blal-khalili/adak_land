@@ -15,6 +15,20 @@ function Footer() {
                         <p>09142137122</p>
                         <p>Adack Land@gamil.com</p>
 
+                        <div className="nav-item2">
+                            {/* <Link to="/ContactUs" target="_blank" className="nav-link bg-primary text-white" id="btn-link-ContactUs"><i className="bi bi-person-circle px-1"></i>تماس با ما</Link> */}
+                            <Link
+                                to="/ContactUs"
+                                className="nav-link"
+                                id="btn-link-ContactUs_id"
+                                href="#"
+                            >
+                                <button className="bg-primary text-white">
+                                    <i className="bi bi-person-circle px-1"></i>تماس با ما
+                                </button>
+                            </Link>
+                        </div>
+
                         <div id="Social" className="d-flex gap-3">
                             <Link >
                                 <i className="bi bi-google"></i>
