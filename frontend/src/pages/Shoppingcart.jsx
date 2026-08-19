@@ -7,6 +7,7 @@ import Card from "../components/Card/Card.jsx/";
 import CardItemsShopCart from "../components/CardItemsShopCart/CardItemsShopCart"
 import useCardItems from "../hooks/useCardItems";
 import axios from "axios";
+import authAxiosInstance from "../../utils/auth/customAxios";
 
 
 
@@ -20,7 +21,7 @@ function Cart() {
 
 
     useEffect(() => {
-        axios
+        authAxiosInstance
             .get("http://127.0.0.1:8000/cart/detail/cart/")
             .then(res => {
                 console.log("CART DATA:", res.data);

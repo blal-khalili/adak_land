@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from rest_framework import status
 from account.models import User
 
+
 # Create your views here.
 class CartItemCreateAPIView(CreateAPIView):
     queryset = CartItem.objects.all()
@@ -28,18 +29,24 @@ class CartItemCreateAPIView(CreateAPIView):
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# def cart_detail_api_view(requset):
-#     cart = Cart.objects.filter(user=requset.user,is_paid=False).first()
-#     serializer = CartDetailSerializer(cart)
+class CartDetailAPIView(APIView):
+    permission_classes = [AllowAny]
 
-#     return JsonResponse(serializer.data,safe=True)
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        
+        # Add the request object to the context dictionary
+        context['request'] = self.request
+        print(')))))))))))))))))))))))))))')
+        return context
+        
+    def get(self, request):
+        cart = Cart.objects.filter(
+                user_id=1,
+            ).first()
 
+        # serializer = self.get_serializer(data=request.data, context={'request': request})
 
-def cart_detail_api_view(request):
-    cart = Cart.objects.filter(
-        user_id=3,
-    ).first()
-
-    serializer = CartDetailSerializer(cart)
-
-    return JsonResponse(serializer.data, safe=True)
+        serializer = CartDetailSerializer(cart)
+        serializer.context['request'] = request
+        return Response(serializer.data)

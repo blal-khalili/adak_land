@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Cart,CartItem
+from product.models import Product
 
 class CartItemCreateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,10 +20,26 @@ class CartItemCreateSerializer(serializers.ModelSerializer):
         
         return super().create(validated_data)
 
+class ProductDetailSerializer(serializers.ModelSerializer):
+    # image_url = serializers.SerializerMethodField()
+
+    # def get_image_url(self, product):
+    #     request = self.context.get('request')
+    #     photo_url = product.image.url
+    #     return request.build_absolute_uri(photo_url)
+    #     # return 'http://127.0.0.1:8000'+photo_url
+
+
+    class Meta:
+        model = Product
+        fields = ['id','title','slug','price','image']
+
 class CartItemListSerializer(serializers.ModelSerializer):
+    product = ProductDetailSerializer(read_only=True)
+
     class Meta:
         model = CartItem
-        fields = "__all__"
+        fields = '__all__'
 
 
 class CartDetailSerializer(serializers.ModelSerializer):
