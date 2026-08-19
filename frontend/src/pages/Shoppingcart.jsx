@@ -1,9 +1,12 @@
 import { Link } from "react-router";
-import { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import "./Shoppingcart.css/"
-import carticon from "../assets/image/ShoppingCart/Cart.png/"
-import Card from "../components/Card/Card.jsx/"
+import carticon from "../assets/image/ShoppingCart/Cart.png/";
+import Card from "../components/Card/Card.jsx/";
+import CardItemsShopCart from "../components/CardItemsShopCart/CardItemsShopCart"
+import useCardItems from "../hooks/useCardItems";
+import axios from "axios";
 
 
 
@@ -12,9 +15,21 @@ function Cart() {
     const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 
-    useEffect(()=>{
-        // TODO: get data related to this shoping cart and show them in this page
-    })
+
+    const [data, setData] = useState();
+
+
+    useEffect(() => {
+        axios
+            .get("http://127.0.0.1:8000/cart/detail/cart/")
+            .then(res => {
+                console.log("CART DATA:", res.data);
+                setData(res.data);
+            })
+            .catch(err => {
+                console.log("CART ERROR:", err);
+            });
+    }, []);
 
 
     return (
@@ -41,7 +56,7 @@ function Cart() {
                     </div>}
 
                     <div className="col-md-9 mt-5">
-                        <Card />
+                        <CardItemsShopCart c={data} />
                     </div>
 
 

@@ -28,8 +28,18 @@ class CartItemCreateAPIView(CreateAPIView):
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-def cart_detail_api_view(requset):
-    cart = Cart.objects.filter(user=requset.user,is_paid=False).first()
+# def cart_detail_api_view(requset):
+#     cart = Cart.objects.filter(user=requset.user,is_paid=False).first()
+#     serializer = CartDetailSerializer(cart)
+
+#     return JsonResponse(serializer.data,safe=True)
+
+
+def cart_detail_api_view(request):
+    cart = Cart.objects.filter(
+        user_id=3,
+    ).first()
+
     serializer = CartDetailSerializer(cart)
 
-    return JsonResponse(serializer.data,safe=True)
+    return JsonResponse(serializer.data, safe=True)

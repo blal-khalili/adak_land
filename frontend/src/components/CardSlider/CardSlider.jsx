@@ -46,4 +46,4 @@ function CardSlider(props) {
     )
 }
 
-export default CardSlider 
+export default CardSlider;
