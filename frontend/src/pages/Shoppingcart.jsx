@@ -16,8 +16,8 @@ function Cart() {
     const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
     const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 
-
-    const [data, setData] = useState();
+    const [total_price,SetTotalPrice] = useState(0);
+    const [data, setData] = useState(null);
 
 
     useEffect(() => {
@@ -26,6 +26,7 @@ function Cart() {
             .then(res => {
                 console.log("CART DATA:", res.data);
                 setData(res.data);
+                SetTotalPrice(res.data.total_price);
             })
             .catch(err => {
                 console.log("CART ERROR:", err);
@@ -42,7 +43,7 @@ function Cart() {
                     {isSamllScreen && <div className="col-md-3 border rounded border-danger pt-4 mt-5">
                         <div className="d-flex justify-content-between">
                             <p>قیمت کالا ها</p>
-                            <p>875,650,000 تومان</p>
+                            <p>{total_price} تومان</p>
                         </div>
                         <div className="d-flex justify-content-between">
                             <p>جمع سبد خرید</p>
@@ -64,7 +65,7 @@ function Cart() {
                     {isBigScreen && <div className="col-md-3 border rounded border-danger pt-4 mt-5">
                         <div className="d-flex justify-content-between">
                             <p>قیمت کالا ها</p>
-                            <p>875,650,000 تومان</p>
+                            <p>{total_price} تومان</p>
                         </div>
                         <div className="d-flex justify-content-between">
                             <p>جمع سبد خرید</p>

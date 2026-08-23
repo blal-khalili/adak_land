@@ -27,7 +27,7 @@ class Product(models.Model):
     type = models.ForeignKey(
         TypeOfProduct, on_delete=models.CASCADE, null=True, blank=True
     )
-    price = models.CharField(max_length=255, null=True, blank=True)
+    price = models.IntegerField()
     image = models.ImageField(upload_to="ProductImg", null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     create = models.DateField(auto_now=True, null=True, blank=True)

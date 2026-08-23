@@ -144,10 +144,11 @@ function ProductDetail() {
                                 onClick={() => {
                                     authAxiosInstance
                                         .post("cart/create/cartitem/", {
-                                            product: 1
+                                            product: product.id
                                         })
-                                        .then(() => {
+                                        .then((data) => {
                                             showSwal()
+                                            console.log(data)
                                         })
                                         .catch((error) => {
                                             showSwalerror()

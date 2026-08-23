@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Cart,CartItem
 from product.models import Product
+from rest_framework import status
+from rest_framework.response import Response
 
 class CartItemCreateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,8 +19,18 @@ class CartItemCreateSerializer(serializers.ModelSerializer):
         
         validated_data['amount'] = 1
         validated_data['cart'] = cart
+        print(self.validate)
+        if cart.cartitem_set.all().filter(product_id=self.validated_data['product']).exists() == False:
+            return super().create(validated_data)
+        else:
+            new_cartitem = cart.cartitem_set.all().filter(product_id=self.validated_data['product']).first()
+            new_cartitem.amount += 1
+            new_cartitem.save()
+            return new_cartitem
+            # return Response({'message':'product amount is increased'},status=status.HTTP_200_OK)
+
+
         
-        return super().create(validated_data)
 
 class ProductDetailSerializer(serializers.ModelSerializer):
     # image_url = serializers.SerializerMethodField()
@@ -44,6 +56,15 @@ class CartItemListSerializer(serializers.ModelSerializer):
 
 class CartDetailSerializer(serializers.ModelSerializer):
     cartitems = CartItemListSerializer(source='cartitem_set',many=True, read_only=True)
+    total_price = serializers.SerializerMethodField()
+
+    def get_total_price(self,cart):
+        
+        total_price = 0
+        for cartitem in cart.cartitem_set.all():
+            total_price += cartitem.amount * cartitem.product.price
+        
+        return total_price
     class Meta:
         model = Cart
         fields = '__all__'
