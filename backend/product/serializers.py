@@ -14,7 +14,7 @@ from .models import (
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductColor
-        fields = ["title", "color_code"]
+        fields = ['id',"title", "color_code"]
 
 
 class SpecificationSerializer(serializers.ModelSerializer):

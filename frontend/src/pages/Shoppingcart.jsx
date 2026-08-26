@@ -1,89 +1,246 @@
-import { Link } from "react-router";
-import { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import "./Shoppingcart.css/"
-import carticon from "../assets/image/ShoppingCart/Cart.png/";
-import Card from "../components/Card/Card.jsx/";
-import CardItemsShopCart from "../components/CardItemsShopCart/CardItemsShopCart"
-import useCardItems from "../hooks/useCardItems";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { FaShoppingCart } from "react-icons/fa";
+import CardShoppingCart from "../components/CardShoppingCart/CardShoppingCart";
+
+import "./Shoppingcart.css";
+
+import CardItemsShopCart from "../components/CardItemsShopCart/CardItemsShopCart";
 import authAxiosInstance from "../../utils/auth/customAxios";
 
 
-
 function Cart() {
-    // TODO: add this page to auth wrapper
-    const isBigScreen = useMediaQuery({ query: '(min-width: 770px)' })
-    const isSamllScreen = useMediaQuery({ query: "(max-width: 770px)" })
 
-    const [total_price,SetTotalPrice] = useState(0);
+    const isBigScreen = useMediaQuery({
+        query: "(min-width: 771px)"
+    });
+
+    const isSamllScreen = useMediaQuery({
+        query: "(max-width: 770px)"
+    });
+
+
+    const [total_price, SetTotalPrice] = useState(0);
     const [data, setData] = useState(null);
 
 
     useEffect(() => {
+
         authAxiosInstance
             .get("http://127.0.0.1:8000/cart/detail/cart/")
+
             .then(res => {
+
                 console.log("CART DATA:", res.data);
+
                 setData(res.data);
+
                 SetTotalPrice(res.data.total_price);
+
             })
+
             .catch(err => {
+
                 console.log("CART ERROR:", err);
+
             });
+
     }, []);
 
 
     return (
-        <section>
+
+        <section className="cart-page">
+
             <div className="container py-5 mt-5">
+
                 <div className="row py-5 mt-5">
-                    <h3>سبد خرید <span className="bg-danger p-1 px-3 text-white fw-bold">3</span></h3>
-                    <hr />
-                    {isSamllScreen && <div className="col-md-3 border rounded border-danger pt-4 mt-5">
-                        <div className="d-flex justify-content-between">
-                            <p>قیمت کالا ها</p>
-                            <p>{total_price} تومان</p>
-                        </div>
-                        <div className="d-flex justify-content-between">
-                            <p>جمع سبد خرید</p>
-                            <p>848,950,000 تومان</p>
-                        </div>
-                        <div className="d-flex justify-content-between text-success">
-                            <p>سود شما از خرید</p>
-                            <p>26,700,000 تومان</p>
-                        </div>
 
-                        <button id="buttoncart" type="button" className="btn btn-danger text-white d-grid col-md-9 mx-auto">تایید و تکمیل سفارش</button>
-                    </div>}
 
-                    <div className="col-md-9 mt-5">
-                        <CardItemsShopCart c={data} />
+                    {/* TITLE */}
+
+                    <div className="cart-title">
+
+                        <h3>
+                            سبد خرید
+
+                            <span className="cart-count">
+                                <FaShoppingCart />
+                            </span>
+                        </h3>
+
+                        <div className="title-line"></div>
+
                     </div>
 
 
-                    {isBigScreen && <div className="col-md-3 border rounded border-danger pt-4 mt-5">
-                        <div className="d-flex justify-content-between">
-                            <p>قیمت کالا ها</p>
-                            <p>{total_price} تومان</p>
-                        </div>
-                        <div className="d-flex justify-content-between">
-                            <p>جمع سبد خرید</p>
-                            <p>848,950,000 تومان</p>
-                        </div>
-                        <div className="d-flex justify-content-between text-success">
-                            <p>سود شما از خرید</p>
-                            <p>26,700,000 تومان</p>
+
+                    {/* MOBILE SUMMARY */}
+
+                    {isSamllScreen && (
+
+                        <div className="col-12 cart-summary">
+
+                            <div className="price-row">
+
+                                <p>
+                                    قیمت کالاها
+                                </p>
+
+                                <p className="price">
+                                    {total_price} تومان
+                                </p>
+
+                            </div>
+
+
+                            <div className="price-row">
+
+                                <p>
+                                    جمع سبد خرید
+                                </p>
+
+                                <p className="price">
+                                    848,950,000 تومان
+                                </p>
+
+                            </div>
+
+
+                            <div className="price-row profit">
+
+                                <p>
+                                    سود شما از خرید
+                                </p>
+
+                                <p className="price">
+                                    26,700,000 تومان
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                id="buttoncart"
+                                type="button"
+                                className="btn"
+                            >
+
+                                <span className="button-inner">
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                    <span className="button-text">
+                                        تایید و تکمیل سفارش
+                                    </span>
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                </span>
+
+                            </button>
+
                         </div>
 
-                        <button id="buttoncart" type="button" className="btn btn-danger text-white d-grid col-md-9 mx-auto">تایید و تکمیل سفارش</button>
-                    </div>}
+                    )}
+
+
+                    {/* PRODUCTS */}
+
+                    <div className="col-12 col-md-9 mt-5">
+
+                        <CardShoppingCart c={data} />
+                        {/* <CardShoppingCart /> */}
+
+                    </div>
+
+
+
+                    {/* DESKTOP SUMMARY */}
+
+                    {isBigScreen && (
+
+                        <div className="col-md-3 cart-summary">
+
+                            <div className="price-row">
+
+                                <p>
+                                    قیمت کالاها
+                                </p>
+
+                                <p className="price">
+                                    {total_price} تومان
+                                </p>
+
+                            </div>
+
+
+                            <div className="price-row">
+
+                                <p>
+                                    جمع سبد خرید
+                                </p>
+
+                                <p className="price">
+                                    {total_price} تومان
+                                </p>
+
+                            </div>
+
+
+                            <div className="price-row profit">
+
+                                <p>
+                                    سود شما از خرید
+                                </p>
+
+                                <p className="price">
+                                    26,700,000 تومان
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                id="buttoncart"
+                                type="button"
+                                className="btn"
+                            >
+
+                                <span className="button-inner">
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                    <span className="button-text">
+                                        تایید و تکمیل سفارش
+                                    </span>
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    )}
+
                 </div>
-            </div>
-        </section>
-    )
-}
 
+            </div>
+
+        </section>
+
+    );
+}
 
 
 export default Cart;

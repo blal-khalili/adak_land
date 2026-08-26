@@ -132,13 +132,6 @@ nav {
 }
 
 
-#btn-search:hover {
-    font-weight: bold;
-    box-shadow: 0 0 15px #ffffff;
-}
-
-
-
 /* nav {
     padding: 10px 20px;
     box-shadow: 0 0 30px #000000;
@@ -272,6 +265,65 @@ nav .navbar-nav a.nav-link {
 
 
 .logo {
-    width: 230px;
+    width: 200px;
     height: auto;
+}
+
+
+
+/* Profile */
+.nav-user {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #212529;
+    gap: 8px;
+}
+
+.profile-username {
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    margin: 0 !important;
+
+    position: relative;
+    top: 21px;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-icon {
+    font-size: 30px;
+}
+
+
+
+/* Icon */
+
+#ContactUs-id .bi {
+    color: #ffffff;
+}
+
+
+#ContactUs-id .bi-cart:hover {
+    color: #d80101;
+}
+
+
+#ContactUs-id .bi-bell:hover {
+    color: #0118D8;
 }

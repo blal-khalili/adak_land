@@ -42,7 +42,7 @@ class CartDetailAPIView(APIView):
         
     def get(self, request):
         cart = Cart.objects.filter(
-                user_id=1,
+                user_id=3,
             ).first()
 
         # serializer = self.get_serializer(data=request.data, context={'request': request})
