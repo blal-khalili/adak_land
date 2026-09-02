@@ -21,8 +21,8 @@ import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import LandingLayout from './LandingLayout'
 import Profile from './pages/Profile/Profile.jsx';
 import Personalinfo from "./pages/Personal_information/Personalinfo.jsx";
-import Editprofile from "./pages/Edit_profile/Editprofile.jsx"
-import SearchPage from './pages/Searchpage/SearchPage.jsx';
+import Editprofile from "./pages/Edit_profile/Editprofile.jsx";
+import SearchPage from './pages/SearchPage/SearchPage.jsx';
 import AddressLocation from './pages/AddressLocationPage/AddressLocation.jsx';
 import {
   useQuery,

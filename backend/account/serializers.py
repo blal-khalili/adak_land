@@ -60,7 +60,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
 class UserVrficationSerializer(serializers.Serializer):
     def get_attribute(self, instance):
-        print(instance.email)
+        # print(instance.email)
         return super().get_attribute(instance)
         
         

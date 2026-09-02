@@ -96,7 +96,7 @@ import adak_land from "../../assets/image/AddressLocationPageImage/adak_land.png
 
 
 function AddressLocation() {
-
+    // TODO: add city and state selector from github iran city list
 
 
     const handleSubmit = (e) => {

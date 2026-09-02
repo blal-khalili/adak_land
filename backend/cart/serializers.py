@@ -12,7 +12,6 @@ class CartItemCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = self.context["request"].user
-        print(user)
 
         cart = Cart.objects.filter(user=user, is_paid=False).first()
         if cart == None:
@@ -22,8 +21,6 @@ class CartItemCreateSerializer(serializers.ModelSerializer):
         validated_data["amount"] = 1
         validated_data["cart"] = cart
         # validated_data['color'] = validated_data['color']
-        print(validated_data['color'])
-        print(self.validate)
         if (
             cart.cartitem_set.all()
             .filter(product_id=self.validated_data["product"])
