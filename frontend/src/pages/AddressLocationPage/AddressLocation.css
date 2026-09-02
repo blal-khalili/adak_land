@@ -1,0 +1,420 @@
+/* ADDRESS LOCATION TITLE */
+
+#AddressLocation_id .address-location-title {
+
+    color: #000000 !important;
+
+    font-weight: bold !important;
+
+    text-shadow: 0 6px 10px #38383c !important;
+
+    font-size: xx-large !important;
+
+}
+
+
+/* ADDRESS LOCATION HR */
+
+#AddressLocation_id .address-location-hr {
+
+    position: relative !important;
+
+    width: 370px !important;
+
+    height: 5px !important;
+
+    margin: 20px auto !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+
+    opacity: 1 !important;
+
+    overflow: hidden !important;
+
+    border-radius: 50px !important;
+
+    background: #0118D8 !important;
+
+}
+
+
+/* MOVING GRADIENT */
+
+#AddressLocation_id .address-location-hr::before {
+
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    width: 400% !important;
+
+    height: 100% !important;
+
+    border-radius: 50px !important;
+
+    background: linear-gradient(90deg,
+
+            #0118D8 0%,
+
+            #00fff7 15%,
+
+            #0118D8 30%,
+
+            #00fff7 45%,
+
+            #0118D8 60%,
+
+            #00fff7 75%,
+
+            #0118D8 90%,
+
+            #00fff7 100%) !important;
+
+    animation: addressLocationGoldShine 3s linear infinite !important;
+
+}
+
+
+
+/* ANIMATION */
+
+@keyframes addressLocationGoldShine {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-75%);
+    }
+
+}
+
+
+
+/* GLOW */
+
+#AddressLocation_id .address-location-hr {
+
+    box-shadow:
+        0 0 8px #00fff7cc,
+        0 0 18px #0118d899,
+        0 0 30px #00fff766 !important;
+
+}
+
+
+
+
+
+
+
+/* -------------------- */
+
+/* form */
+
+#AddressLocation_id {
+    min-height: 100vh;
+    background: #ffffff;
+    direction: rtl;
+}
+
+
+
+/* عنوان */
+
+#AddressLocation_id .address-location-title {
+    color: #252525;
+    font-weight: 700;
+}
+
+#AddressLocation_id .address-location-hr {
+    width: 90px;
+    margin: 20px auto;
+
+    border: none;
+    border-top: 2px solid #e5e5e5;
+}
+
+
+
+/* باکس اصلی */
+
+#AddressLocation_id .address-location-box {
+    display: flex;
+    flex-direction: row-reverse;
+
+    width: 100%;
+    max-width: 1100px;
+    min-height: 550px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+    border-radius: 28px;
+
+
+    background: #f3f4f6;
+
+
+    border: 1px solid #e1e3e6;
+
+
+    box-shadow:
+        0 3px 8px #828282,
+        0 12px 30px #828282,
+        0 25px 60px #828282;
+
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+
+
+/* عکس سمت چپ */
+
+#AddressLocation_id .address-location-image {
+    width: 45%;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+#AddressLocation_id .address-location-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+
+/* Hover عکس */
+
+#AddressLocation_id .address-location-image:hover img {
+    transform: scale(1.03);
+}
+
+
+/* لایه روی عکس */
+
+#AddressLocation_id .address-location-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(90deg,
+            #ffffff00,
+            #0000001a);
+
+    pointer-events: none;
+}
+
+
+
+/* قسمت فرم */
+
+#AddressLocation_id .address-location-form {
+    width: 55%;
+
+    padding: 45px;
+
+    background: #fafafbd9;
+
+    border-left: 1px solid #e3e4e7;
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+
+
+/* گروه فیلد */
+
+#AddressLocation_id .form-group {
+    margin-bottom: 22px;
+}
+
+
+/* Label */
+
+#AddressLocation_id .form-group label {
+    display: block;
+
+    color: #000000;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+
+/* Input و Select */
+
+#AddressLocation_id .form-control,
+.form-select {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    color: #36383c !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #999b9f !important;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    box-shadow:
+        0 2px 7px #00000009;
+
+    transition: all 0.25s ease;
+}
+
+
+/* Placeholder */
+
+#AddressLocation_id .form-control::placeholder {
+    color: #9a9ca1;
+}
+
+
+/* Focus */
+
+#AddressLocation_id .form-control:focus,
+.form-select:focus {
+    background: #ffffff !important;
+
+    border-color: #0118D8 !important;
+
+    box-shadow:
+        0 0 0 3px #8b6cff1a,
+        0 5px 15px #828282 !important;
+}
+
+
+/* Select */
+
+#AddressLocation_id .form-select option {
+    background: #ffffff;
+
+    color: #0118D8;
+}
+
+
+
+/* دکمه */
+
+#AddressLocation_id .address-location-btn {
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: #ffffff;
+
+    background: linear-gradient(135deg,
+            #0118D8,
+            #00fff7);
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px #3c404633;
+
+    transition: all 0.25s ease;
+}
+
+
+/* Hover */
+
+#AddressLocation_id .address-location-btn:hover {
+    background: linear-gradient(135deg,
+            #006400,
+            #006400);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px #006400;
+}
+
+
+
+#AddressLocation_id .address-location-btn:active {
+    transform: translateY(1px) scale(0.98) !important;
+}
+
+
+
+
+/* موبایل */
+
+@media (max-width: 768px) {
+
+    .address-location-box {
+        flex-direction: column;
+
+        border-radius: 22px;
+    }
+
+    .address-location-image {
+        width: 100%;
+
+        height: 250px;
+    }
+
+    .address-location-form {
+        width: 100%;
+
+        padding: 30px 20px;
+    }
+}
+
+
+
+/*  موبایل کوچک  */
+
+@media (max-width: 480px) {
+
+    .address-location-image {
+        height: 200px;
+    }
+
+    .address-location-form {
+        padding: 25px 15px;
+    }
+
+    .address-location-title {
+        font-size: 24px;
+    }
+}

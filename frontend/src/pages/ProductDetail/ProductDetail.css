@@ -57,7 +57,7 @@
     width: 20rem;
     height: 20rem;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle closest-side at center, white, transparent);
+    background: radial-gradient(circle closest-side at center, #ffffff, transparent);
     opacity: 0;
     transition: opacity 300ms ease;
 }
@@ -95,9 +95,7 @@
 /* ---------------------- */
 
 
-/* =========================================
-MODERN FLOATING PRODUCT CARD
-========================================= */
+/* MODERN FLOATING PRODUCT CARD */
 
 .luxury-product-card {
     position: relative;
@@ -116,10 +114,10 @@ MODERN FLOATING PRODUCT CARD
             #101117 55%,
             #0b0c10 100%);
 
-    border: 1px solid rgba(255, 255, 255, .07);
+    border: 1px solid #ffffff12;
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, .35);
+        0 20px 50px #00000059;
 
     transition:
         transform .4s cubic-bezier(.2, .8, .2, 1),
@@ -129,9 +127,8 @@ MODERN FLOATING PRODUCT CARD
 }
 
 
-/* =========================================
-COLOR ORBS
-========================================= */
+
+/* COLOR ORBS */
 
 .luxury-product-card::before {
     content: "";
@@ -148,8 +145,8 @@ COLOR ORBS
 
     background:
         radial-gradient(circle,
-            rgba(255, 64, 91, .65),
-            rgba(255, 64, 91, .15) 45%,
+            #ff405ba6,
+            #ff405b26 45%,
             transparent 70%);
 
     filter: blur(15px);
@@ -177,7 +174,7 @@ COLOR ORBS
 
     background:
         radial-gradient(circle,
-            rgba(93, 74, 255, .5),
+            #5d4aff80,
             transparent 70%);
 
     filter: blur(20px);
@@ -186,16 +183,15 @@ COLOR ORBS
 }
 
 
-/* =========================================
-HOVER
-========================================= */
+
+/* HOVER */
 
 .luxury-product-card:hover {
     transform: translateY(-8px);
 
     box-shadow:
-        0 30px 70px rgba(0, 0, 0, .45),
-        0 0 40px rgba(255, 64, 91, .08);
+        0 30px 70px #00000073,
+        0 0 40px #ff405b14;
 }
 
 
@@ -206,9 +202,9 @@ HOVER
 }
 
 
-/* =========================================
-TOP BADGE
-========================================= */
+
+
+/* TOP BADGE */
 
 .product-create {
     position: relative;
@@ -229,10 +225,10 @@ TOP BADGE
     font-weight: 600;
 
     background:
-        rgba(255, 255, 255, .055);
+        #ffffff0e;
 
     border:
-        1px solid rgba(255, 255, 255, .08);
+        1px solid #ffffff14;
 
     border-radius: 100px;
 
@@ -259,9 +255,9 @@ TOP BADGE
 }
 
 
-/* =========================================
-PRICE
-========================================= */
+
+
+/* PRICE */
 
 .product-price-box {
     position: relative;
@@ -326,9 +322,9 @@ PRICE
 }
 
 
-/* =========================================
-DIVIDER
-========================================= */
+
+
+/* DIVIDER */
 
 .divider {
     position: relative;
@@ -342,14 +338,13 @@ DIVIDER
     background:
         linear-gradient(90deg,
             transparent,
-            rgba(255, 255, 255, .1),
+            #ffffff1a,
             transparent);
 }
 
 
-/* =========================================
-BUTTON
-========================================= */
+
+/* BUTTON */
 
 .add-cart-btn {
     position: relative;
@@ -382,7 +377,7 @@ BUTTON
             #ed2442);
 
     box-shadow:
-        0 10px 25px rgba(255, 64, 91, .2);
+        0 10px 25px #ff405b33;
 
     overflow: hidden;
 
@@ -404,7 +399,7 @@ BUTTON
     left: -100px;
 
     background:
-        rgba(255, 255, 255, .2);
+        #ffffff33;
 
     transform: rotate(25deg);
 
@@ -421,7 +416,7 @@ BUTTON
     transform: translateY(-3px);
 
     box-shadow:
-        0 16px 35px rgba(255, 64, 91, .32);
+        0 16px 35px #ff405b52;
 }
 
 
@@ -430,9 +425,9 @@ BUTTON
 }
 
 
-/* =========================================
-CART
-========================================= */
+
+
+/* CART */
 
 .cart-icon {
     width: 29px;
@@ -446,7 +441,7 @@ CART
     border-radius: 10px;
 
     background:
-        rgba(255, 255, 255, .13);
+        #ffffff21;
 
     transition: .3s ease;
 }
@@ -457,13 +452,13 @@ CART
         translateX(-4px) scale(1.1);
 
     background:
-        rgba(255, 255, 255, .2);
+        #ffffff33;
 }
 
 
-/* =========================================
-TABLET
-========================================= */
+
+
+/* TABLET */
 
 @media (max-width: 991px) {
 
@@ -482,9 +477,8 @@ TABLET
 }
 
 
-/* =========================================
-MOBILE
-========================================= */
+
+/* MOBILE */
 
 @media (max-width: 575px) {
 
@@ -515,9 +509,7 @@ MOBILE
 }
 
 
-/* =========================================
-SMALL MOBILE
-========================================= */
+/* SMALL MOBILE */
 
 @media (max-width: 380px) {
 
@@ -602,6 +594,58 @@ SMALL MOBILE
 
 
 
+/* warning */
+
+
+.colored-toast-warning {
+    background-color: #ff7300 !important;
+}
+
+.colored-toast-warning .swal2-title {
+    color: #ffffff !important;
+    font-size: x-large;
+}
+
+/* خود آیکون SweetAlert */
+.colored-toast-warning .swal2-icon.swal2-warning {
+    animation: warningShake 0.8s ease-in-out infinite;
+}
+
+@keyframes warningShake {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    15% {
+        transform: rotate(-15deg) scale(1.1);
+    }
+
+    30% {
+        transform: rotate(15deg) scale(1.1);
+    }
+
+    45% {
+        transform: rotate(-12deg) scale(1.08);
+    }
+
+    60% {
+        transform: rotate(12deg) scale(1.08);
+    }
+
+    75% {
+        transform: rotate(-5deg) scale(1.03);
+    }
+
+    90% {
+        transform: rotate(5deg) scale(1.03);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+
 
 
 
@@ -678,7 +722,7 @@ SMALL MOBILE
 
 
 .selected-color-box strong {
-    color: #000;
+    color: #000000;
 }
 
 
@@ -687,3 +731,23 @@ SMALL MOBILE
 }
 
 
+
+/* تیک داخل رنگ انتخاب شده */
+.color-circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* علامت تیک */
+.color-check {
+    color: #767676;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow:
+        0 1px 2px #000000cc,
+        1px 0 2px #000000cc,
+        0 -1px 2px #000000cc;
+}

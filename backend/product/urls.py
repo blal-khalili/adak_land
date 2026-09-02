@@ -1,10 +1,11 @@
 from django.urls import path, re_path
-from .views import ProductApiView, ProductDetailAPIView, ProductReviwCreateApiView
+from .views import ProductApiView, ProductDetailAPIView, ProductReviwCreateApiView, SearchAPIView
 
 
 urlpatterns = [
     path("list/", ProductApiView.as_view()),
     # path("detail/<slug>", ProductDetailAPIView.as_view()),
     re_path(r"detail/(?P<slug>[^/]+)/?$", ProductDetailAPIView.as_view()),
-    path("review/create/", ProductReviwCreateApiView.as_view())
+    path("review/create/", ProductReviwCreateApiView.as_view()),
+    path("search/", SearchAPIView.as_view(), name="search"),
 ]

@@ -22,6 +22,8 @@ import LandingLayout from './LandingLayout'
 import Profile from './pages/Profile/Profile.jsx';
 import Personalinfo from "./pages/Personal_information/Personalinfo.jsx";
 import Editprofile from "./pages/Edit_profile/Editprofile.jsx"
+import SearchPage from './pages/Searchpage/SearchPage.jsx';
+import AddressLocation from './pages/AddressLocationPage/AddressLocation.jsx';
 import {
   useQuery,
   useQueryClient,
@@ -55,6 +57,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/products/detail/:slug" element={<ProductDetail />}></Route>
             <Route path="/Personalinfo" element={<Personalinfo />}></Route>
             <Route path="/Editprofile" element={<Editprofile />}></Route>
+            <Route path="/SearchPage" element={<SearchPage />}></Route>
+            <Route path="/AddressLocation" element={<AddressLocation />}></Route>
             <Route element={<AuthWrapper />}>
               <Route path="/profile" element={<Profile />}></Route>
             </Route>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { FaShoppingCart } from "react-icons/fa";
 import CardShoppingCart from "../components/CardShoppingCart/CardShoppingCart";
+import { Link } from "react-router";
 
 import "./Shoppingcart.css";
 
@@ -120,29 +121,31 @@ function Cart() {
                             </div>
 
 
-                            <button
-                                id="buttoncart"
-                                type="button"
-                                className="btn"
-                            >
+                            <Link to={"/AddressLocation"}>
+                                <button
+                                    id="buttoncart"
+                                    type="button"
+                                    className="btn"
+                                >
 
-                                <span className="button-inner">
+                                    <span className="button-inner">
 
-                                    <span className="button-icon">
-                                        ✦
+                                        <span className="button-icon">
+                                            ✦
+                                        </span>
+
+                                        <span className="button-text">
+                                            تایید و تکمیل سفارش
+                                        </span>
+
+                                        <span className="button-icon">
+                                            ✦
+                                        </span>
+
                                     </span>
 
-                                    <span className="button-text">
-                                        تایید و تکمیل سفارش
-                                    </span>
-
-                                    <span className="button-icon">
-                                        ✦
-                                    </span>
-
-                                </span>
-
-                            </button>
+                                </button>
+                            </Link>
 
                         </div>
 
@@ -205,29 +208,31 @@ function Cart() {
                             </div>
 
 
-                            <button
-                                id="buttoncart"
-                                type="button"
-                                className="btn"
-                            >
+                            <Link to={"/AddressLocation"}>
+                                <button
+                                    id="buttoncart"
+                                    type="button"
+                                    className="btn"
+                                >
 
-                                <span className="button-inner">
+                                    <span className="button-inner">
 
-                                    <span className="button-icon">
-                                        ✦
+                                        <span className="button-icon">
+                                            ✦
+                                        </span>
+
+                                        <span className="button-text">
+                                            تایید و تکمیل سفارش
+                                        </span>
+
+                                        <span className="button-icon">
+                                            ✦
+                                        </span>
+
                                     </span>
 
-                                    <span className="button-text">
-                                        تایید و تکمیل سفارش
-                                    </span>
-
-                                    <span className="button-icon">
-                                        ✦
-                                    </span>
-
-                                </span>
-
-                            </button>
+                                </button>
+                            </Link>
 
                         </div>
 

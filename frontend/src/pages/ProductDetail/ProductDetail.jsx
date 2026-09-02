@@ -32,7 +32,7 @@ function ProductDetail() {
 
     // آیکون موفقیت
     const doubleCheckIcon =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32"><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 45.3 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-45.3 0-45.3 0s-32.8 12.5-45.3 0l128 128c12.5 12.5 45.3 0 45.3 0l256-256z" fill="currentColor" /></svg>';
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32"><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" fill="currentColor" /></svg>'
 
 
     // پیام موفقیت
@@ -92,10 +92,16 @@ function ProductDetail() {
         // اگر رنگ انتخاب نشده باشد
         if (!selectedColor) {
             Swal.fire({
-                title: "لطفاً یک رنگ انتخاب کنید",
+                title: "لطفاً یک رنگ انتخاب کنید 🙄",
                 icon: "warning",
+                draggable: true,
+                customClass: {
+                    icon: "rotate-y-warning",
+                    popup: "colored-toast-warning",
+                },
+                iconColor: "white",
                 showConfirmButton: false,
-                timer: 2500,
+                timer: 4500,
                 timerProgressBar: true,
             });
 
@@ -176,19 +182,19 @@ function ProductDetail() {
 
                                         <button
                                             type="button"
-                                            className={`color-circle ${selectedColor?.id === color.id
-                                                    ? "selected"
-                                                    : ""
+                                            className={`color-circle ${selectedColor?.id === color.id ? "selected" : ""
                                                 }`}
-                                            onClick={() =>{
-                                                handleColorSelect(color)
-                                            }
-                                            }
+                                            onClick={() => handleColorSelect(color)}
                                             title={color.title}
                                             style={{
                                                 "--color-code": color.color_code,
                                             }}
-                                        />
+                                        >
+                                            {selectedColor?.id === color.id && (
+                                                <span className="color-check">✓</span>
+                                            )}
+                                        </button>
+
 
                                     </li>
 

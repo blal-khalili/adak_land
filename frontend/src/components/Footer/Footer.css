@@ -23,3 +23,27 @@
 #btn-link-ContactUs_id {
     width: 100px !important;
 }
+
+
+
+
+/* footer_link_Categories */
+
+
+.footer_link_Categories:hover p {
+    color: #0118D8 !important;
+    font-weight: bold;
+}
+
+
+.footer_link_menu:hover p {
+    color: #0118D8 !important;
+    font-weight: bold;
+}
+
+
+
+.footer_link_more:hover p {
+    color: #0118D8 !important;
+    font-weight: bold;
+}

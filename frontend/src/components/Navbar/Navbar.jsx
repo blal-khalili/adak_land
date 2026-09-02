@@ -8,6 +8,7 @@ import { checkAuth, logout } from "../../../utils/auth/auth";
 import authStore, { useBearStore } from "../../../stores/authStore";
 import { userProfileDetail } from "../../../utils/auth/auth";
 import { CgProfile } from "react-icons/cg";
+import Search from "../Search/Search";
 
 
 function Navber() {
@@ -20,7 +21,7 @@ function Navber() {
         }
     }, [])
 
-    // TODO: مشکل غیب شدن محتوا زیر نوبار حل شود
+
     return (
         <nav className="navbar navbar-expand-lg mb-5 fixed-top">
             <div className="container-fluid">
@@ -40,7 +41,7 @@ function Navber() {
                     <span className="bi bi-list-stars"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div className="col-md-5">
+                    {/* <div className="col-md-5">
                         <form className="d-flex">
                             <input
                                 className="form-control me-5"
@@ -52,7 +53,8 @@ function Navber() {
                                 جستوجو
                             </button>
                         </form>
-                    </div>
+                    </div> */}
+                    <Search />
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item dropdown">
                             <Link

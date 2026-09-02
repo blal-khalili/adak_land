@@ -51,50 +51,50 @@ function Footer() {
                     <div id="Menu" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">منو</h2>
 
-                        <Link >
-                            <p>خانه</p>
+                        <Link className="footer_link_menu" to="/">
+                            <p className="text-dark">خانه</p>
                         </Link>
 
-                        <Link >
-                            <p>داغ ترین ها</p>
+                        <Link className="footer_link_menu">
+                            <p className="text-dark">داغ ترین ها</p>
                         </Link>
 
-                        <Link >
-                            <p>جدید ترین ها</p>
+                        <Link className="footer_link_menu">
+                            <p className="text-dark">جدید ترین ها</p>
                         </Link>
 
-                        <Link >
-                            <p>پر فروش ترین ها</p>
+                        <Link className="footer_link_menu">
+                            <p className="text-dark">پر فروش ترین ها</p>
                         </Link>
                     </div>
                     <div id="More" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">بیشتر</h2>
 
-                        <Link >
-                            <p>سوالی دارید؟</p>
+                        <Link className="footer_link_more">
+                            <p className="text-dark">سوالی دارید؟</p>
                         </Link>
 
-                        <Link >
-                            <p>راهنمایی</p>
+                        <Link className="footer_link_more">
+                            <p className="text-dark">راهنمایی</p>
                         </Link>
                     </div>
                     <div id="Category" className="col-md-3 mt-5 col-6">
                         <h2 className="pb-3">دسته بندی ها</h2>
 
-                        <Link to="/supermarket">
-                            <p>سورمارکت</p>
+                        <Link className="footer_link_Categories" to="/supermarket">
+                            <p className="text-dark">سورمارکت</p>
                         </Link>
 
-                        <Link >
-                            <p>لوازم تحریر</p>
+                        <Link className="footer_link_Categories" to={"/Stationery"}>
+                            <p className="text-dark">لوازم تحریر</p>
                         </Link>
 
-                        <Link >
-                            <p>لوازم جانبی موبایل</p>
+                        <Link className="footer_link_Categories" to={"/MobileAccessories"}>
+                            <p className="text-dark">لوازم جانبی موبایل</p>
                         </Link>
 
-                        <Link >
-                            <p>لوازم آرایشی و بهداشتی</p>
+                        <Link className="footer_link_Categories" to={"/Cosmetics"}>
+                            <p className="text-dark">لوازم آرایشی و بهداشتی</p>
                         </Link>
                     </div>
 

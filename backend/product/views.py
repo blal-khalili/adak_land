@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .filters import ProductFilter
+from django.db.models import Q
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.views import APIView
 
 from .models import Product
 from .serializers import (
@@ -56,3 +60,25 @@ class ProductReviwCreateApiView(CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductReviewSerializer
     permission_classes = [IsAuthenticated]
+
+
+
+class SearchAPIView(APIView):
+
+    def post(self, request):
+        search_input = request.data.get("search_input", "").strip()
+
+        if not search_input:
+            return Response(
+                {"detail": "Search input is required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        results = Product.objects.filter(
+            title__icontains=search_input
+        )
+
+        serializer = ProductSerializer(results, many=True)
+
+        return Response(serializer.data)
+

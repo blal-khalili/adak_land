@@ -54,19 +54,53 @@ function RegistrationLogins() {
                                 }
                                 <h5 className="text_h5 fw-bolder">ورود در آداک لند</h5>
                                 <p id="text_tag_p" className="mt-5">لطفا نام کاربری و رمز عبور خود را وارد کنید</p>
-                                <div className="mt-4">
-                                    <label for="inputUsername" className="form-label">نام کاربری</label>
-                                    <input ref={inputUsername} placeholder="نام کاربری خود را وارد کنید" type="text" className="form-control text-end mt-2" id="inputUsername" />
-                                    <label for="inputPassword" className="form-labe mt-3">رمز عبور</label>
-                                    <input ref={inputPassword} placeholder="رمز عبور خود را وارد کنید" type="password" className="form-control text-end mt-2" id="inputPassword" />
-                                </div>
-                                <div className="mt-4">
-                                    {/* <Link to="/ConfirmationCodePage" ></Link> */}
-                                    <button onClick={() => {
-                                        login(inputUsername.current.value, inputPassword.current.value)
-                                    }
-                                    } id="btn_RegistrationLogin" className="bg-primary text-white">ورود به آداک لند</button>
-                                </div>
+                                <form
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+
+                                        login(
+                                            inputUsername.current.value,
+                                            inputPassword.current.value
+                                        );
+                                    }}
+                                >
+                                    <div className="mt-4">
+                                        <label htmlFor="inputUsername" className="form-label">
+                                            نام کاربری
+                                        </label>
+
+                                        <input
+                                            ref={inputUsername}
+                                            placeholder="نام کاربری خود را وارد کنید"
+                                            type="text"
+                                            className="form-control text-end mt-2"
+                                            id="inputUsername"
+                                        />
+
+                                        <label htmlFor="inputPassword" className="form-label mt-3">
+                                            رمز عبور
+                                        </label>
+
+                                        <input
+                                            ref={inputPassword}
+                                            placeholder="رمز عبور خود را وارد کنید"
+                                            type="password"
+                                            className="form-control text-end mt-2"
+                                            id="inputPassword"
+                                        />
+                                    </div>
+
+                                    <div className="mt-4">
+                                        <button
+                                            type="submit"
+                                            id="btn_RegistrationLogin"
+                                            className="bg-primary text-white"
+                                        >
+                                            ورود به آداک لند
+                                        </button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
