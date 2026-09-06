@@ -91,11 +91,11 @@
     background:
 
         linear-gradient(135deg,
-            #4c0808,
-            #7c1010 35%,
-            #9f1717 50%,
-            #720d0d 65%,
-            #450606) !important;
+            #0118D8,
+            #00fff7 35%,
+            #0118D8 50%,
+            #00fff7 65%,
+            #0118D8) !important;
 
 
     border-bottom:
@@ -111,7 +111,7 @@
 
     text-shadow:
 
-        0 2px 5px #00000066 !important;
+        0 2px 5px #000000 !important;
 
 
     z-index:

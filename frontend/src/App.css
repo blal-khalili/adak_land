@@ -169,7 +169,7 @@
 .category-card:hover .category-circle {
     transform: translateY(-6px) scale(1.04);
 
-    border-color: #0118D8;
+    border-color: #0118d8;
 
     box-shadow:
         0 12px 28px #0117d865,
