@@ -214,3 +214,8 @@ EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_HOST_USER')  # SMTP server userna
 EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")  # SMTP server password
 EMAIL_USE_SSL = False  # Set to True if using SSL
 DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Default sender email address
+
+
+
+SANDBOX = 'www'
+MERCHANT = 'aed3a6a2-e0cf-4f5c-a830-e370c77795f7'
