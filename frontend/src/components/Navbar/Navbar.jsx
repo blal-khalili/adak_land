@@ -1,7 +1,7 @@
 import Logo_Navbar from "../../assets/image/OriginLogo/Logo_Navbar.png"
 import "../Navbar/Navbar.css";
-import { Link } from "react-router";
-import { useEffect } from "react";
+import { Link, useLocation } from "react-router";
+import { useEffect, useState } from "react";
 // import useCheckAuth from "../../hooks/useCheckAuth";
 import useProfileData from "../../hooks/useProfileData";
 import { checkAuth, logout } from "../../../utils/auth/auth";
@@ -14,12 +14,19 @@ import Search from "../Search/Search";
 function Navber() {
     const userData = useBearStore.getState().userData
     const isLoggedIn = useBearStore.getState().isLoggedIn
+    const [isLoggedInState,setIsLoggedInState] = useState(false);
+    const history = useLocation() 
+
 
     useEffect(() => {
+        console.log(history)
         if (checkAuth() == true) {
             useBearStore.getState().setIsLoggedIn(false)
+            setIsLoggedInState(useBearStore.getState().isLoggedIn)
+        }else{
+            setIsLoggedInState(true)
         }
-    }, [])
+    }, [history])
 
 
     return (
@@ -129,7 +136,7 @@ function Navber() {
                             </div>
                         </li>
 
-                        {isLoggedIn ? (
+                        {isLoggedInState ? (
                             <>
                                 <li className="nav-user">
                                     {userData && (

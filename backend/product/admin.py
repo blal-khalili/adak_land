@@ -28,9 +28,15 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ColorInline, ProductSpecificationInline]
 
 
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_filter = ["admin_verifed",]
+
+
 admin.site.register(ProductColor)
-admin.site.register(ProductReview)
+admin.site.register(ProductReview, ProductReviewAdmin)
 admin.site.register(ProductSpecification)
 admin.site.register(TypeOfProduct)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Part)
+
+

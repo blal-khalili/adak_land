@@ -5,12 +5,17 @@ import "./ProductDetail.css";
 import authAxiosInstance from "../../../utils/auth/customAxios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { FaStar } from 'react-icons/fa';
+
 
 function ProductDetail() {
     const params = useParams();
 
     const [product, setProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState(null);
+
+    const [rating, setRating] = useState(0); // State for the selected rating
+    const [hover, setHover] = useState(0);   // State for hover effect
 
     // گرفتن اطلاعات محصول
     const getProduct = async () => {
@@ -299,6 +304,38 @@ function ProductDetail() {
 
                     </div>
 
+                    <div className="border">
+                        <form action="">
+                            <textarea name="" rows={4} cols={120} placeholder="متن نظر شما" id=""></textarea>
+                        </form>
+
+
+                        <div className="star-rating">
+                            {[...Array(5)].map((star, index) => { // Map over an array for 5 stars
+                                index += 1; // Adjust index to be 1-based
+
+
+                                return (
+                                    <FaStar
+                                        key={index}
+                                        className={index <= (hover || rating) ? 'on' : 'off'} // Apply 'on' class for filled stars
+                                        onClick={() => { setRating(index) }} // Set rating on click
+                                        onMouseEnter={() => setHover(index)} // Set hover state on mouse enter
+                                        onMouseLeave={() => setHover(rating)} // Reset hover on mouse leave
+                                        size={30} // Adjust size as needed
+                                        color={index <= (hover || rating) ? '#ffd700' : '#e4e5e9'} // Set color based on state
+                                    />
+                                );
+                            })}
+                        </div>
+                        <button onClick={()=>{
+                            // send fetch reaquest
+                            console.log(product.id)
+                            console.log(rating)
+                            
+                        }}>ارسال نظر</button>
+
+                    </div>
                 </div>
             )}
         </>

@@ -82,3 +82,7 @@ class SearchAPIView(APIView):
 
         return Response(serializer.data)
 
+
+
+class AddProductReviewAPIView(CreateAPIView):
+    pass

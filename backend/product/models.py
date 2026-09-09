@@ -62,3 +62,4 @@ class ProductReview(models.Model):
     dislike = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_created=True)
+    admin_verifed = models.BooleanField(default=False)
