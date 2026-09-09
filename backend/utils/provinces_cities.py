@@ -1,46 +1,73 @@
-
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
-from django.core.asgi import get_asgi_application
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
-
-# loads django first
-django_application = get_asgi_application()
-
-
+import sys
 import json
 from pathlib import Path
+
+# مسیر backend
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# اضافه کردن backend به Python path
+sys.path.insert(0, str(BASE_DIR))
+
+# تنظیمات Django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
+
+# راه‌اندازی Django
+import django
+
+django.setup()
+
+
+# Django imports
+
 from django.db import transaction
 from general.models import Province, City
 
-# مسیر فایل JSON
-BASE_DIR = Path(__file__).resolve().parent
+# JSON file
+
 JSON_FILE = BASE_DIR / "utils" / "ProvincesCities.json"
+
+print("===================================")
+print("BASE_DIR:")
 print(BASE_DIR)
+
+print("JSON_FILE:")
 print(JSON_FILE)
+print("===================================")
+
+
+# Import function
+
 
 @transaction.atomic
 def import_provinces_cities():
     """
-    Import provinces and cities from ProvincesCities.json
-    into the database.
+    Import provinces and cities from
+    ProvincesCities.json into database.
     """
 
+    # بررسی وجود فایل JSON
     if not JSON_FILE.exists():
         raise FileNotFoundError(f"JSON file not found: {JSON_FILE}")
 
-    # خواندن JSON
+    # Read JSON
+
     with JSON_FILE.open("r", encoding="utf-8") as file:
-        text = file.read()
-        data = json.loads(text)
-        # print(data)
-        # print(file.read())
+        data = json.load(file)
+
+    # بررسی ساختار JSON
     if not isinstance(data, list):
-        raise ValueError("ProvincesCities.json باید شامل یک آرایه از شهرها باشد.")
+        raise ValueError("ProvincesCities.json باید شامل یک آرایه (list) باشد.")
+
+    # Counters
 
     provinces_created = 0
     cities_created = 0
+
+    provinces_updated = 0
+    cities_updated = 0
+
+    # Process data
 
     for item in data:
 
@@ -49,9 +76,6 @@ def import_provinces_cities():
 
         city_code = item["cityId"]
         city_name = item["cityName"]
-
-
-
 
         # Province
 
@@ -64,8 +88,8 @@ def import_provinces_cities():
 
         if province_created:
             provinces_created += 1
-
-
+        else:
+            provinces_updated += 1
 
         # City
 
@@ -79,15 +103,28 @@ def import_provinces_cities():
 
         if city_created:
             cities_created += 1
+        else:
+            cities_updated += 1
 
+    # Result
+
+    print()
     print("===================================")
     print("Province / City import completed")
     print("===================================")
-    print(f"New provinces : {provinces_created}")
-    print(f"New cities    : {cities_created}")
-    print(f"Total records : {len(data)}")
+
+    print(f"New provinces     : {provinces_created}")
+    print(f"Updated provinces : {provinces_updated}")
+
+    print(f"New cities        : {cities_created}")
+    print(f"Updated cities    : {cities_updated}")
+
+    print(f"Total JSON records: {len(data)}")
+
     print("===================================")
 
+
+# Run
 
 if __name__ == "__main__":
     import_provinces_cities()
