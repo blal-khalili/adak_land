@@ -522,7 +522,7 @@
 
     box-shadow:
 
-        5px 5px 15px rgba(0, 0, 0, .08);
+        5px 5px 15px #00000014;
 
     text-decoration: none;
 
@@ -550,7 +550,7 @@
 
     box-shadow:
 
-        0 20px 40px rgba(0, 0, 0, .15);
+        0 20px 40px #00000026;
 
 }
 
@@ -770,7 +770,7 @@
             #0118D8,
             #00fff7);
 
-    color: white;
+    color: #ffffff;
 
     box-shadow: 0 6px 10px #828284;
 

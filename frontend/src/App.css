@@ -212,3 +212,111 @@
         margin-top: 7px;
     }
 }
+
+
+
+
+
+/* The best sellers */
+
+
+
+#Offer #best_sellers_id {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 0 6px 10px #38383c;
+    font-size: x-large !important;
+}
+
+
+
+
+
+#Offer #best_sellers_hr_id {
+    width: 220px;
+    height: 5px;
+    margin: 20px auto;
+    border: none;
+    opacity: 1;
+
+    border-radius: 50px;
+
+    background: linear-gradient(90deg,
+            #0118D8,
+            #00fff7,
+            #0118D8,
+            #00fff7,
+            #0118D8);
+
+    background-size: 300% 100%;
+    animation: goldShine 3s linear infinite;
+
+    box-shadow:
+        0 0 8px #00fff7cc,
+        0 0 18px #0118d899;
+}
+
+@keyframes goldShine {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
+}
+
+
+
+
+
+
+
+/* Suggested products */
+
+
+
+#suggested_products_div #suggested_products_id {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 0 6px 10px #38383c;
+    font-size: x-large !important;
+}
+
+
+
+
+
+#suggested_products_div #suggested_products_hr_id {
+    width: 220px;
+    height: 5px;
+    margin: 20px auto;
+    border: none;
+    opacity: 1;
+
+    border-radius: 50px;
+
+    background: linear-gradient(90deg,
+            #0118D8,
+            #00fff7,
+            #0118D8,
+            #00fff7,
+            #0118D8);
+
+    background-size: 300% 100%;
+    animation: goldShine 3s linear infinite;
+
+    box-shadow:
+        0 0 8px #00fff7cc,
+        0 0 18px #0118d899;
+}
+
+@keyframes goldShine {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
+}

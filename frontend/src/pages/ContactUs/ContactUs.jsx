@@ -6,10 +6,11 @@ import useSubjectsForm from "../../hooks/useSubjectsForm";
 import useCityForm from "../../hooks/useCityForm";
 import { Link } from "react-router";
 import { useEffect } from "react";
-import Logo_Navbar from "../../assets/image/OriginLogo/Logo_Navbar.png"
+import Logo_Navbar from "../../assets/image/OriginLogo/Logo_Navbar.png";
 import { CgProfile } from "react-icons/cg";
 import authStore, { useBearStore } from "../../../stores/authStore";
 import { checkAuth, logout } from "../../../utils/auth/auth";
+import Search from "../../components/Search/Search";
 
 
 
@@ -134,7 +135,7 @@ function ContactUs() {
                   <span className="bi bi-list-stars"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <div className="col-md-5">
+                  {/* <div className="col-md-5">
                     <form className="d-flex">
                       <input
                         className="form-control me-5"
@@ -146,7 +147,8 @@ function ContactUs() {
                         جستوجو
                       </button>
                     </form>
-                  </div>
+                  </div> */}
+                  <Search buttonClassName="btn-outline-light" />
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item dropdown">
                       <Link
@@ -565,7 +567,7 @@ function ContactUs() {
       </section>
 
 
-      <footer id="footer" className="text-dark pb-4">
+      <footer id="footer_contactus_id" className="text-dark pb-4">
         <div className="container">
           <div className="row">
             <div className="col-md-5 mt-5">
@@ -576,7 +578,7 @@ function ContactUs() {
               <p>09142137122</p>
               <p>Adack Land@gamil.com</p>
 
-              <div id="Social" className="d-flex gap-3">
+              <div id="Social" className="d-flex gap-3  mt-4">
                 <Link >
                   <i className="bi bi-google"></i>
                 </Link>
@@ -598,54 +600,54 @@ function ContactUs() {
             <div id="Menu" className="col-md-2 mt-5 col-6">
               <h2 className="pb-3">منو</h2>
 
-              <Link >
-                <p>خانه</p>
+              <Link className="footer_link_menu" to="/">
+                <p className="text-dark">خانه</p>
               </Link>
 
-              <Link >
-                <p>داغ ترین ها</p>
+              <Link className="footer_link_menu">
+                <p className="text-dark">داغ ترین ها</p>
               </Link>
 
-              <Link >
-                <p>جدید ترین ها</p>
+              <Link className="footer_link_menu">
+                <p className="text-dark">جدید ترین ها</p>
               </Link>
 
-              <Link >
-                <p>پر فروش ترین ها</p>
+              <Link className="footer_link_menu">
+                <p className="text-dark">پر فروش ترین ها</p>
               </Link>
             </div>
             <div id="More" className="col-md-2 mt-5 col-6">
               <h2 className="pb-3">بیشتر</h2>
 
-              <Link >
-                <p>سوالی دارید؟</p>
+              <Link className="footer_link_more" to="/QuestionPage">
+                <p className="text-dark">سوالی دارید؟</p>
               </Link>
 
-              <Link >
-                <p>راهنمایی</p>
+              <Link className="footer_link_more">
+                <p className="text-dark">راهنمایی</p>
               </Link>
             </div>
             <div id="Category" className="col-md-3 mt-5 col-6">
               <h2 className="pb-3">دسته بندی ها</h2>
 
-              <Link to="/supermarket">
-                <p>سورمارکت</p>
+              <Link className="footer_link_Categories" to="/supermarket">
+                <p className="text-dark">سورمارکت</p>
               </Link>
 
-              <Link >
-                <p>لوازم تحریر</p>
+              <Link className="footer_link_Categories" to={"/Stationery"}>
+                <p className="text-dark">لوازم تحریر</p>
               </Link>
 
-              <Link >
-                <p>لوازم جانبی موبایل</p>
+              <Link className="footer_link_Categories" to={"/MobileAccessories"}>
+                <p className="text-dark">لوازم جانبی موبایل</p>
               </Link>
 
-              <Link >
-                <p>لوازم آرایشی و بهداشتی</p>
+              <Link className="footer_link_Categories" to={"/Cosmetics"}>
+                <p className="text-dark">لوازم آرایشی و بهداشتی</p>
               </Link>
             </div>
 
-            <hr />
+            <hr className="mt-3" />
 
             <div className="col-md-6">2025 © تمامی حقوق محفوظ است. آداک لند </div>
             <div className="col-md-6">شرایط استفاده | سیاست حفظ حریم خصوصی</div>

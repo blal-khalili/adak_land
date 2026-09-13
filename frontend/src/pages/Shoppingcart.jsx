@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+
 import CardShoppingCart from "../components/CardShoppingCart/CardShoppingCart";
-import { Link } from "react-router";
+import authAxiosInstance from "../../utils/auth/customAxios";
 
 import "./Shoppingcart.css";
-
-import CardItemsShopCart from "../components/CardItemsShopCart/CardItemsShopCart";
-import authAxiosInstance from "../../utils/auth/customAxios";
 
 
 function Cart() {
 
+    const navigate = useNavigate();
+
+
+    // تشخیص اندازه صفحه
     const isBigScreen = useMediaQuery({
         query: "(min-width: 771px)"
     });
@@ -21,10 +25,12 @@ function Cart() {
     });
 
 
+    // اطلاعات سبد خرید
     const [total_price, SetTotalPrice] = useState(0);
     const [data, setData] = useState(null);
 
 
+    // گرفتن اطلاعات سبد خرید
     useEffect(() => {
 
         authAxiosInstance
@@ -49,6 +55,75 @@ function Cart() {
     }, []);
 
 
+
+    // تابع تایید و تکمیل سفارش
+
+    const handleCheckout = () => {
+
+        console.log("Total Price:", total_price);
+        console.log("Cart Data:", data);
+
+
+        // اگر اطلاعات سبد هنوز دریافت نشده
+        if (!data) {
+
+            Swal.fire({
+                title: "سبد خرید شما خالی هست یا احراز هویت نکردید 🥴",
+                icon: "warning",
+                draggable: true,
+                customClass: {
+                    icon: "shopping_cart_rotate-y",
+                    popup: "shopping_cart_colored-toast",
+                },
+                iconColor: "white",
+                showConfirmButton: false,
+                timer: 4500,
+                timerProgressBar: true,
+            });
+
+            return;
+        }
+
+
+
+
+        // بررسی خالی بودن سبد خرید
+
+        if (!total_price || Number(total_price) <= 0) {
+
+            Swal.fire({
+
+                title: "سبد خرید شما خالی است 🛒",
+
+                text: "لطفاً ابتدا یک محصول به سبد خرید اضافه کنید.",
+
+                icon: "warning",
+
+                confirmButtonText: "متوجه شدم",
+
+                confirmButtonColor: "#ff7300",
+
+                customClass: {
+                    popup: "cart-empty-alert",
+                    title: "cart-empty-title",
+                    confirmButton: "cart-empty-button",
+                },
+
+            });
+
+
+            // جلوگیری از رفتن به صفحه بعد
+            return;
+        }
+
+
+        // اگر سبد خرید خالی نبود
+
+        navigate("/AddressLocation");
+
+    };
+
+
     return (
 
         <section className="cart-page">
@@ -58,21 +133,25 @@ function Cart() {
                 <div className="row py-5 mt-5">
 
 
+
                     {/* TITLE */}
 
                     <div className="cart-title">
 
                         <h3>
+
                             سبد خرید
 
                             <span className="cart-count">
                                 <FaShoppingCart />
                             </span>
+
                         </h3>
 
                         <div className="title-line"></div>
 
                     </div>
+
 
 
 
@@ -82,6 +161,9 @@ function Cart() {
 
                         <div className="col-12 cart-summary">
 
+
+                            {/* قیمت کالاها */}
+
                             <div className="price-row">
 
                                 <p>
@@ -89,11 +171,17 @@ function Cart() {
                                 </p>
 
                                 <p className="price">
-                                    {total_price} تومان
+
+                                    {total_price}
+
+                                    {" "}تومان
+
                                 </p>
 
                             </div>
 
+
+                            {/* جمع سبد خرید */}
 
                             <div className="price-row">
 
@@ -102,11 +190,17 @@ function Cart() {
                                 </p>
 
                                 <p className="price">
-                                    848,950,000 تومان
+
+                                    {total_price}
+
+                                    {" "}تومان
+
                                 </p>
 
                             </div>
 
+
+                            {/* سود */}
 
                             <div className="price-row profit">
 
@@ -121,35 +215,39 @@ function Cart() {
                             </div>
 
 
-                            <Link to={"/AddressLocation"}>
-                                <button
-                                    id="buttoncart"
-                                    type="button"
-                                    className="btn"
-                                >
 
-                                    <span className="button-inner">
+                            {/* دکمه تایید و تکمیل سفارش */}
 
-                                        <span className="button-icon">
-                                            ✦
-                                        </span>
+                            <button
+                                id="buttoncart"
+                                type="button"
+                                className="btn"
+                                onClick={handleCheckout}
+                            >
 
-                                        <span className="button-text">
-                                            تایید و تکمیل سفارش
-                                        </span>
+                                <span className="button-inner">
 
-                                        <span className="button-icon">
-                                            ✦
-                                        </span>
-
+                                    <span className="button-icon">
+                                        ✦
                                     </span>
 
-                                </button>
-                            </Link>
+                                    <span className="button-text">
+                                        تایید و تکمیل سفارش
+                                    </span>
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                </span>
+
+                            </button>
+
 
                         </div>
 
                     )}
+
 
 
                     {/* PRODUCTS */}
@@ -157,10 +255,8 @@ function Cart() {
                     <div className="col-12 col-md-9 mt-5">
 
                         <CardShoppingCart c={data} />
-                        {/* <CardShoppingCart /> */}
 
                     </div>
-
 
 
                     {/* DESKTOP SUMMARY */}
@@ -169,6 +265,9 @@ function Cart() {
 
                         <div className="col-md-3 cart-summary">
 
+
+                            {/* قیمت کالاها */}
+
                             <div className="price-row">
 
                                 <p>
@@ -176,11 +275,17 @@ function Cart() {
                                 </p>
 
                                 <p className="price">
-                                    {total_price} تومان
+
+                                    {total_price}
+
+                                    {" "}تومان
+
                                 </p>
 
                             </div>
 
+
+                            {/* جمع سبد خرید */}
 
                             <div className="price-row">
 
@@ -189,11 +294,17 @@ function Cart() {
                                 </p>
 
                                 <p className="price">
-                                    {total_price} تومان
+
+                                    {total_price}
+
+                                    {" "}تومان
+
                                 </p>
 
                             </div>
 
+
+                            {/* سود */}
 
                             <div className="price-row profit">
 
@@ -208,31 +319,34 @@ function Cart() {
                             </div>
 
 
-                            <Link to={"/AddressLocation"}>
-                                <button
-                                    id="buttoncart"
-                                    type="button"
-                                    className="btn"
-                                >
 
-                                    <span className="button-inner">
+                            {/* دکمه تایید و تکمیل سفارش */}
 
-                                        <span className="button-icon">
-                                            ✦
-                                        </span>
+                            <button
+                                id="buttoncart"
+                                type="button"
+                                className="btn"
+                                onClick={handleCheckout}
+                            >
 
-                                        <span className="button-text">
-                                            تایید و تکمیل سفارش
-                                        </span>
+                                <span className="button-inner">
 
-                                        <span className="button-icon">
-                                            ✦
-                                        </span>
-
+                                    <span className="button-icon">
+                                        ✦
                                     </span>
 
-                                </button>
-                            </Link>
+                                    <span className="button-text">
+                                        تایید و تکمیل سفارش
+                                    </span>
+
+                                    <span className="button-icon">
+                                        ✦
+                                    </span>
+
+                                </span>
+
+                            </button>
+
 
                         </div>
 
@@ -249,3 +363,4 @@ function Cart() {
 
 
 export default Cart;
+

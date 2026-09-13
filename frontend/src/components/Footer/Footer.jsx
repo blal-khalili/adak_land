@@ -29,7 +29,7 @@ function Footer() {
                             </Link>
                         </div>
 
-                        <div id="Social" className="d-flex gap-3">
+                        <div id="Social" className="d-flex gap-3 mt-4">
                             <Link >
                                 <i className="bi bi-google"></i>
                             </Link>
@@ -70,7 +70,7 @@ function Footer() {
                     <div id="More" className="col-md-2 mt-5 col-6">
                         <h2 className="pb-3">بیشتر</h2>
 
-                        <Link className="footer_link_more">
+                        <Link className="footer_link_more" to="/QuestionPage">
                             <p className="text-dark">سوالی دارید؟</p>
                         </Link>
 
@@ -98,7 +98,7 @@ function Footer() {
                         </Link>
                     </div>
 
-                    <hr />
+                    <hr className="mt-3" />
 
                     <div className="col-md-6">2025 © تمامی حقوق محفوظ است. آداک لند </div>
                     <div className="col-md-6">شرایط استفاده | سیاست حفظ حریم خصوصی</div>

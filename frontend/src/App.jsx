@@ -245,10 +245,10 @@ function App() {
         </div>
       </div>
 
-      <div id='Offer' className="container mt-5">
-        <h4 className='text-center'>پرفروش ترین ها</h4>
+      <div id='Offer' className="container py-5 mt-5">
+        <h4 id="best_sellers_id" className='text-center'>پرفروش ترین ها</h4>
         <div className='col-md-2 mx-auto'>
-          <hr />
+          <hr id="best_sellers_hr_id" />
         </div>
         <CardSlider p={products.data} />
       </div>
@@ -264,10 +264,10 @@ function App() {
         </div>
       </div>
 
-      <div id='Offer' className="container mt-5">
-        <h4>کالا های پیشنهادی</h4>
+      <div id="suggested_products_div" className="container py-5 mt-5">
+        <h4 id="suggested_products_id">کالا های پیشنهادی</h4>
         <div className='col-md-2'>
-          <hr />
+          <hr id="suggested_products_hr_id" />
         </div>
         <CardSlider p={products.data} />
       </div>
