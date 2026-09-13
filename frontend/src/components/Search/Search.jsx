@@ -2,7 +2,7 @@ import "../Search/Search.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-function Search() {
+function Search({ buttonClassName = "btn-outline-primary" }) {
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
 
@@ -32,7 +32,8 @@ function Search() {
                 />
 
                 <button
-                    className="btn btn-outline-primary mx-1"
+                    className={`btn ${buttonClassName} mx-1`}
+                    // className="btn btn-outline-primary mx-1"
                     type="submit"
                 >
                     جستجو

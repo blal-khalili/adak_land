@@ -726,7 +726,7 @@
 
 
     border-color:
-        rgba(165, 125, 30, 0.42) !important;
+        #a57d1e6b !important;
 
 
     box-shadow:
@@ -911,7 +911,7 @@
     background: #0118D8 !important;
 
     border:
-        1px solid rgba(1, 24, 216, 0.8);
+        1px solid #0118d8cc;
 
     box-shadow:
 
@@ -967,7 +967,7 @@
     border-radius: 999px;
 
     background:
-        rgba(255, 255, 255, 0.28);
+        #ffffff47;
 
     filter: blur(1px);
 
@@ -1177,4 +1177,62 @@
 .cart-summary {
     height: fit-content !important;
     align-self: flex-start !important;
+}
+
+
+
+
+
+
+
+/* alert */
+
+
+
+.shopping_cart_colored-toast {
+    background-color: #0118D8 !important;
+}
+
+.shopping_cart_colored-toast .swal2-title {
+    color: #ffffff !important;
+    font-size: x-large;
+}
+
+/* خود آیکون SweetAlert */
+.shopping_cart_colored-toast .swal2-icon.swal2-warning {
+    animation: warningShake 0.8s ease-in-out infinite;
+}
+
+@keyframes warningShake {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    15% {
+        transform: rotate(-15deg) scale(1.1);
+    }
+
+    30% {
+        transform: rotate(15deg) scale(1.1);
+    }
+
+    45% {
+        transform: rotate(-12deg) scale(1.08);
+    }
+
+    60% {
+        transform: rotate(12deg) scale(1.08);
+    }
+
+    75% {
+        transform: rotate(-5deg) scale(1.03);
+    }
+
+    90% {
+        transform: rotate(5deg) scale(1.03);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
 }

@@ -10,10 +10,9 @@ class Province(models.Model):
     def __str__(self):
         return f"{self.province_name} ({self.province_code})"
 
-    
     class Meta:
-        verbose_name = 'استان'
-        verbose_name_plural = 'استان ها'
+        verbose_name = "province"
+        verbose_name_plural = "provinces"
 
 
 class City(models.Model):
@@ -25,5 +24,5 @@ class City(models.Model):
         return f"{self.city_name} - {self.city_code} - {self.province.province_code}"
 
     class Meta:
-        verbose_name = 'شهر'
-        verbose_name_plural = 'شهر ها'
+        verbose_name = "city"
+        verbose_name_plural = "Cities"

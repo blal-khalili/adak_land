@@ -24,6 +24,7 @@ import Personalinfo from "./pages/Personal_information/Personalinfo.jsx";
 import Editprofile from "./pages/Edit_profile/Editprofile.jsx";
 import SearchPage from './pages/SearchPage/SearchPage.jsx';
 import AddressLocation from './pages/AddressLocationPage/AddressLocation.jsx';
+import QuestionPage from './pages/QuestionPage/QuestionPage.jsx';
 import {
   useQuery,
   useQueryClient,
@@ -45,6 +46,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
 
           <Route path="/ContactUs" element={<ContactUs />}></Route>
+          <Route path="/QuestionPage" element={<QuestionPage />}></Route>
 
           <Route path="/" element={<LandingLayout />}>
             <Route path="" element={<App />}></Route>

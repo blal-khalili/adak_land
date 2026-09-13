@@ -67,7 +67,7 @@ function ProductDetail() {
     // پیام خطا
     const showSwalerror = () => {
         withReactContent(Swal).fire({
-            title: "خطایی رخ داد لطفا دوباره امتحان کنید ☹️",
+            title: "از کانت خود خارج شدید دوباره وارد اکانت خود شوید ☹️",
             icon: "error",
             draggable: true,
             iconHtml: errorIcon,
@@ -304,38 +304,85 @@ function ProductDetail() {
 
                     </div>
 
-                    <div className="border">
+                    <div id="form_id_comment" className="border">
+
                         <form action="">
-                            <textarea name="" rows={4} cols={120} placeholder="متن نظر شما" id=""></textarea>
+                            <textarea
+                                name=""
+                                rows={4}
+                                cols={120}
+                                placeholder="متن نظر خود را تایپ کنید ..."
+                                id=""
+                            ></textarea>
                         </form>
 
 
                         <div className="star-rating">
-                            {[...Array(5)].map((star, index) => { // Map over an array for 5 stars
-                                index += 1; // Adjust index to be 1-based
 
+                            {[...Array(5)].map((star, index) => {
+                                index += 1;
 
                                 return (
-                                    <FaStar
-                                        key={index}
-                                        className={index <= (hover || rating) ? 'on' : 'off'} // Apply 'on' class for filled stars
-                                        onClick={() => { setRating(index) }} // Set rating on click
-                                        onMouseEnter={() => setHover(index)} // Set hover state on mouse enter
-                                        onMouseLeave={() => setHover(rating)} // Reset hover on mouse leave
-                                        size={30} // Adjust size as needed
-                                        color={index <= (hover || rating) ? '#ffd700' : '#e4e5e9'} // Set color based on state
-                                    />
+                                    <div className="star-item" key={index}>
+
+                                        <FaStar
+                                            className={
+                                                index <= (hover || rating)
+                                                    ? 'on'
+                                                    : 'off'
+                                            }
+
+                                            onClick={() => {
+                                                setRating(index);
+                                            }}
+
+                                            onMouseEnter={() => {
+                                                setHover(index);
+                                            }}
+
+                                            onMouseLeave={() => {
+                                                setHover(rating);
+                                            }}
+
+                                            size={30}
+
+                                            color={
+                                                index <= (hover || rating)
+                                                    ? '#ffd700'
+                                                    : '#e4e5e9'
+                                            }
+                                        />
+
+                                        <span className="star-label">
+                                            {index === 1 && 'ضعیف'}
+                                            {index === 2 && 'متوسط'}
+                                            {index === 3 && 'خوب'}
+                                            {index === 4 && 'خیلی خوب'}
+                                            {index === 5 && 'عالی'}
+                                        </span>
+
+                                    </div>
                                 );
                             })}
+
                         </div>
-                        <button onClick={()=>{
-                            // send fetch reaquest
-                            console.log(product.id)
-                            console.log(rating)
-                            
-                        }}>ارسال نظر</button>
+
+
+                        <button
+                            id="btn_comment"
+                            type="button"
+                            onClick={() => {
+                                console.log(product.id);
+                                console.log(rating);
+                            }}
+                        >
+                            <span className="box">
+                                ارسال نظر
+                            </span>
+                        </button>
 
                     </div>
+
                 </div>
             )}
         </>
