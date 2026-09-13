@@ -1,10 +1,12 @@
 import "./AddressLocation.css";
 import adak_land from "../../assets/image/AddressLocationPageImage/adak_land.png"
 import authAxiosInstance from "../../../utils/auth/customAxios";
+import { redirect, useNavigate } from "react-router";
+
 
 function AddressLocation() {
     // TODO: add city and state selector from github iran city list
-
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -12,7 +14,8 @@ function AddressLocation() {
         console.log("فرم ارسال شد");
         authAxiosInstance.get('cart/startpay/')
         .then((data)=>{
-            console.log(data)
+            // console.log(data['data']['redirect_url'])
+            navigate(data['data']['redirect_url']);
         })
     };
 

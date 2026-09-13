@@ -4,7 +4,7 @@ import json
 
 # requests.post('http://127.0.0.1:8000/account/verify-account/example@gmail.com/',json={'email':'example@gmail.com','password':'212988'})
 
-sandbox= 'www'
+sandbox= 'sandbox'
 
 ZP_API_REQUEST = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
 ZP_API_VERIFY = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
@@ -17,16 +17,22 @@ ZP_API_STARTPAY = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
 CallbackURL = "http://127.0.0.1:8000/cart/verify-payment"
 
 
+u2 = 'https://sandbox.zarinpal.com/pg/v4/payment/request.json'
+
 data = {
-"MerchantID": 'aed3a6a2-e0cf-4f5c-a830-e370c77795f7',
-"Amount": 1000000,
-"Description": 'توضیحات',
+"merchant_id": 'cae78af8-2d6f-11ea-97ec-000c295eb8fc',
+"amount": 1000,
+"description": 'توضیحات',
 # "Phone": '09143239933',
-"CallbackURL": CallbackURL,
+"callback_url": CallbackURL,
 }
 data = json.dumps(data)
 # set content length by data
 headers = {"content-type": "application/json", "content-length": str(len(data))}
-response = requests.post(ZP_API_REQUEST, data=data, headers=headers, timeout=10)
+response = requests.post(u2, data=data, headers=headers, timeout=10)
 print(response.status_code)
 print(response.text)
+
+
+
+u3 = 'https://payment.zarinpal.com/pg/StartPay/S00000000000000000000000000000y6w63r'

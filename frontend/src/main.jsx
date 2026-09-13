@@ -24,6 +24,7 @@ import Personalinfo from "./pages/Personal_information/Personalinfo.jsx";
 import Editprofile from "./pages/Edit_profile/Editprofile.jsx";
 import SearchPage from './pages/SearchPage/SearchPage.jsx';
 import AddressLocation from './pages/AddressLocationPage/AddressLocation.jsx';
+import Checkout from './pages/Checkout/Checkout.jsx';
 import {
   useQuery,
   useQueryClient,
@@ -49,7 +50,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<LandingLayout />}>
             <Route path="" element={<App />}></Route>
             <Route path="/supermarket" element={<Supermarket />}></Route>
-            <Route path="/shoppingcart" element={<Cart />}></Route>
             <Route path="/productsfilter" element={<ProductsFilter />}></Route>
             <Route path="/mobileaccessories" element={<MobileAccessories />}></Route>
             <Route path="/cosmetics" element={<Cosmetics />}></Route>
@@ -59,8 +59,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/Editprofile" element={<Editprofile />}></Route>
             <Route path="/SearchPage" element={<SearchPage />}></Route>
             <Route path="/AddressLocation" element={<AddressLocation />}></Route>
+            <Route path="/shoppingcart" element={<Cart />}></Route>
             <Route element={<AuthWrapper />}>
               <Route path="/profile" element={<Profile />}></Route>
+              <Route path="/verify-payment" element={<Checkout />}></Route>
+
             </Route>
           </Route>
 

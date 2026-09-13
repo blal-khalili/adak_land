@@ -69,21 +69,23 @@ import json
 from django.utils import timezone
 
     
-if settings.SANDBOX:
-    sandbox = "www"
-else:
-    sandbox = "www"
+# if settings.SANDBOX:
+#     sandbox = "www"
+# else:
+#     sandbox = "www"
 
 
-ZP_API_REQUEST = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
-ZP_API_VERIFY = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
-ZP_API_STARTPAY = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
+# ZP_API_REQUEST = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+ZP_API_REQUEST = 'https://sandbox.zarinpal.com/pg/v4/payment/request.json'
+# ZP_API_VERIFY = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+ZP_API_VERIFY = 'https://sandbox.zarinpal.com/pg/v4/payment/verify.json'
 
+ZP_API_STARTPAY = f"https://sandbox.zarinpal.com/pg/StartPay/"
 # amount = 1000  # Rial / Required
 # description = "توضیحات مربوط به تراکنش را در این قسمت وارد کنید"  # Required
 # phone = "YOUR_PHONE_NUMBER"  # Optional
 # Important: need to edit for realy server.
-CallbackURL = "http://127.0.0.1:8000/cart/verify-payment"
+CallbackURL = "http://localhost:5173/verify-payment"
 
 
 class StartPayAPIView(APIView):
@@ -96,11 +98,10 @@ class StartPayAPIView(APIView):
 
 
         data = {
-        "MerchantID": 'aed3a6a2-e0cf-4f5c-a830-e370c77795f7',
-        "Amount": 1000000,
-        "Description": 'توضیحات',
-        # "Phone": '09143239933',
-        "CallbackURL": CallbackURL,
+        "merchant_id": 'cae78af8-2d6f-11ea-97ec-000c295eb8fc',
+        "amount": 1000000,
+        "description": 'توضیحات',
+        "callback_url": CallbackURL,
         }
         data = json.dumps(data)
         # set content length by data
@@ -108,8 +109,10 @@ class StartPayAPIView(APIView):
         try:
             response = requests.post(ZP_API_REQUEST, data=data, headers=headers, timeout=10)
 
-            print(response.status_code)
-            print(ZP_API_STARTPAY + str(response["Authority"]))
+            # print(response.status_code)
+            # print(response.json())
+            # print(ZP_API_STARTPAY + str(response.json()['data']["authority"]))
+            redirect_url = ZP_API_STARTPAY + str(response.json()['data']["authority"])
 
 
             # if response.status_code == 200:
@@ -119,9 +122,9 @@ class StartPayAPIView(APIView):
                     # return {'status': True, 'url': ZP_API_STARTPAY + str(response['Authority']), 'authority': response['Authority']}
                 # else:
                 #     return {"status": False, "code": str(response["Status"])}
-            serializer = CartDetailSerializer(cart)
-            serializer.context['request'] = request
-            return Response(serializer.data)
+            # serializer = CartDetailSerializer(cart)
+            # serializer.context['request'] = request
+            return Response({'redirect_url':redirect_url},status=status.HTTP_200_OK)
 
         except requests.exceptions.Timeout:
             return {"status": False, "code": "timeout"}
