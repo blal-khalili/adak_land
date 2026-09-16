@@ -1,0 +1,204 @@
+.receipt-page {
+    direction: rtl;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+
+    background:
+        radial-gradient(circle at top right,
+            #ffffff,
+            transparent 35%),
+        linear-gradient(135deg, #ffffff, #ffffff);
+}
+
+.transaction-receipt {
+    width: 100%;
+    max-width: 480px;
+    padding: 35px 30px;
+    position: relative;
+
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px #000000,
+        inset 0 1px 0 #000000;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    text-align: center;
+}
+
+.receipt-logo {
+    display: block;
+    width: 120px;
+    max-width: 40%;
+    margin: 0 auto 25px;
+}
+
+.success-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #198754;
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    box-shadow: 0 10px 25px #198754;
+}
+
+.receipt-title {
+    margin: 0;
+    color: #222;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.receipt-subtitle {
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    color: #000000;
+    font-size: 14px;
+    text-shadow: ;
+}
+
+.receipt-divider {
+    height: 1px;
+    margin: 25px 0;
+
+    background: #e4e7eb;
+}
+
+.receipt-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 12px 0;
+
+    color: #777;
+    font-size: 14px;
+}
+
+.receipt-row strong {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    direction: ltr;
+}
+
+.receipt-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 18px;
+
+    border-radius: 30px;
+
+    background: #07da781a;
+    color: #198754;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #198754;
+}
+
+.receipt-button {
+    width: 100%;
+    height: 48px;
+
+    margin-top: 25px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #0118D8;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.receipt-button:hover {
+    background: #00eeff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px #828282;
+    color: #000000;
+}
+
+.receipt-button:active {
+    transform: translateY(0) scale(.90) !important;
+}
+
+@media (max-width: 576px) {
+    .transaction-receipt {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .receipt-title {
+        font-size: 18px;
+    }
+
+    .receipt-row {
+        font-size: 13px;
+    }
+
+    .receipt-row strong {
+        font-size: 13px;
+    }
+}
+
+/* مخصوص چاپ رسید */
+@media print {
+    body {
+        background: #ffffff !important;
+    }
+
+    .receipt-page {
+        min-height: auto;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .transaction-receipt {
+        max-width: 100%;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        background: #ffffff;
+    }
+
+    .receipt-button {
+        display: none;
+    }
+}

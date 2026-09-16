@@ -61,10 +61,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/Editprofile" element={<Editprofile />}></Route>
             <Route path="/SearchPage" element={<SearchPage />}></Route>
             <Route path="/AddressLocation" element={<AddressLocation />}></Route>
-            <Route path="/shoppingcart" element={<Cart />}></Route>
             <Route element={<AuthWrapper />}>
               <Route path="/profile" element={<Profile />}></Route>
               <Route path="/verify-payment" element={<Checkout />}></Route>
+              <Route path="/shoppingcart" element={<Cart />}></Route>
 
             </Route>
           </Route>

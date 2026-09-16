@@ -9,7 +9,7 @@ class Cart(models.Model):
     cart_id = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     payment_date = models.DateTimeField(auto_now_add=True)
-    is_paid = models.BooleanField(default=False, editable=False)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.email} | {self.cart_id}"
