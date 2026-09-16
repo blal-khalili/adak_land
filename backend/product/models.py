@@ -53,10 +53,18 @@ class ProductSpecification(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
+STAR_RATING_CHOICES = [
+    (1, "ضعیف"),
+    (2, "متوسط"),
+    (3, "خوب"),
+    (4, "خیلی خوب"),
+    (5, "عالی"),
+]
+
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField(default=0)
+    rating = models.PositiveIntegerField(default=0,choices=STAR_RATING_CHOICES)
     text = models.TextField()
     like = models.PositiveIntegerField(default=0)
     dislike = models.PositiveIntegerField(default=0)

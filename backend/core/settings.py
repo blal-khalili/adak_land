@@ -219,3 +219,4 @@ DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Default sender email address
 
 SANDBOX = 'www'
 MERCHANT = 'aed3a6a2-e0cf-4f5c-a830-e370c77795f7'
+# MERCHANT = os.environ.get('DJANGO_MERCHANT_ID')

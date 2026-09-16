@@ -11,6 +11,13 @@ class Cart(models.Model):
     payment_date = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)
 
+
+    def get_total_price(self):
+        total_price = 0
+        for cartitem in self.cartitem_set.all():
+            total_price = cartitem.product.price * cartitem.amount
+        return total_price
+        
     def __str__(self):
         return f"{self.user.email} | {self.cart_id}"
 

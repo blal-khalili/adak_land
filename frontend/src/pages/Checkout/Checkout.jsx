@@ -1,6 +1,22 @@
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router';
+import authAxiosInstance from '../../../utils/auth/customAxios';
 import './Checkout.css'
 
 function Checkout() {
+    const [searchParams] = useSearchParams();
+    const payment_status = searchParams.get('Status') 
+    const payment_authority = searchParams.get('Authority') 
+
+    // useEffect(()=>{
+    //     if (payment_status == 'OK'){
+    //         console.log('verify')
+    //         console.log(payment_authority)
+    //     }else if (payment_status == 'NOK'){
+    //         console.log('payment faild')
+    //     }
+    // },[])
+    
     return (
         <section>
             <div className="container">
@@ -93,7 +109,15 @@ function Checkout() {
                             <button
                                 type="button"
                                 className="receipt-button"
-                                onClick={() => window.print()}
+                                onClick={() => {
+                                    authAxiosInstance.post('cart/verifypay/',{'authority':payment_authority})
+                                    .then((data)=>{
+                                        console.log(data)
+                                        console.log('success')
+                                    }).catch(()=>{
+                                        console.log('error')
+                                    })
+                                }}
                             >
                                 چاپ رسید
                             </button>

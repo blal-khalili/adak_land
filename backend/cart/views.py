@@ -89,91 +89,72 @@ CallbackURL = "http://localhost:5173/verify-payment"
 
 
 class StartPayAPIView(APIView):
-
-        
     def get(self, request):
         cart = Cart.objects.filter(
                 user_id=request.user.id,is_paid=False
             ).first()
-
-
         data = {
         "merchant_id": 'cae78af8-2d6f-11ea-97ec-000c295eb8fc',
-        "amount": 1000000,
+        "amount": cart.get_total_price(),
         "description": 'توضیحات',
         "callback_url": CallbackURL,
         }
         data = json.dumps(data)
-        # set content length by data
         headers = {"content-type": "application/json", "content-length": str(len(data))}
         try:
             response = requests.post(ZP_API_REQUEST, data=data, headers=headers, timeout=10)
-
-            # print(response.status_code)
-            # print(response.json())
-            # print(ZP_API_STARTPAY + str(response.json()['data']["authority"]))
-            redirect_url = ZP_API_STARTPAY + str(response.json()['data']["authority"])
-
-
-            # if response.status_code == 200:
-            #     response = response.json()
-            #     if response["Status"] == 100:
-            #         return redirect(ZP_API_STARTPAY + str(response["Authority"]))
-                    # return {'status': True, 'url': ZP_API_STARTPAY + str(response['Authority']), 'authority': response['Authority']}
-                # else:
-                #     return {"status": False, "code": str(response["Status"])}
-            # serializer = CartDetailSerializer(cart)
-            # serializer.context['request'] = request
-            return Response({'redirect_url':redirect_url},status=status.HTTP_200_OK)
-
+            if response.status_code == 200:
+                redirect_url = ZP_API_STARTPAY + str(response.json()['data']["authority"])
+                return Response({'redirect_url':redirect_url},status=status.HTTP_200_OK)
+            else:
+                print(cart.get_total_price())
+                return Response({'erorr':'somthing went wrong with payment API'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except requests.exceptions.Timeout:
-            return {"status": False, "code": "timeout"}
+            return Response({'erorr':'timeout for zarin pal api'},status=status.HTTP_408_REQUEST_TIMEOUT)
         except requests.exceptions.ConnectionError:
-            return {"status": False, "code": "connection error"}
+            return Response({'erorr':'internal server connection error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class VerifyPayAPIView(APIView):
+    def post(self,request):
+        cart = Cart.objects.filter(user_id=request.user.id,is_paid=False).first()
+        data = {
+            "merchant_id": settings.MERCHANT,
+            "amount": cart.get_total_price(),
+            "authority": json.loads(request.body)['authority'],
+        }
+        data = json.dumps(data)
+        headers = {"content-type": "application/json", "content-length": str(len(data))}
+        response = requests.post(ZP_API_VERIFY, data=data, headers=headers)
+        # response = response.json()
+        print(response.json())
 
-
-
-
-
-def cart_pay(request):
-    cart = Cart.objects.filter(user=request.user, is_paid=False).first()
-
-    data = {
-        "MerchantID": settings.MERCHANT,
-        "Amount": cart.get_total_price(),
-        "Description": cart.user.get_full_name(),
-        "Phone": request.user.phone_number,
-        "CallbackURL": CallbackURL,
-    }
-    data = json.dumps(data)
-    # set content length by data
-    headers = {"content-type": "application/json", "content-length": str(len(data))}
-    try:
-        response = requests.post(ZP_API_REQUEST, data=data, headers=headers, timeout=10)
 
         if response.status_code == 200:
-            response = response.json()
-            if response["Status"] == 100:
-                return redirect(ZP_API_STARTPAY + str(response["Authority"]))
-                # return {'status': True, 'url': ZP_API_STARTPAY + str(response['Authority']), 'authority': response['Authority']}
-            else:
-                return {"status": False, "code": str(response["Status"])}
-        return response
+            verification_code = response.json()['data']['code']
+            if verification_code == 100 or verification_code == 101:
+                # response['ref_id']
 
-    except requests.exceptions.Timeout:
-        return {"status": False, "code": "timeout"}
-    except requests.exceptions.ConnectionError:
-        return {"status": False, "code": "connection error"}
+                cart.is_paid = True
+                cart.payment_date = timezone.now()
+                cart.save()
+                
+
+                ref_id = response.json()['data']['ref_id']
+                return Response({'message':'payment is successful','ref_id':ref_id},status=status.HTTP_200_OK)
+            elif verification_code == -51:
+                return Response({'message':'you cancelled payment'},status=status.HTTP_404_NOT_FOUND)
+
+        return Response({'errrrrrrrrrrrrrrrrrrrrr':'test data'},status=status.HTTP_200_OK)
+
 
 
 def verify_payment(request):
     cart = Cart.objects.filter(user=request.user, is_paid=False).first()
 
     data = {
-        "MerchantID": settings.MERCHANT,
-        "Amount": cart.get_total_price(),
-        "Authority": request.GET.get("Authority"),
+        "merchant_id": settings.MERCHANT,
+        "amount": cart.get_total_price(),
+        "authority": request.GET.get("Authority"),
     }
     data = json.dumps(data)
     # set content length by data
