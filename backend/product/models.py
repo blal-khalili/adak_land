@@ -61,13 +61,17 @@ STAR_RATING_CHOICES = [
     (5, "عالی"),
 ]
 
+
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField(default=0,choices=STAR_RATING_CHOICES)
+    rating = models.PositiveIntegerField(default=0, choices=STAR_RATING_CHOICES)
     text = models.TextField()
     like = models.PositiveIntegerField(default=0)
     dislike = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_created=True)
+    created = models.DateTimeField(auto_now_add=True)
     admin_verifed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user} ({self.product})"

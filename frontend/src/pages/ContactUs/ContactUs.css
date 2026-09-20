@@ -43,10 +43,23 @@
 
 
 
-/* #form_div {
-    border: 1px #000000 solid !important;
-    border-radius: 40px;
-} */
+#ContactUs-id .form-State {
+    border: 2px #000000 solid !important;
+    /* border-radius: 40px; */
+}
+
+
+
+#ContactUs-id #inputCity {
+    border: 2px #000000 solid !important;
+    /* border-radius: 40px; */
+}
+
+
+#ContactUs-id #inputProvince {
+    border: 2px #000000 solid !important;
+    /* border-radius: 40px; */
+}
 
 
 #form {

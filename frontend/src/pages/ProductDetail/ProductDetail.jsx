@@ -8,6 +8,16 @@ import withReactContent from "sweetalert2-react-content";
 import { FaStar } from 'react-icons/fa';
 
 
+
+
+const sendComment = async (data) => {
+    const res = await authAxiosInstance.post("http://127.0.0.1:8000/products/review/create/", data);
+    return res.data;
+};
+
+
+
+
 function ProductDetail() {
     const params = useParams();
 
@@ -16,6 +26,7 @@ function ProductDetail() {
 
     const [rating, setRating] = useState(0); // State for the selected rating
     const [hover, setHover] = useState(0);   // State for hover effect
+    const [text, setText] = useState("");
 
     // گرفتن اطلاعات محصول
     const getProduct = async () => {
@@ -132,6 +143,117 @@ function ProductDetail() {
             showSwalerror();
         }
     };
+
+
+
+
+    // comment
+
+    const handleSendComment = async () => {
+        // بررسی متن و امتیاز
+        if (!text.trim() || rating === 0) {
+            showSwalcCommenterror();
+            return;
+        }
+
+        const data = {
+            product: product.id,
+            rating: rating,
+            text: text.trim(),
+        };
+
+        console.log("Sending Comment:", data);
+
+        try {
+            const result = await sendComment(data);
+
+            console.log("success:", result);
+
+            // پیام موفقیت ثبت نظر
+            showSwalcComment();
+
+            // پاک کردن فرم
+            setText("");
+            setRating(0);
+            setHover(0);
+
+        } catch (error) {
+            console.log("status:", error.response?.status);
+            console.log("error:", error.response?.data);
+
+            // اگر توکن منقضی شده یا کاربر لاگین نیست
+            if (error.response?.status === 401) {
+                showSwalerror();
+                return;
+            }
+
+            // سایر خطاها
+            Swal.fire({
+                title: "خطایی در ثبت نظر رخ داد 😕",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+        }
+    };
+
+
+
+
+
+
+    // آیکون موفقیت نظر
+    const doubleCheckIconComment =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32"><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" fill="currentColor" /></svg>'
+
+
+    // پیام موفقیت نظر
+    const showSwalcComment = () => {
+        withReactContent(Swal).fire({
+            title: "نظر شما با موفقیت ثبت شد و در حال بررسی ادمین میباشد 😉",
+            icon: "success",
+            draggable: true,
+            iconHtml: doubleCheckIconComment,
+            customClass: {
+                icon: "rotate-y-comment",
+                popup: "colored-toast-comment",
+            },
+            iconColor: "#000000",
+            showConfirmButton: false,
+            timer: 4500,
+            timerProgressBar: true,
+        });
+    };
+
+
+
+
+
+    // آیکون خطا نظر
+    const ErrorIconComment =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="32"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.4c12.5 12.5 32.8 0 45.3 0s12.5-32.8 0-45.3L237.3 256l105.4-105.4z" fill="currentColor"/></svg>';
+
+
+    // پیام خطا نظر
+    const showSwalcCommenterror = () => {
+        withReactContent(Swal).fire({
+            title: "لطفا نظر خود را در کادر مرتبت بنویسید و ستاره مد نظر خود را انتخاب کنبد 🤨",
+            icon: "error",
+            draggable: true,
+            iconHtml: ErrorIconComment,
+            customClass: {
+                icon: "rotate-y-comment-error",
+                popup: "colored-toast-comment-error",
+            },
+            iconColor: "white",
+            showConfirmButton: false,
+            timer: 4500,
+            timerProgressBar: true,
+        });
+    };
+
+
+
 
 
     return (
@@ -308,12 +430,12 @@ function ProductDetail() {
 
                         <form action="">
                             <textarea
-                                name=""
                                 rows={4}
                                 cols={120}
                                 placeholder="متن نظر خود را تایپ کنید ..."
-                                id=""
-                            ></textarea>
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                            />
                         </form>
 
 
@@ -371,15 +493,13 @@ function ProductDetail() {
                         <button
                             id="btn_comment"
                             type="button"
-                            onClick={() => {
-                                console.log(product.id);
-                                console.log(rating);
-                            }}
+                            onClick={handleSendComment}
                         >
                             <span className="box">
                                 ارسال نظر
                             </span>
                         </button>
+
 
                     </div>
 

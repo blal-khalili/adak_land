@@ -92,23 +92,17 @@ function Cart() {
         if (!total_price || Number(total_price) <= 0) {
 
             Swal.fire({
-
-                title: "سبد خرید شما خالی است 🛒",
-
-                text: "لطفاً ابتدا یک محصول به سبد خرید اضافه کنید.",
-
+                title: "سبد خرید شما خالی هست 🥴",
                 icon: "warning",
-
-                confirmButtonText: "متوجه شدم",
-
-                confirmButtonColor: "#ff7300",
-
+                draggable: true,
                 customClass: {
-                    popup: "cart-empty-alert",
-                    title: "cart-empty-title",
-                    confirmButton: "cart-empty-button",
+                    icon: "shopping_cart_rotate-y",
+                    popup: "shopping_cart_colored-toast",
                 },
-
+                iconColor: "white",
+                showConfirmButton: false,
+                timer: 4500,
+                timerProgressBar: true,
             });
 
 

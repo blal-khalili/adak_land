@@ -9,12 +9,11 @@ from .models import (
 )
 
 
-
 # Product Serializers :
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductColor
-        fields = ['id',"title", "color_code"]
+        fields = ["id", "title", "color_code"]
 
 
 class SpecificationSerializer(serializers.ModelSerializer):
@@ -48,10 +47,34 @@ class OneProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# class ProductReviewSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ProductReview
+#         fields = "__all__"
+
+
 class ProductReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductReview
-        fields = "__all__"
+        fields = [
+            "id",
+            "product",
+            "rating",
+            "text",
+            "like",
+            "dislike",
+            "date",
+            "created",
+            "admin_verifed",
+        ]
+        read_only_fields = [
+            "id",
+            "like",
+            "dislike",
+            "date",
+            "created",
+            "admin_verifed",
+        ]
 
 
 # TypeOfProduct Serializers :

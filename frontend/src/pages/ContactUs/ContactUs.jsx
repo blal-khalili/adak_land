@@ -3,14 +3,16 @@ import { useForm } from "react-hook-form";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import useSubjectsForm from "../../hooks/useSubjectsForm";
-import useCityForm from "../../hooks/useCityForm";
+import useCitiesByProvince from "../../hooks/useCityForm";
 import { Link } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Logo_Navbar from "../../assets/image/OriginLogo/Logo_Navbar.png";
 import { CgProfile } from "react-icons/cg";
 import authStore, { useBearStore } from "../../../stores/authStore";
 import { checkAuth, logout } from "../../../utils/auth/auth";
 import Search from "../../components/Search/Search";
+import useProvincesForm from "../../hooks/useProvincesForm";
+
 
 
 
@@ -73,7 +75,12 @@ const validfullnamecharacter = [
 function ContactUs() {
   const queryClient = useQueryClient();
   const subjects = useSubjectsForm();
-  const cities = useCityForm();
+  const provinces = useProvincesForm();
+
+  const [selectedProvince, setSelectedProvince] = useState("");
+
+  const cities = useCitiesByProvince(selectedProvince);
+
   const mutation = useMutation({
     mutationFn: sendContact,
   });
@@ -87,9 +94,10 @@ function ContactUs() {
   const {
     register,
     handleSubmit,
-    watch,
+    setValue,
     formState: { errors, isValid },
   } = useForm();
+
 
   const formSubmitHandler = (data) => {
     console.log(data);
@@ -327,7 +335,6 @@ function ContactUs() {
             </nav>
 
 
-
             <div className="text-center mt-5">
               <h2 id="h2-text" className="fw-bolder text-white mt-5">تماس با ما</h2>
               <span id="span_id_hr"><hr id="id_hr_line" /></span>
@@ -345,7 +352,7 @@ function ContactUs() {
                   </label>
                   <select {...register("subject", { required: { value: true, message: "انتخاب موضوع اجباریست" } })}
                     id="inputState"
-                    className="form-select"
+                    className="form-select form-State"
                   >
                     <option selected>موضوع خود را انتخاب کنید</option>
                     {subjects.data && subjects.data.map((list) => (
@@ -454,29 +461,98 @@ function ContactUs() {
                     <p id="color-text-errors" className="">{errors.phonenumber.message}</p>
                   )}
                 </div>
+
                 <div className="col-md-6">
-                  <label for="inputCity" className="form-label text-white">
-                    شهر
+                  <label
+                    htmlFor="inputProvince"
+                    className="form-label text-white"
+                  >
+                    استان
                   </label>
-                  <select {...register("city", {
-                    required: {
-                      value: true,
-                      message: "وارد کردن شهر اجباریست",
-                    },
-                  })}
-                    placeholder="شهر خود را بنویسید"
-                    type="text"
-                    className="form-control"
-                    id="inputCity">
-                    <option selected>شهر خود را انتخاب کنید</option>
-                    {cities.data && cities.data.map((list) => (
-                      <option value="1">{list.title}</option>
+
+                  <select
+                    {...register("province", {
+                      required: {
+                        value: true,
+                        message: "وارد کردن استان اجباریست",
+                      },
+                    })}
+                    id="inputProvince"
+                    className="form-select"
+                    value={selectedProvince}
+                    onChange={(e) => {
+                      const provinceId = e.target.value;
+
+                      setSelectedProvince(provinceId);
+
+                      // شهر انتخاب شده قبلی پاک شود
+                      setValue("city", "");
+                    }}
+                  >
+                    <option value="">
+                      استان خود را انتخاب کنید
+                    </option>
+
+                    {provinces.data?.map((province) => (
+                      <option
+                        key={province.id}
+                        value={province.id}
+                      >
+                        {province.province_name}
+                      </option>
                     ))}
                   </select>
-                  {errors.city && (
-                    <p id="color-text-errors" className="">{errors.city.message}</p>
+
+                  {errors.province && (
+                    <p id="color-text-errors">
+                      {errors.province.message}
+                    </p>
                   )}
                 </div>
+
+
+                <div className="col-md-6">
+                  <label
+                    htmlFor="inputCity"
+                    className="form-label text-white"
+                  >
+                    شهر
+                  </label>
+
+                  <select
+                    {...register("city", {
+                      required: {
+                        value: true,
+                        message: "وارد کردن شهر اجباریست",
+                      },
+                    })}
+                    className="form-select"
+                    id="inputCity"
+                    disabled={!selectedProvince || cities.isLoading}
+                  >
+                    <option value="">
+                      {cities.isLoading
+                        ? "اول استان خود را انتخاب کنبد بعد شهر"
+                        : "شهر خود را انتخاب کنید"}
+                    </option>
+
+                    {cities.data?.map((city) => (
+                      <option
+                        key={city.id}
+                        value={city.id}
+                      >
+                        {city.city_name}
+                      </option>
+                    ))}
+                  </select>
+
+                  {errors.city && (
+                    <p id="color-text-errors">
+                      {errors.city.message}
+                    </p>
+                  )}
+                </div>
+
 
                 <div className="col-md-6">
                   <label for="inputAddress" className="form-label text-white">

@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import User
 
 # Create your models here.
 
@@ -26,3 +27,14 @@ class City(models.Model):
     class Meta:
         verbose_name = "city"
         verbose_name_plural = "Cities"
+
+
+# Askquestions
+# class Askquestions(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     question = models.TextField(max_length=255)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+
+#     def __str__(self):
+#         return f"{self.user} ({self.question})"

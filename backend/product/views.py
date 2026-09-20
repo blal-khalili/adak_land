@@ -56,10 +56,20 @@ class ProductDetailAPIView(RetrieveAPIView):
     #     return super().get_object()
 
 
+# class ProductReviwCreateApiView(CreateAPIView):
+#     queryset = Product.objects.all()
+#     serializer_class = ProductReviewSerializer
+#     permission_classes = [IsAuthenticated]
+
+
 class ProductReviwCreateApiView(CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductReviewSerializer
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 
 
